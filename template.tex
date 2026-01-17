@@ -84,11 +84,15 @@
   {\color{black}\normalfont\large\bfseries}{}{0em}{}
 
 % --- NARROWER TEXT WIDTH FOR MAIN CONTENT ---
-% James Bian style: main content text is narrower than executive summary
+% Main content text is narrower than executive summary
+% Also enforce new-page starts for top-level sections
 \newenvironment{maincontent}{%
-  \begin{adjustwidth}{3cm}{3cm}% Narrower margins for body text
+    \begin{adjustwidth}{3cm}{3cm}% Narrower margins for body text
+    \let\oldsection\section%
+    \renewcommand{\section}{\clearpage\oldsection}% Start each major section on a new page
 }{%
-  \end{adjustwidth}%
+    \let\section\oldsection%
+    \end{adjustwidth}%
 }
 
 % --- CUSTOM COMMANDS ---
@@ -217,7 +221,7 @@
         ymajorgrids=true,
         grid style={dotted, gray},
         nodes near coords,
-        nodes near coords style={font=\tiny, color=black},
+        nodes near coords style={font=\footnotesize, color=black},
         axis x line*=bottom,
         x axis line style={draw=gray},
     },
@@ -298,19 +302,35 @@
 \vspace{0.5cm}
 
 % --- EXECUTIVE SUMMARY ---
+% Executive summary is the ONLY two-column section
 
 \begin{multicols}{2}
 
-\ratingbox{Company Name (TICKER)}{Industry}{RATING}
-\vspace{0.4cm}
-
-\estimatesbox{
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Key Point 1:} Description here.
-    \item \textbf{Key Point 2:} Description here.
-    \item \textbf{Key Point 3:} Description here.
-\end{itemize}
-}
+% Align rating box and estimates block at the top
+\begin{minipage}[t]{0.3\textwidth}
+    \vspace{0pt}
+    \ratingbox{Company Name (TICKER)}{Industry}{RATING}
+    \vspace{0.2cm}
+    \textbf{Risk:} HIGH \\
+    \textbf{Target Price:} \$00.00
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.65\textwidth}
+    \vspace{0pt}
+    \estimatesbox{
+        % Inside minipage, use \linewidth (not \textwidth)
+        \begin{adjustbox}{max width=\linewidth}
+        \begin{tabular}{lr}
+            \textbf{Metric} & \textbf{Projection} \\
+            \midrule
+            2030E Revenue & \$0.0 Billion \\
+            Peak Sales Potential & \$0.0 Billion \\
+            Target Penetration (Region) & 0\% \\
+            Addressable Patient Pool & $\sim$0--0 Million \\
+        \end{tabular}
+        \end{adjustbox}
+    }
+\end{minipage}
 
 \subsection{Executive Summary Section}
 
@@ -321,9 +341,19 @@ Your executive summary content here.
 \clearpage
 
 % --- TABLE OF CONTENTS ---
-\tableofcontents
+% Use the canonical TOC block (TOC body must not be boxed)
+\newpage
+\begin{tcolorbox}[colback=lightgrey, colframe=lightgrey, boxrule=0pt, sharp corners, left=10pt, right=10pt, top=10pt, bottom=10pt]
+{\color{brandblue}\Large\bfseries Table of Contents}
+\end{tcolorbox}
+\vspace{0.3cm}
 
-\clearpage
+\renewcommand{\contentsname}{}
+\setcounter{tocdepth}{2}
+\tableofcontents
+\vspace{0.5cm}
+
+\newpage
 
 % --- MAIN CONTENT ---
 
@@ -366,7 +396,8 @@ Row 3 & 200 & 300 \\
 \begin{axis}[
     msstyle,
     width=10cm,
-    symbolic x coords={2023, 2024, 2025E},
+    % Always brace symbolic labels to avoid pgfplots parsing errors
+    symbolic x coords={{2023}, {2024}, {2025E}},
     xtick=data,
     ylabel={Metric Name},
     height=5cm,
@@ -377,6 +408,10 @@ Row 3 & 200 & 300 \\
 \par\vspace{0.1cm}
 {\tiny Source: Your Source Here}
 \end{figure}
+
+% Notes:
+% - Inside multicols, size content with \columnwidth (never \textwidth).
+% - Avoid Markdown syntax (e.g., **bold**) in .tex files.
 
 \end{maincontent}
 

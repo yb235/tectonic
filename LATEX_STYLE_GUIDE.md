@@ -1949,3 +1949,65 @@ To avoid surprises when working with `multicols`:
 - After editing, **visually scan** the compiled PDF around multicolumn boundaries for margin overflows and clipped content.
 
 Following these patterns keeps the early pages (title, executive summary, TOC) visually consistent and prevents layout regressions when future agents modify the document.
+
+---
+
+## 12. Regression Prevention: Recent Fixes & Must-Not-Miss Items (2026-01-17)
+
+This section documents the specific regressions fixed in `siRNA.tex` and the required checks to prevent them from reappearing.
+
+### 12.1 Layout & Structure Fixes Applied
+
+1. **Main content width**
+    - **Fix:** Added a `maincontent` environment that narrows the body text (consistent with `intelapple.tex`).
+    - **Rule:** Wrap all main-body sections in `\begin{maincontent} ... \end{maincontent}`. Executive summary remains full-width (two columns).
+
+2. **Executive summary columning**
+    - **Fix:** Executive summary is the only two-column section; all other sections are single column.
+    - **Rule:** `multicols` only in Executive Summary. Avoid reopening `multicols` in the main body.
+
+3. **TOC placement + formatting**
+    - **Fix:** TOC inserted after executive summary on its own page; header can be boxed but TOC body must be unboxed.
+    - **Rule:** Use the canonical TOC block (Section 10.3). Never wrap `\tableofcontents` in `tcolorbox`.
+
+4. **New major sections start on a new page**
+    - **Fix:** `\section` redefined inside `maincontent` to start on a fresh page.
+    - **Rule:** Ensure each top-level section begins on a new page in main content (use `\clearpage` or the `maincontent` hook).
+
+5. **Hierarchy cleanup**
+    - **Fix:** Removed duplicate section titles and duplicated blocks; repaired missing line breaks between headings.
+    - **Rule:** No duplicate `\section` / `\subsection` titles. Never let a `\subsection` immediately follow text without a blank line.
+
+### 12.2 Chart & Table Safety Fixes
+
+1. **Two-column table sizing**
+    - **Fix:** Summary tables inside `multicols` now use `\columnwidth`, not `\textwidth`.
+    - **Rule:** Inside `multicols`, size columns with `\columnwidth` only.
+
+2. **PGFPlots symbolic coords**
+    - **Fix:** Wrapped symbolic coordinate labels in braces to prevent parsing errors.
+    - **Rule:** Use `{Label}` for all `symbolic x/y coords` labels and coordinate entries.
+
+### 12.3 Text & LaTeX Hygiene
+
+1. **No Markdown syntax in .tex**
+    - **Fix:** Replaced Markdown bold `**...**` with `\textbf{...}`.
+    - **Rule:** Search for `\*\*` before compile and replace with proper LaTeX.
+
+2. **Escape special characters**
+    - **Rule:** Escape `&`, `%`, `$`, `#` in normal text. Use math mode only when appropriate.
+
+### 12.4 Compilation Discipline
+
+- **Run twice** after TOC or label changes to resolve references.
+- **Check logs** for overfull/underfull hbox warnings in charts/tables; fix if they affect layout.
+
+### 12.5 Quick Regression Checklist
+
+- [ ] Executive summary is the only two-column section.
+- [ ] Main body wrapped in `maincontent` with narrowed margins.
+- [ ] Each `\section` in the main body starts on a new page.
+- [ ] TOC follows executive summary and is unboxed.
+- [ ] No duplicated `\section` / `\subsection` titles.
+- [ ] No Markdown `**` remains in `.tex` files.
+- [ ] Any symbolic coords in pgfplots are brace-wrapped.

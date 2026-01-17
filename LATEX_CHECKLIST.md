@@ -1,6 +1,6 @@
 # LaTeX Pre-Compilation Checklist
 
-Use this checklist before finalizing any Morgan Stanley research document to ensure consistency and professionalism.
+Use this checklist before finalizing any research document to ensure consistency and professionalism.
 
 ## 📋 Document Structure
 
@@ -34,6 +34,11 @@ grep "\\subsection{" yourfile.tex | sort | uniq -d
 - [ ] Executive summary appears BEFORE table of contents
 - [ ] TOC is NOT wrapped in a `tcolorbox` that prevents page breaks
 - [ ] TOC uses `\tableofcontents` directly (not `\@starttoc`)
+- [ ] Executive summary is the ONLY two-column section
+
+### ☐ Main Content Layout
+- [ ] Main body is wrapped in `\begin{maincontent} ... \end{maincontent}`
+- [ ] Each major section (`\section`) starts on a new page in the main body
 
 ---
 
@@ -142,6 +147,7 @@ Second paragraph.
 - [ ] All `%` escaped as `\%` (except comments)
 - [ ] All `$` escaped as `\$` (except math mode)
 - [ ] All `#` escaped as `\#` (except macro parameters)
+- [ ] No Markdown `**bold**` remains in `.tex` files
 
 **Quick test:**
 ```bash
@@ -154,9 +160,9 @@ grep -n "[^\\]&" yourfile.tex | grep -v "tabular\|midrule\|toprule"
 ## 🎨 Visual Consistency
 
 ### ☐ Color Usage
-- [ ] All blue elements use `msblue` or `msbrightblue`
-- [ ] Table headers use `mstableheader`
-- [ ] Grey backgrounds use `msgrey`
+- [ ] All blue elements use `brandblue` or `brandaccent`
+- [ ] Table headers use `tableheader`
+- [ ] Grey backgrounds use `lightgrey`
 - [ ] No arbitrary RGB colors
 
 ### ☐ Font Consistency
@@ -174,6 +180,7 @@ grep -n "[^\\]&" yourfile.tex | grep -v "tabular\|midrule\|toprule"
 - [ ] No "Overfull hbox" warnings for tables/charts
 - [ ] No missing references or labels
 - [ ] PDF page count reasonable (15-25 pages typical for research notes)
+- [ ] Run compile twice after TOC/label changes
 
 ### ☐ TOC Review
 - [ ] TOC shows clear hierarchy (numbered sections)
@@ -195,31 +202,31 @@ grep -n "[^\\]&" yourfile.tex | grep -v "tabular\|midrule\|toprule"
 ### Find Pseudo-Headings
 ```bash
 # Find \textbf{} that might be headings
-grep -n "^\\\\textbf{" intelapple.tex
+grep -n "^\\\\textbf{" yourfile.tex
 ```
 
 ### Find Duplicate Sections
 ```bash
 # Check for duplicate subsection titles
-grep "\\subsection{" intelapple.tex | sort | uniq -c | grep -v "^ *1 "
+grep "\\subsection{" yourfile.tex | sort | uniq -c | grep -v "^ *1 "
 ```
 
 ### Check Table Font Usage
 ```bash
 # Find tables without \tablefont
-grep -B 5 "begin{adjustbox}" intelapple.tex | grep -L "tablefont"
+grep -B 5 "begin{adjustbox}" yourfile.tex | grep -L "tablefont"
 ```
 
 ### Find Manual \vspace in Text
 ```bash
 # Find \vspace that might be unnecessary
-grep -n "\\vspace{" intelapple.tex | grep -v "% Keep\|% Required"
+grep -n "\\vspace{" yourfile.tex | grep -v "% Keep\|% Required"
 ```
 
 ### Verify Source Positioning
 ```bash
 # Find tables missing \par before source
-grep -A 2 "end{adjustbox}" intelapple.tex | grep "vspace" | grep -v "par"
+grep -A 2 "end{adjustbox}" yourfile.tex | grep "vspace" | grep -v "par"
 ```
 
 ---
