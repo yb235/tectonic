@@ -6,6 +6,11 @@ This guide defines the global styling rules to ensure visual consistency across 
 
 ## 📋 Change Log
 
+### 2026-01-17: Document Structure – Executive Summary & TOC (LLM-Specific)
+**Issue:** The executive summary and table of contents (TOC) were laid out inconsistently. The TOC appeared before the executive summary, was boxed inside a `tcolorbox` that could not break across pages, and one risk table inside a two-column section overflowed into page margins.
+**Fix Applied:** Re-ordered the document so that the full executive summary appears immediately after the title page, followed by a dedicated TOC page. Removed the `tcolorbox` wrapper from around `\tableofcontents`, keeping only a styled header box, and moved wide summary tables out of `multicols` with column widths expressed in fractions of `\textwidth` rather than `\linewidth`.
+**Global Rules Established:** Executive summaries must precede the TOC, all multi-page TOCs must use bare `\tableofcontents` (never `\@starttoc` or a boxed environment), and wide 3–4 column risk tables in summaries should be full-width (outside `multicols`) with columns summing to ≤1.0 of `\textwidth`.
+
 ### 2026-01-16: Chart Color Drift Prevention (LLM-Specific)
 **Issue:** Three charts drifted into a different color scheme because ad-hoc `fill=` colors were used instead of shared styles.  
 **Fix Applied:** Added semantic pgfplots styles (`msstyle`, `compactchart`, `comparestyle`, `divergingstyle`) and updated `intelapple.tex` charts to call the right style per intent.  
@@ -89,6 +94,244 @@ This guide defines the global styling rules to ensure visual consistency across 
 **Issue:** Unescaped `&` in titles or text causing `! Misplaced alignment tab character &` errors.  
 **Fix Applied:** Expanded Section 2 with more prominent warnings.  
 **Global Rule Established:** All LLMs generating LaTeX must globally escape `&` as `\&` unless inside a `tabular` or `align` environment.
+
+---
+
+## 0. Document Hierarchy & Paragraph Styling
+
+### 0.1 Critical Rule: When to Use `\section{}` vs `\subsection{}` vs `\textbf{}`
+
+**This section added 2026-01-17 after identifying hierarchy inconsistencies in multiple documents.**
+
+#### THE PROBLEM: Inconsistent Heading Hierarchy
+
+Documents often mix `\textbf{Title}` with proper `\subsection{}` commands, creating:
+- ❌ Visual inconsistency (some headings large, others normal-sized)
+- ❌ TOC chaos (missing or inconsistent entries)
+- ❌ No automatic numbering for major topics
+- ❌ Broken document outline structure
+
+#### THE SOLUTION: Clear Decision Tree
+
+```
+Is this a MAJOR TOPIC spanning multiple pages?
+├─ YES → Use \section{Title}
+│         Examples: "Executive Summary", "Financial Analysis", "Investment Risks"
+│
+└─ NO → Is this a SUBTOPIC with multiple paragraphs/bullets under it?
+    ├─ YES → Use \subsection{Title}
+    │         Examples: "The Yield Gap", "Capacity Constraints", "TSMC's Roadmap"
+    │
+    └─ NO → Is this just EMPHASIS within a paragraph?
+            └─ YES → Use \textbf{word} inline
+                     Examples: "The \textbf{yield rate} is critical..."
+```
+
+#### ABSOLUTE RULES
+
+| Pattern | Verdict | Reason |
+|---------|---------|--------|
+| `\textbf{The Strategic Rationale}` as standalone heading | ❌ **FORBIDDEN** | Should be `\subsection{The Strategic Rationale}` |
+| `\textbf{1. Topic}` or `\textbf{2. Topic}` as numbered headings | ❌ **FORBIDDEN** | Remove numbers, use `\subsection{Topic}` (auto-numbered) |
+| `Some text. \textbf{Key Point:} Explanation...` | ✅ **CORRECT** | Bold emphasis within paragraph flow |
+| `\subsection{Title}\n\n\textbf{Subtitle:}` | ⚠️ **AVOID** | Use itemize or just paragraph text |
+
+#### CORRECT HEADING PATTERN
+
+```latex
+\section{Investment Analysis}
+
+\subsection{Valuation Framework}
+We employ a three-pronged approach...
+
+\subsection{Discounted Cash Flow Model}
+The DCF model assumes...
+\begin{itemize}
+    \item \textbf{WACC:} 9.5\% reflecting...
+    \item \textbf{Terminal Growth:} 2.5\% in perpetuity...
+\end{itemize}
+
+\subsection{Risk Assessment}
+Key vulnerabilities include...
+```
+
+#### FORBIDDEN PATTERNS
+
+```latex
+% ❌ BAD: Using \textbf{} as pseudo-section headings
+\textbf{Investment Analysis}
+
+\textbf{1. Valuation Framework}
+We employ a three-pronged approach...
+
+\textbf{2. Discounted Cash Flow Model}
+The DCF model assumes...
+
+% ❌ BAD: Mixing styles
+\subsection{Investment Analysis}
+\textbf{Valuation Framework}  ← Should be \subsection{}
+We employ a three-pronged approach...
+```
+
+### 0.2 Paragraph Spacing Standards
+
+**This section added 2026-01-17 to establish consistent vertical rhythm.**
+
+#### THE RULE: One Blank Line Between Paragraphs
+
+Morgan Stanley documents use LaTeX's natural paragraph spacing. Follow these rules:
+
+```latex
+% ✅ CORRECT: Blank line between paragraphs
+\subsection{Title}
+First paragraph explaining the context and setup for the analysis.
+
+Second paragraph diving deeper into the implications. This creates proper 
+paragraph indentation and spacing.
+
+Third paragraph with concluding thoughts.
+```
+
+```latex
+% ❌ WRONG: No blank line = run-on paragraph
+\subsection{Title}
+First paragraph text.
+Second paragraph text.  ← This continues the first paragraph!
+Third paragraph text.
+```
+
+#### When to Use `\vspace{}`
+
+| Situation | Rule |
+|-----------|------|
+| Between normal paragraphs | ❌ **NEVER** - Use blank line only |
+| After `\section{}` | ✅ Optional: `\vspace{0.5cm}` for emphasis |
+| Before/after tables/figures | ✅ `\vspace{0.3cm}` to `\vspace{0.5cm}` |
+| Before major visual dividers | ✅ `\vspace{0.5cm}` |
+| After `\subsection{}` | ❌ **NEVER** - Natural spacing is correct |
+
+#### CORRECT SPACING EXAMPLES
+
+```latex
+% ✅ CORRECT: Natural flow
+\subsection{Market Analysis}
+The semiconductor market is experiencing unprecedented demand.
+
+Supply constraints have created pricing power for incumbent foundries. 
+TSMC currently holds 90\% market share in advanced nodes.
+
+This monopoly creates strategic vulnerabilities for fabless customers.
+
+\subsection{Competitive Dynamics}
+Intel's entry as a merchant foundry...
+```
+
+```latex
+% ❌ WRONG: Random \vspace{} commands
+\subsection{Market Analysis}
+The semiconductor market is experiencing unprecedented demand.
+\vspace{0.3cm}  ← REMOVE: Unnecessary between paragraphs
+
+Supply constraints have created pricing power...
+\vspace{0.2cm}  ← REMOVE: Inconsistent spacing
+
+This monopoly creates strategic vulnerabilities...
+\vspace{0.5cm}  ← REMOVE: Use blank line instead
+```
+
+### 0.3 Maximum Document Depth
+
+To maintain clarity, limit heading depth:
+
+```
+\section{Level 1}           ← Use sparingly (3-5 per document)
+  \subsection{Level 2}      ← Primary organizational unit
+    Paragraph text          ← No deeper nesting
+    \begin{itemize}
+      \item \textbf{Label:} ← Bold for list items only
+    \end{itemize}
+```
+
+**NEVER create deeper nesting** like `\subsubsection{}` - use itemized lists instead.
+
+### 0.4 Preventing Duplicate Sections
+
+**This section added 2026-01-17 after finding 8+ duplicate subsections in a single document.**
+
+#### THE PROBLEM: Copy-Paste During Reorganization
+
+When reorganizing content, it's easy to:
+1. Copy a section to a new location
+2. Revise it
+3. Forget to delete the old version
+
+This creates:
+- Duplicate TOC entries (e.g., "2.11 TSMC's Roadmap" and "2.16 TSMC's Roadmap")
+- Redundant content (wastes 3-5 pages)
+- Reader confusion
+- Label conflicts if `\label{}` is used
+
+#### THE SOLUTION: Section Markers
+
+When reorganizing, add temporary comments:
+
+```latex
+\subsection{TSMC's Roadmap}  % MOVED FROM Section 2 → Section 3
+Content here...
+
+% Several pages later...
+% OLD VERSION BELOW - DELETE BEFORE FINAL
+% \subsection{TSMC's Roadmap}  
+% Content here...
+```
+
+#### VERIFICATION CHECKLIST
+
+Before compiling final PDF:
+
+1. **Search for duplicate subsection titles:**
+   ```bash
+   grep "\\subsection{" yourfile.tex | sort | uniq -d
+   ```
+
+2. **Check TOC for duplicate numbering:**
+   - Open the `.toc` file
+   - Look for repeated section numbers (e.g., two "2.11" entries)
+
+3. **Review page count:**
+   - If document is >40 pages, check for redundancy
+   - Morgan Stanley research notes: 15-25 pages typical
+
+### 0.5 Executive Summary Placement
+
+**Added 2026-01-17 (consolidated from changelog).**
+
+**RULE:** Executive summary must appear BEFORE the table of contents, never after.
+
+```latex
+% ✅ CORRECT ORDER:
+\begin{document}
+\reporttitle{...}{...}{}
+
+% 1. Executive Summary (first content after title)
+\begin{multicols}{2}
+  Summary content...
+\end{multicols}
+
+% 2. Table of Contents (dedicated page)
+\newpage
+\begin{tcolorbox}[...]
+{\color{msblue}\Large\bfseries Table of Contents}
+\end{tcolorbox}
+\vspace{0.3cm}
+\tableofcontents
+
+% 3. Main document sections
+\newpage
+\section{Introduction}
+```
+
+**NEVER** wrap `\tableofcontents` in a `tcolorbox` that prevents page breaks - use a header box only.
 
 ---
 
@@ -1018,3 +1261,132 @@ I've debugged these same chart issues across dozens of documents. The patterns a
 **When in doubt:** Use the complete example template in Section 3. It's been battle-tested across 33-page documents with 10+ charts. Copy it, modify the data, and it will work.
 
 — *Your Future Self (who won't have to debug this again)*
+
+---
+
+## 10. Document Structure: Executive Summary, Multicolumn Layouts & TOC
+
+### 10.1 Executive Summary Placement & Layout
+
+**Goal:** Readers should see the full executive summary immediately after the title page, before the table of contents.
+
+**Standard Ordering (top of document):**
+- Title block + disclosure banner / stock rating box
+- Executive summary (1–3 pages)
+- Table of contents (own page)
+- Main body sections
+
+**Canonical Executive Summary Pattern:**
+
+```latex
+% After title + disclosure box
+
+% --- EXECUTIVE SUMMARY ---
+
+\begin{multicols}{2}
+    % Rating boxes, "What's Changed" box, bullets, narrative text
+    % Use itemize/enumerate for key points; keep paragraphs short.
+\end{multicols}
+```
+
+Rules:
+- Use `\begin{multicols}{2}` / `\end{multicols}` for **narrative text, bullets, and short lists** in the summary.
+- Keep executive summary fonts aligned with the rest of the document (no custom font sizes beyond the section/paragraph styles already defined in the preamble).
+- Do **not** place very wide 3–4 column tables or complex charts inside `multicols` if they visually crowd one column.
+
+### 10.2 Wide Tables & Charts Inside Executive Summaries
+
+**Problem Observed:** A 4-column risk table inside `multicols` used `p{...\linewidth}` and overflowed into the margin.
+
+**Global Rules:**
+- Any table or chart that is intended to span the page width **must live outside** `multicols`.
+- Inside `multicols`, if you really need a table, its columns must be sized in terms of `\columnwidth`, not `\textwidth` or `\linewidth`.
+- Prefer to break out to full width for risk matrices, valuation tables, or dense numeric content.
+
+**Full-Width Risk Table Pattern (Recommended):**
+
+```latex
+% 1) Finish the two-column narrative
+\end{multicols}
+
+% 2) Insert a full-width table
+\vspace{0.5cm}
+\begin{center}
+\captionof{table}{Risk Assessment: Example Title}
+\rowcolors{2}{msgrey}{white}
+	ablefont
+\begin{tabular}{p{0.15\textwidth}p{0.35\textwidth}p{0.35\textwidth}p{0.12\textwidth}}
+    	oprule
+    	extbf{Risk Factor} & \textbf{Bull Case (Strategic Win)} &
+    	extbf{Bear Case (Execution Failure)} & \textbf{Impact} \\
+    \midrule
+    % rows ...
+    \bottomrule
+\end{tabular}
+\par\vspace{0.1cm}
+{\tiny Source: ...}
+\end{center}
+
+% 3) Optionally resume two-column text
+\begin{multicols}{2}
+    % Additional narrative sections
+\end{multicols}
+```
+
+Key points:
+- Column widths are expressed as fractions of `\textwidth` that sum to **≤ 1.0**, preventing margin overflow.
+- Use the same `\rowcolors`, `\tablefont`, and `\par\vspace{0.1cm}` conventions documented in Section 1.
+- Only close and reopen `multicols` where necessary; do **not** nest `multicols` inside floats.
+
+### 10.3 Table of Contents (TOC) Formation & Placement
+
+**Problems Observed:**
+- TOC placed **before** the executive summary.
+- TOC content wrapped completely inside a `tcolorbox`, preventing page breaks and clipping the bottom of the list.
+- Legacy use of low-level `\@starttoc{toc}` instead of `\tableofcontents`.
+
+**Global Rules for TOC:**
+- The TOC **must follow** the executive summary, on its own page.
+- Always use `\tableofcontents` (never `\@starttoc{toc}`) so LaTeX can manage page breaks and referencing correctly.
+- Do **not** wrap `\tableofcontents` in `tcolorbox` or any other non-breaking box. Only the TOC **header line** may be boxed for styling.
+- Set TOC depth to at most sections + subsections: `\setcounter{tocdepth}{2}` unless there is a strong reason otherwise.
+
+**Canonical TOC Block (Used in `intelapple.tex`):**
+
+```latex
+% --- TABLE OF CONTENTS ---
+\newpage
+\begin{tcolorbox}[
+    colback=msgrey,
+    colframe=msgrey,
+    boxrule=0pt,
+    sharp corners,
+    left=10pt, right=10pt, top=10pt, bottom=10pt
+]
+    {\color{msblue}\Large\bfseries Table of Contents}
+\end{tcolorbox}
+\vspace{0.3cm}
+
+\renewcommand{\contentsname}{}  % suppress default "Contents" label
+\setcounter{tocdepth}{2}        % sections + subsections only
+	ableofcontents                % bare TOC so it can break across pages
+\vspace{0.5cm}
+
+\newpage                         % main body starts on a fresh page
+```
+
+Checklist for AI agents:
+- [ ] Executive summary pages come **before** this block.
+- [ ] No additional boxes or `minipage` wrappers around `\tableofcontents`.
+- [ ] TOC fits cleanly within page margins; if it runs long, LaTeX adds extra pages automatically.
+
+### 10.4 Margin Safety in Multicolumn Sections
+
+To avoid surprises when working with `multicols`:
+
+- Inside `multicols`, think in terms of `\columnwidth`, not `\textwidth`.
+- Never use `width=\textwidth` or columns based on `\textwidth` inside a two-column environment; they will almost always overflow.
+- For any element that truly needs full width (large figure, multi-column table, complex chart), close `multicols`, insert the full-width content, and only then reopen `multicols`.
+- After editing, **visually scan** the compiled PDF around multicolumn boundaries for margin overflows and clipped content.
+
+Following these patterns keeps the early pages (title, executive summary, TOC) visually consistent and prevents layout regressions when future agents modify the document.

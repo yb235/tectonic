@@ -1,4 +1,13 @@
-\contentsline {section}{\numberline {1}The Rumor Mill \& Strategic Rationale}{5}{}%
+\contentsline {subsection}{\numberline {0.1}The Conditional Validation: A Strategic Bifurcation, Not a Pivot}{1}{}%
+\contentsline {subsection}{\numberline {0.2}The Tiered Adoption Strategy: High-Volume vs. High-Performance}{1}{}%
+\contentsline {subsection}{\numberline {0.3}Key Catalysts: Why Now?}{1}{}%
+\contentsline {subsection}{\numberline {0.4}Financial Implications: The \$13 Billion Question}{1}{}%
+\contentsline {subsection}{\numberline {0.5}Verdict: A Probationary Partnership}{2}{}%
+\contentsline {subsection}{\numberline {0.6}The Geopolitical Imperative: De-Risking the \$3 Trillion Ecosystem}{2}{}%
+\contentsline {subsection}{\numberline {0.7}The "Test Run" Configuration: M-Series as the Trojan Horse}{2}{}%
+\contentsline {subsection}{\numberline {0.8}The Execution Gap: RibbonFET Reality vs. Yield Aspirations}{3}{}%
+\contentsline {subsection}{\numberline {0.9}Strategic Verdict: A Hedge, Not a Replacement}{3}{}%
+\contentsline {section}{\numberline {1}The Rumor Mill \& Strategic Rationale}{6}{}%
 \contentsline {subsection}{\numberline {1.1}Analyst Consensus: The 18A vs. 14A Bifurcation}{6}{}%
 \contentsline {subsection}{\numberline {1.2}The "Low-Risk Test Run": Anatomy of a 15-Million Unit Bet}{6}{}%
 \contentsline {subsection}{\numberline {1.3}Breaking the TSMC Monopoly: Cost \& Geopolitics}{7}{}%

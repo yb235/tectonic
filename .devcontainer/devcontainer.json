@@ -1,0 +1,15 @@
+{
+  "name": "tectonic-latex",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "workspaceFolder": "/workspaces/tectonic",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "james-yu.latex-workshop"
+      ]
+    }
+  },
+  "postCreateCommand": "latexmk -version"
+}

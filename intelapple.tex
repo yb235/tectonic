@@ -24,17 +24,9 @@
 \usepackage{adjustbox}
 \usepackage{titlesec}
 \usepackage{enumitem}
-\usepackage{hyperref}
+% \usepackage{hyperref} % Disabled to avoid missing letltxmacro dependency
 
-% Hyperref setup for clickable TOC
-\hypersetup{
-    colorlinks=true,
-    linkcolor=msblue,
-    urlcolor=msbrightblue,
-    citecolor=msblue,
-    pdftitle={Apple \& Intel Foundry: The Strategic Pivot},
-    pdfauthor={Morgan Stanley Research},
-}
+% Hyperref setup removed because hyperref is disabled
 
 % Fix for array/colortbl compatibility issue with p columns
 \makeatletter
@@ -108,13 +100,31 @@
     \vspace{0.2cm}
 }
 
-% 4. Stock Rating Box
+% 4. Stock Rating Box (single)
 \newcommand{\ratingbox}[3]{%
     \begin{tcolorbox}[colback=msgrey, colframe=msgrey, sharp corners, boxrule=0pt]
     \textbf{\small #1} \\ % Company Name
     \scriptsize #2 \\      % Industry
     \vspace{0.1cm}
     \textbf{\large #3}      % Rating (Overweight)
+    \end{tcolorbox}
+}
+
+% 4a. Dual Stock Rating Box (side-by-side, Morgan Stanley style)
+\newcommand{\dualratingbox}[6]{%
+    \begin{tcolorbox}[colback=msgrey, colframe=msgrey, sharp corners, boxrule=0pt]
+        \begin{minipage}[t]{0.48\columnwidth}
+            \textbf{\small #1} \\ % Left Company Name
+            \scriptsize #2 \\      % Left Industry
+            \vspace{0.1cm}
+            \textbf{\large #3}      % Left Rating
+        \end{minipage}\hfill
+        \begin{minipage}[t]{0.48\columnwidth}
+            \textbf{\small #4} \\ % Right Company Name
+            \scriptsize #5 \\      % Right Industry
+            \vspace{0.1cm}
+            \textbf{\large #6}      % Right Rating
+        \end{minipage}
     \end{tcolorbox}
 }
 
@@ -248,133 +258,15 @@
 \begin{document}
 \reporttitle{Apple Inc. (AAPL) \& Intel Corp. (INTC)}{Apple \& Intel Foundry: The Strategic Pivot -- Analyzing the 14A/18A Bifurcation Rumors}{}
 
-\begin{tcolorbox}[colback=msgrey, colframe=white, boxrule=0pt, sharp corners, left=2pt, right=2pt, top=2pt, bottom=2pt]
-\begin{minipage}{0.65\textwidth}
-    \textbf{\footnotesize ANALYST CERTIFICATION AND IMPORTANT DISCLOSURES ARE LISTED IN THE APPENDIX.}
-\end{minipage}
-\hfill
-\begin{minipage}{0.3\textwidth}
-    \raggedleft \tiny \textbf{Stock Ratings} \\
-    \textbf{AAPL: OVERWEIGHT} \\
-    \textbf{INTC: EQUAL-WEIGHT}
-\end{minipage}
-\end{tcolorbox}
 \vspace{0.5cm}
 
-% --- TABLE OF CONTENTS PAGE ---
-\newpage
-\thispagestyle{fancy}
-
-% TOC Header with Morgan Stanley Styling
-\begin{tcolorbox}[
-    colback=white, 
-    colframe=msblue, 
-    boxrule=2pt, 
-    arc=0pt, 
-    outer arc=0pt,
-    left=15pt, 
-    right=15pt, 
-    top=12pt, 
-    bottom=12pt,
-    width=\textwidth
-]
-{\color{msblue}\fontsize{22}{26}\selectfont\bfseries Table of Contents}
-\vspace{0.1cm}
-
-{\color{mstextgrey}\footnotesize Apple Inc. (AAPL) \& Intel Corp. (INTC) --- Strategic Analysis Report}
-\end{tcolorbox}
-
-\vspace{0.5cm}
-
-% Custom TOC styling for consistent appearance
-\makeatletter
-% Style for section entries
-\renewcommand*\l@section[2]{%
-    \ifnum \c@tocdepth >\z@
-    \addpenalty\@secpenalty
-    \addvspace{1.0em \@plus\p@}%
-    \setlength\@tempdima{2.5em}%
-    \begingroup
-        \parindent \z@ \rightskip \@pnumwidth
-        \parfillskip -\@pnumwidth
-        \leavevmode \color{msblue}\bfseries
-        \advance\leftskip\@tempdima
-        \hskip -\leftskip
-        #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss \color{black}#2}\par
-    \endgroup
-    \fi}
-
-% Style for subsection entries  
-\renewcommand*\l@subsection[2]{%
-    \ifnum \c@tocdepth >\@ne
-    \addpenalty\@secpenalty
-    \addvspace{0.3em \@plus\p@}%
-    \setlength\@tempdima{3.5em}%
-    \begingroup
-        \parindent \z@ \rightskip \@pnumwidth
-        \parfillskip -\@pnumwidth
-        \leavevmode \footnotesize
-        \advance\leftskip\@tempdima
-        \hskip -\leftskip
-        #1\nobreak\leaders\hbox{$\m@th
-            \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
-            mu$}\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
-    \endgroup
-    \fi}
-\makeatother
-
-% Set TOC depth to show sections and subsections
-\setcounter{tocdepth}{2}
-
-% Render TOC with custom formatting
-\begin{tcolorbox}[
-    colback=msgrey, 
-    colframe=white, 
-    boxrule=0pt, 
-    arc=0pt,
-    left=15pt, 
-    right=15pt, 
-    top=15pt, 
-    bottom=15pt,
-    width=\textwidth
-]
-\renewcommand{\contentsname}{}
-{\hypersetup{linkcolor=black}
-\makeatletter
-\@starttoc{toc}
-\makeatother}
-\end{tcolorbox}
-
-\vspace{0.3cm}
-
-% Key Sections Quick Reference
-\begin{tcolorbox}[
-    colback=white, 
-    colframe=msbrightblue, 
-    boxrule=1pt, 
-    arc=0pt,
-    left=12pt, 
-    right=12pt, 
-    top=10pt, 
-    bottom=10pt,
-    title={\color{white}\bfseries\footnotesize KEY SECTIONS AT A GLANCE},
-    colbacktitle=msbrightblue,
-    coltitle=white
-]
-\footnotesize
-\begin{tabular}{@{}p{0.45\textwidth}p{0.45\textwidth}@{}}
-\textbf{\color{msblue}Section 1:} The Rumor Mill \& Strategic Rationale & \textbf{\color{msblue}Section 4:} Valuation Models \\[0.2cm]
-\textbf{\color{msblue}Section 2:} IFS Assessment: 18A/14A Readiness & \textbf{\color{msblue}Section 5:} Investment Risks \\[0.2cm]
-\textbf{\color{msblue}Section 3:} Technological Deep Dive & \\
-\end{tabular}
-\end{tcolorbox}
-
-\newpage
+% --- EXECUTIVE SUMMARY ---
 
 \begin{multicols}{2}
 
-\ratingbox{Apple Inc. (AAPL)}{Technology Hardware}{OVERWEIGHT}
-\vspace{0.2cm}
+\dualratingbox{Apple Inc. (AAPL)}{Technology Hardware}{OVERWEIGHT}%
+               {Intel Corp. (INTC)}{Semiconductors}{EQUAL-WEIGHT}
+\vspace{0.4cm}
 
 
 \estimatesbox{
@@ -385,22 +277,22 @@
 \end{itemize}
 }
 
-
-
-\textbf{The Conditional Validation: A Strategic Bifurcation, Not a Pivot}
+\subsection{The Conditional Validation: A Strategic Bifurcation, Not a Pivot}
 
 The semiconductor landscape is buzzing with reports that Apple is exploring Intel Foundry Services (IFS) for its future silicon needs. Specifically, rumors suggest Apple may utilize Intel's \textbf{18A process node} for entry-level M-series chips (MacBook Air, iPad) starting roughly \textbf{mid-2027}, with speculative long-range roadmaps hinting at the \textbf{14A node} for non-Pro iPhone chips by \textbf{2028}.
 
 We view this development not as a wholesale abandonment of TSMC, but as a \textbf{"Conditional Validation"} of Intel's IDM 2.0 strategy. It represents a calculated \textbf{Tiered Adoption} strategy by Apple: bifurcating its supply chain to mitigate geopolitical risk while maintaining performance leadership through TSMC for its flagship products.
 
-\textbf{1. The Tiered Adoption Strategy: High-Volume vs. High-Performance}
+\subsection{The Tiered Adoption Strategy: High-Volume vs. High-Performance}
+
 Our analysis of the supply chain suggests Apple is constructing a "Second Source" architecture. The bifurcation logic is clear:
 \begin{itemize}
     \item \textbf{Intel 18A (The Resilience Tier):} Designated for \textbf{lower-margin, high-volume devices} like the MacBook Air and iPad Air. These products are less sensitive to the absolute peak of performance-per-watt metrics compared to the iPhone Pro series but require massive volume (estimated \textbf{15--20 million units/year}). Utilizing Intel here allows Apple to "test run" the foundry without risking its crown jewels.
     \item \textbf{TSMC N2/A16 (The Performance Tier):} We expect Apple to retain TSMC as the exclusive partner for "Pro" tier silicon (M-Max/Ultra, iPhone Pro A-series). TSMC's proven yield consistency and upcoming \textbf{N2 (2nm)} and \textbf{A16 (1.6nm)} nodes offer the predictable performance scaling required for flagship differentiation.
 \end{itemize}
 
-\textbf{2. Key Catalysts: Why Now?}
+\subsection{Key Catalysts: Why Now?}
+
 Three converging forces are driving this strategic pivot:
 \begin{enumerate}
     \item \textbf{Geopolitical "Insurance":} With rising tensions in the Taiwan Strait, Apple is under increasing pressure to align with the "Made in USA" mandate. Intel's Arizona and Ohio fabs, backed by \textbf{\$7.86 billion in direct CHIPS Act funding}, offer the only viable domestic alternative for sub-2nm logic.
@@ -408,12 +300,14 @@ Three converging forces are driving this strategic pivot:
     \item \textbf{Technological Convergence:} Intel's aggressive roadmap---introducing \textbf{RibbonFET} (Gate-All-Around) and \textbf{PowerVia} (Backside Power Delivery) with 18A---technically leapfrogs TSMC's N2 in specific power-delivery metrics. If executed, 18A offers a credible alternative for mobile efficiency.
 \end{enumerate}
 
-\textbf{3. Financial Implications: The \$13 Billion Question}
+\subsection{Financial Implications: The \$13 Billion Question}
+
 For Intel, securing Apple is existential. IFS reported \textbf{operating losses exceeding \$13 billion in 2024}. An Apple contract provides the baseload volume necessary to fill the new mega-fabs and amortize the massive CapEx associated with High-NA EUV integration. Without a "Hero Customer" like Apple, Intel's path to break-even operating margins by \textbf{2027} remains perilous.
 
 For Apple, this move creates leverage. By establishing a viable second source, Apple erodes TSMC's pricing monopoly (currently holding $\sim$90\% of the 3nm market), potentially negotiating better terms for its N2/A16 wafers.
 
-\textbf{Verdict: A Probationary Partnership}
+\subsection{Verdict: A Probationary Partnership}
+
 While the strategic rationale is sound, execution risk remains the dominant variable. With 18A yields reportedly struggling at $\sim$10\% in mid-2025, Intel has a massive gap to close to meet Apple's $>$70\% commercial viability standard. We classify this potential partnership as \textbf{probationary}: Apple has engaged, but full production remains contingent on Intel proving it can deliver yield, volume, and performance stability by Q1 2026.
 
 \vspace{0.5cm}
@@ -474,16 +368,20 @@ While the strategic rationale is sound, execution risk remains the dominant vari
 
 \end{multicols}
 
+\vspace{0.3cm}
+
 The rumored bifurcation of Apple's silicon supply chain---retaining TSMC for flagship processors while qualifying Intel Foundry Services (IFS) for entry-level M-series chips---represents the most significant structural shift in Apple's semiconductor strategy since the transition from Intel x86 to Apple Silicon. This move is less about immediate performance arbitrage and more about \textbf{geopolitical resilience} and \textbf{supply chain leverage}. Our analysis suggests that while Intel's 18A node offers theoretical technological parity with TSMC's N2, the decision is driven by Apple's need to hedge against Taiwan Strait concentration risk and to align with U.S. industrial policy.
 
-\subsection*{The Geopolitical Imperative: De-Risking the \$3 Trillion Ecosystem}
+\begin{multicols}{2}
+
+\subsection{The Geopolitical Imperative: De-Risking the \$3 Trillion Ecosystem}
 Apple's reliance on TSMC is absolute; currently, nearly 100\% of Apple's advanced logic (A-series, M-series) is manufactured in Taiwan. This creates a single point of failure for a company with a market capitalization exceeding \$3 trillion.
 \begin{itemize}
     \item \textbf{The "Made in USA" Mandate:} With the U.S. CHIPS Act allocating \textbf{\$7.86 billion in direct funding} and up to \textbf{\$11 billion in loans} to Intel, the political pressure for Apple to support a domestic champion is intensifying. Apple has already pledged \textbf{\$430 billion} (later updated to over \textbf{\$600 billion}) in U.S. investments; sourcing wafers from Intel's Arizona and Ohio fabs is the logical next step in this commitment.
     \item \textbf{Supply Chain Resilience:} The "China+1" strategy, which has seen Apple shift assembly to India and Vietnam, is now moving upstream to wafer fabrication. Intel provides the only sub-2nm capacity outside of East Asia. While TSMC's Arizona fabs are coming online, they face higher costs (estimated at \textbf{30--50\% higher than Taiwan}) and rely on the same Taiwanese IP backbone. A distinct "Second Source" with Intel diversifies the \textit{foundry risk}, not just the geographic risk.
 \end{itemize}
 
-\subsection*{The "Test Run" Configuration: M-Series as the Trojan Horse}
+\subsection{The "Test Run" Configuration: M-Series as the Trojan Horse}
 Reports indicate Apple is eyeing the \textbf{Intel 18A node} specifically for "entry-level" M-series chips (e.g., MacBook Air, iPad Air) by \textbf{mid-2027}. This targeting is strategic and deliberate, minimizing execution risk while establishing a foothold.
 \begin{itemize}
     \item \textbf{Volume Alignment:} The entry-level Mac/iPad segment represents roughly \textbf{15--20 million units annually}. This volume is substantial enough to be meaningful for Intel's fab utilization but small enough to be manageable if yield ramps are slower than anticipated. It avoids the "all-in" risk of shifting the iPhone (200M+ units), where a yield failure would be catastrophic.
@@ -541,17 +439,19 @@ Reports indicate Apple is eyeing the \textbf{Intel 18A node} specifically for "e
 \end{tikzpicture}
 \end{center}
 
-\subsection*{The Execution Gap: RibbonFET Reality vs. Yield Aspirations}
+\subsection{The Execution Gap: RibbonFET Reality vs. Yield Aspirations}
 While the strategic logic is sound, the operational reality of Intel Foundry Services (IFS) remains the primary bottleneck. The transition to 18A is not merely a shrink; it involves the simultaneous introduction of two paradigm-shifting technologies: \textbf{RibbonFET} (Gate-All-Around transistors) and \textbf{PowerVia} (Backside Power Delivery).
 \begin{itemize}
     \item \textbf{The 10\% Yield Crisis:} Recent channel checks suggest that early 18A test wafers in Summer 2025 were yielding near \textbf{10\%}. For a commercial foundry engagement, Apple typically demands yields exceeding \textbf{70--80\%} to ensure margin preservation. The gap between 10\% and 70\% represents a "Valley of Death" that Intel must cross in less than 18 months to meet the Q1 2026 PDK deadline.
     \item \textbf{Financial Bleed:} IFS operating losses peaked at over \textbf{\$13 billion in 2024}. While these losses are expected to narrow, the division is burning cash at a rate that necessitates external capital or massive customer prepayments. An Apple deal acts as a validator, but it cannot fund the CapEx alone; Intel must demonstrate it can manufacture 18A profitably, or risk becoming a subsidized entity dependent on government funds.
 \end{itemize}
 
-\subsection*{Strategic Verdict: A Hedge, Not a Replacement}
+\subsection{Strategic Verdict: A Hedge, Not a Replacement}
 We reiterate our view that this potential partnership is a \textbf{hedge}. Apple is unlikely to abandon TSMC's N2 or A16 nodes for its premium silicon. TSMC's ecosystem---specifically its advanced packaging leadership with \textbf{CoWoS} and \textbf{SoIC}---is integral to the performance of the M-Max and M-Ultra chips. Intel's competitive packaging solutions (\textbf{EMIB}, \textbf{Foveros Direct}) are capable, but migrating Apple's complex custom designs from TSMC's PDK to Intel's PDK is a non-trivial engineering challenge that introduces significant "friction costs."
 
 Therefore, we view the 2027-2028 timeframe as a "probationary period" where Intel serves as a secondary supplier for non-critical silicon, creating price competition for TSMC while establishing a U.S. supply baseload.
+
+\end{multicols}
 
 \vspace{0.5cm}
 
@@ -559,7 +459,7 @@ Therefore, we view the 2027-2028 timeframe as a "probationary period" where Inte
 \captionof{table}{Risk Assessment: Apple Adopting Intel 18A}
 \rowcolors{2}{msgrey}{white}
 \tablefont
-\begin{tabular}{p{0.15\linewidth}p{0.35\linewidth}p{0.35\linewidth}c}
+\begin{tabular}{p{0.15\textwidth}p{0.35\textwidth}p{0.35\textwidth}p{0.12\textwidth}}
 \toprule
 \textbf{Risk Factor} & \textbf{Bull Case (Strategic Win)} & \textbf{Bear Case (Execution Failure)} & \textbf{Impact} \\
 \midrule
@@ -572,6 +472,21 @@ Therefore, we view the 2027-2028 timeframe as a "probationary period" where Inte
 \par\vspace{0.1cm}
 {\tiny Source: Industry Data, Morgan Stanley Research Analysis}
 \end{center}
+
+% --- TABLE OF CONTENTS ---
+\newpage
+\begin{tcolorbox}[colback=msgrey, colframe=msgrey, boxrule=0pt, sharp corners, left=10pt, right=10pt, top=10pt, bottom=10pt]
+{\color{msblue}\Large\bfseries Table of Contents}
+\end{tcolorbox}
+\vspace{0.3cm}
+
+\renewcommand{\contentsname}{}
+\setcounter{tocdepth}{2}
+\tableofcontents
+\vspace{0.5cm}
+
+\newpage
+
 \section{The Rumor Mill \& Strategic Rationale}
 
 The prospect of Apple diverging from its exclusive partnership with TSMC represents the most significant potential disruption to the semiconductor supply chain in a decade. While Apple has historically championed a dual-source strategy (notably splitting the A9 chip between Samsung and TSMC in 2015), the company has spent the last eight years consolidating its advanced logic manufacturing solely with TSMC. The emerging rumors of a pivot to Intel Foundry Services (IFS) suggest a calculated strategic inflection point, driven not by immediate technical superiority, but by a complex matrix of geopolitical risk management, supply chain resilience, and commercial leverage.
