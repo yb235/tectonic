@@ -69,6 +69,12 @@ Second paragraph.
 
 ## 📊 Tables
 
+### ☐ Caption Formatting
+- [ ] Preamble includes `\captionsetup{justification=centering, font=normalsize, labelfont=bf}`
+- [ ] All table/figure captions are centered (verify in PDF)
+- [ ] NOT wrapping tables in `\begin{center}` solely for caption centering
+- [ ] Using `\centering` (not `\begin{center}`) inside float environments
+
 ### ☐ Font Sizing
 - [ ] All tables have `\tablefont` before `\begin{adjustbox}`
 - [ ] Using `max width=\textwidth` (NOT `width=\textwidth`)

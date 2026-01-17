@@ -1,5 +1,5 @@
 
-% JAMES BIAN thought leadership - LATEX STYLE GUIDE
+% MORGAN STANLEY RESEARCH - LATEX STYLE GUIDE
 % REFINED FOR VISUAL ACCURACY
 
 \documentclass[10pt, a4paper]{article}
@@ -20,12 +20,12 @@
 \usepackage{pgfplots}
 \usepackage{float}
 \usepackage{caption}
-\captionsetup{justification=centering, font=normalsize, labelfont=bf}
 \usepackage{multicol}
 \usepackage{adjustbox}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{changepage}
+\usepackage{paracol}
 % \usepackage{hyperref} % Disabled to avoid missing letltxmacro dependency
 
 % Hyperref setup removed because hyperref is disabled
@@ -36,57 +36,82 @@
 \makeatother
 
 % --- BRAND COLORS ---
-\definecolor{brandblue}{HTML}{003366}       % Primary dark blue
-\definecolor{brandaccent}{HTML}{008EC7}    % Accent blue for highlights
-\definecolor{lightgrey}{HTML}{F3F3F3}      % Light grey for backgrounds
-\definecolor{textgrey}{HTML}{6A6A6A}       % Grey text for analysts
-\definecolor{tableheader}{HTML}{E6E6E6}    % Grey for table headers
+\definecolor{msblue}{HTML}{002A5C}       % Morgan Stanley Dark Blue
+\definecolor{msbrightblue}{HTML}{0096D6} % Light Blue for "INSIGHT" and Highlights
+\definecolor{msgrey}{HTML}{F2F2F2}       % Light Grey for Backgrounds
+\definecolor{mstextgrey}{HTML}{666666}   % Grey text for analysts
+\definecolor{mstableheader}{HTML}{E5E5E5} % Grey for table headers
 
 % --- PAGE HEADER/FOOTER ---
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 
-% Left Header: Logo and date - adjusted to align tops
+% Left Header: Logo
 \lhead{
-    \raisebox{-5pt}[0pt][0pt]{% Lower James Bian to align top with ASIA PACIFIC
-        {\fontsize{14}{14}\selectfont\bfseries James Bian}%
-        \hspace{0.2cm}\textcolor{black}{|}\hspace{0.2cm}%
-        {\fontsize{9}{9}\selectfont\bfseries Thought Leadership}%
-    }\\[0.1cm]
-    {\color{textgrey}\fontsize{9}{9}\selectfont \today}
+    \vspace{0.2cm}
+    {\fontsize{14}{14}\bfseries Morgan Stanley} 
+    \hspace{0.15cm} \textcolor{black}{|} \hspace{0.15cm} 
+    {\footnotesize\bfseries RESEARCH} \\
+    {\color{mstextgrey}\footnotesize \today}
 }
 
-% Right Header: Region/Type - top aligned
+% Right Header: Region/Type
 \rhead{
-    {\color{brandaccent}\bfseries\fontsize{11}{11}\selectfont TECH VISION}%
+    \vspace{0.2cm}
+    {\color{msbrightblue}\bfseries\small ASIA PACIFIC INSIGHT} % Dynamic based on region
 }
 
 % Footer
-\lfoot{\color{textgrey}\fontsize{9}{9}\selectfont James Bian Research}
+\lfoot{\color{mstextgrey}\footnotesize Morgan Stanley Research}
 \rfoot{\bfseries\thepage}
 
 % --- TYPOGRAPHY & SECTIONS ---
 \titleformat{\section}
-    {\color{brandblue}\normalfont\Large\bfseries}{}{0em}{}
+  {\color{msblue}\normalfont\Large\bfseries}{}{0em}{}
   
 \titleformat{\subsection}
   {\color{black}\normalfont\large\bfseries}{}{0em}{}
 
-% --- NARROWER TEXT WIDTH FOR MAIN CONTENT ---
-% James Bian style: main content text is narrower than executive summary
+% --- MORGAN STANLEY LAYOUT: LEFT MARGIN TITLES, RIGHT COLUMN TEXT ---
+% For main content sections (not executive summary):
+% - Section/subsection titles appear in left margin
+% - Body text flows in narrower right column
 \newenvironment{maincontent}{%
-  \begin{adjustwidth}{3cm}{3cm}% Narrower margins for body text
+  \newgeometry{left=4.5cm, right=1.4cm, top=2.2cm, bottom=2.5cm, marginparwidth=3.5cm, marginparsep=0.5cm}%
+  \reversemarginpar% Put margin notes on left
+  % Override section formatting for margin placement
+  \titleformat{\section}
+    {\color{msblue}\normalfont\Large\bfseries}{}{0em}{}
+    [\vspace{-\baselineskip}]% Remove extra space after
+  \titlespacing*{\section}{0pt}{0pt}{0pt}%
+  \titleformat{\subsection}
+    {\color{black}\normalfont\large\bfseries}{}{0em}{}
+    [\vspace{-0.5\baselineskip}]%
+  \titlespacing*{\subsection}{0pt}{1em}{0.5em}%
 }{%
-  \end{adjustwidth}%
+  \restoregeometry%
 }
 
 % --- CUSTOM COMMANDS ---
 
+% Morgan Stanley Section with title in left margin
+\newcommand{\mssection}[1]{%
+  \newpage%
+  \marginpar{\raggedright\color{msblue}\Large\bfseries #1}%
+  \vspace{0.5em}%
+}
+
+\newcommand{\mssubsection}[1]{%
+  \vspace{1em}%
+  \marginpar{\raggedright\color{black}\large\bfseries #1}%
+  \vspace{0.3em}%
+}
+
 % 1. Report Title Block
 \newcommand{\reporttitle}[3]{%
     \vspace{0.5cm}
-    {\fontsize{14}{16}\selectfont\color{brandaccent}\bfseries #1 \par} % Ticker/Company
+    {\fontsize{14}{16}\selectfont\color{msbrightblue}\bfseries #1 \par} % Ticker/Company
     \vspace{0.1cm}
     {\fontsize{28}{32}\selectfont\color{black}\fontseries{l}\selectfont #2 \par} % Main Title
     \vspace{0.5cm}
@@ -94,7 +119,7 @@
 
 % 2. "What's Changed" / Estimates Table
 \newcommand{\estimatesbox}[1]{%
-    \begin{tcolorbox}[colback=lightgrey, colframe=white, boxrule=0pt, sharp corners, left=2pt, right=2pt, top=2pt, bottom=2pt]
+    \begin{tcolorbox}[colback=msgrey, colframe=white, boxrule=0pt, sharp corners, left=2pt, right=2pt, top=2pt, bottom=2pt]
     \textbf{\footnotesize WHAT'S CHANGED}
     \end{tcolorbox}
     \vspace{-0.3cm}
@@ -105,14 +130,14 @@
 % 3. Sidebar Analyst Info
 \newcommand{\analystinfo}[3]{%
     {\bfseries\small #1} \\
-    {\color{textgrey}\tiny #2} \\
-    {\color{textgrey}\tiny #3} \\
+    {\color{mstextgrey}\tiny #2} \\
+    {\color{mstextgrey}\tiny #3} \\
     \vspace{0.2cm}
 }
 
 % 4. Stock Rating Box (single)
 \newcommand{\ratingbox}[3]{%
-    \begin{tcolorbox}[colback=lightgrey, colframe=lightgrey, sharp corners, boxrule=0pt]
+    \begin{tcolorbox}[colback=msgrey, colframe=msgrey, sharp corners, boxrule=0pt]
     \textbf{\small #1} \\ % Company Name
     \scriptsize #2 \\      % Industry
     \vspace{0.1cm}
@@ -120,9 +145,9 @@
     \end{tcolorbox}
 }
 
-% 4a. Dual Stock Rating Box (side-by-side, James Bian style)
+% 4a. Dual Stock Rating Box (side-by-side, Morgan Stanley style)
 \newcommand{\dualratingbox}[6]{%
-    \begin{tcolorbox}[colback=lightgrey, colframe=lightgrey, sharp corners, boxrule=0pt]
+    \begin{tcolorbox}[colback=msgrey, colframe=msgrey, sharp corners, boxrule=0pt]
         \begin{minipage}[t]{0.48\columnwidth}
             \textbf{\small #1} \\ % Left Company Name
             \scriptsize #2 \\      % Left Industry
@@ -138,10 +163,10 @@
     \end{tcolorbox}
 }
 
-% 5. Blue Section Header (The "James Bian" Section Divider)
+% 5. Blue Section Header (The "Morgan Stanley" Section Divider)
 \newcommand{\blueheader}[1]{%
     \vspace{0.5cm}
-    {\color{brandblue}\bfseries\large #1}
+    {\color{msblue}\bfseries\large #1}
     \par\vspace{0.1cm}
 }
 
@@ -154,7 +179,7 @@
 \newenvironment{mstable}[1][\textwidth]{%
     \tablefont%
     \renewcommand{\arraystretch}{1.2}%
-    \rowcolors{2}{lightgrey}{white}%
+    \rowcolors{2}{msgrey}{white}%
     \begin{adjustbox}{max width=#1, center}%
 }{%
     \end{adjustbox}%
@@ -164,7 +189,7 @@
 \newenvironment{mstablescaled}[1][\textwidth]{%
     \scriptsize% Minimum readable font size
     \renewcommand{\arraystretch}{1.3}%
-    \rowcolors{2}{lightgrey}{white}%
+    \rowcolors{2}{msgrey}{white}%
     \begin{adjustbox}{max width=#1, center}%
 }{%
     \end{adjustbox}%
@@ -179,10 +204,10 @@
     colormap={RdYlGn}{rgb255(0cm)=(215,48,39); rgb255(0.25cm)=(253,174,97); rgb255(0.5cm)=(255,255,191); rgb255(0.75cm)=(166,217,106); rgb255(1cm)=(26,152,80)},
     % Custom cycle list for multi-series bar charts
     cycle list={
-        {fill=brandblue},
-        {fill=brandaccent},
+        {fill=msblue},
+        {fill=msbrightblue},
         {fill=gray},
-        {fill=brandblue!40},
+        {fill=msblue!40},
     },
     % GLOBAL FIX: Use pgfplots' built-in area legend style for all ybar charts
     % This ensures proper vertical alignment with text using font-relative units
@@ -199,7 +224,7 @@
     },
     msstyle/.style={
         ybar,
-        fill=brandblue,
+        fill=msblue,
         bar width=15pt,
         draw=none,
         axis line style={draw=none},
@@ -281,15 +306,15 @@
 
 \estimatesbox{
 \begin{itemize}[leftmargin=*]
-    \item \textbf{Intel 18A Timeline:} Risk production commenced Q2 2025; rumors suggest Apple low-end M-series adoption by H2 2027.
-    \item \textbf{Yield Considerations:} External reports indicate 18A test wafer yields near $\sim$10\% (mid-2025), while Intel management claims 60--65\% for internal products; Apple's commercial viability threshold is $>$70\%.
-    \item \textbf{Foundry Financials:} IFS operating losses reached \$13.0B in 2024; break-even target remains 2027.
+    \item \textbf{Intel 18A Timeline:} Risk production commenced Q2 2025; rumors suggest Apple low-end M-series adoption by mid-2027.
+    \item \textbf{Yield Considerations:} Recent reports indicate 18A yields near $\sim$10\% (Summer 2025); viability threshold for Apple is $>$70\%.
+    \item \textbf{Foundry Financials:} IFS operating losses peaked at $\sim$\$13B in 2024; break-even target remains $\sim$2027.
 \end{itemize}
 }
 
 \subsection{The Conditional Validation: A Strategic Bifurcation, Not a Pivot}
 
-The semiconductor landscape is buzzing with reports that Apple is exploring Intel Foundry Services (IFS) for its future silicon needs. Specifically, rumors suggest Apple may utilize Intel's \textbf{18A process node} for entry-level M-series chips (MacBook Air, iPad Air) starting in \textbf{H2 2027}, with speculative long-range roadmaps hinting at the \textbf{14A node} for non-Pro iPhone chips by \textbf{2028}.
+The semiconductor landscape is buzzing with reports that Apple is exploring Intel Foundry Services (IFS) for its future silicon needs. Specifically, rumors suggest Apple may utilize Intel's \textbf{18A process node} for entry-level M-series chips (MacBook Air, iPad) starting roughly \textbf{mid-2027}, with speculative long-range roadmaps hinting at the \textbf{14A node} for non-Pro iPhone chips by \textbf{2028}.
 
 We view this development not as a wholesale abandonment of TSMC, but as a \textbf{"Conditional Validation"} of Intel's IDM 2.0 strategy. It represents a calculated \textbf{Tiered Adoption} strategy by Apple: bifurcating its supply chain to mitigate geopolitical risk while maintaining performance leadership through TSMC for its flagship products.
 
@@ -297,7 +322,7 @@ We view this development not as a wholesale abandonment of TSMC, but as a \textb
 
 Our analysis of the supply chain suggests Apple is constructing a "Second Source" architecture. The bifurcation logic is clear:
 \begin{itemize}
-    \item \textbf{Intel 18A (The Resilience Tier):} Designated for \textbf{lower-margin, high-volume devices} like the MacBook Air and iPad Air. These products are less sensitive to the absolute peak of performance-per-watt metrics compared to the iPhone Pro series but require substantial volume (estimated \textbf{15--20 million MacBook Air/iPad Air units annually}). Utilizing Intel here allows Apple to "test run" the foundry without risking its crown jewels.
+    \item \textbf{Intel 18A (The Resilience Tier):} Designated for \textbf{lower-margin, high-volume devices} like the MacBook Air and iPad Air. These products are less sensitive to the absolute peak of performance-per-watt metrics compared to the iPhone Pro series but require massive volume (estimated \textbf{15--20 million units/year}). Utilizing Intel here allows Apple to "test run" the foundry without risking its crown jewels.
     \item \textbf{TSMC N2/A16 (The Performance Tier):} We expect Apple to retain TSMC as the exclusive partner for "Pro" tier silicon (M-Max/Ultra, iPhone Pro A-series). TSMC's proven yield consistency and upcoming \textbf{N2 (2nm)} and \textbf{A16 (1.6nm)} nodes offer the predictable performance scaling required for flagship differentiation.
 \end{itemize}
 
@@ -312,21 +337,19 @@ Three converging forces are driving this strategic pivot:
 
 \subsection{Financial Implications: The \$13 Billion Question}
 
-For Intel, securing Apple is existential. IFS reported \textbf{operating losses of \$13.0 billion in 2024}. An Apple contract provides the baseload volume necessary to fill the new mega-fabs and amortize the massive CapEx associated with High-NA EUV integration. Without a "Hero Customer" like Apple, Intel's path to break-even operating margins by \textbf{2027} remains perilous.
+For Intel, securing Apple is existential. IFS reported \textbf{operating losses exceeding \$13 billion in 2024}. An Apple contract provides the baseload volume necessary to fill the new mega-fabs and amortize the massive CapEx associated with High-NA EUV integration. Without a "Hero Customer" like Apple, Intel's path to break-even operating margins by \textbf{2027} remains perilous.
 
 For Apple, this move creates leverage. By establishing a viable second source, Apple erodes TSMC's pricing monopoly (currently holding $\sim$90\% of the 3nm market), potentially negotiating better terms for its N2/A16 wafers.
 
 \subsection{Verdict: A Probationary Partnership}
 
-While the strategic rationale is sound, execution risk remains the dominant variable. With external reports indicating 18A test wafer yields near $\sim$10\% in mid-2025 (versus Intel management's claims of 60--65\% for internal products), Intel has a substantial gap to close to meet Apple's $>$70\% commercial viability standard. We classify this potential partnership as \textbf{probationary}: Apple has engaged, but full production remains contingent on Intel proving it can deliver yield, volume, and performance stability by Q1 2026.
+While the strategic rationale is sound, execution risk remains the dominant variable. With 18A yields reportedly struggling at $\sim$10\% in mid-2025, Intel has a massive gap to close to meet Apple's $>$70\% commercial viability standard. We classify this potential partnership as \textbf{probationary}: Apple has engaged, but full production remains contingent on Intel proving it can deliver yield, volume, and performance stability by Q1 2026.
 
 \vspace{0.5cm}
 
-\begin{table}[H]
-\centering
-\caption{Rumored Apple-Intel Roadmap vs. TSMC Baseline}
-\label{tab:apple_intel_roadmap}
-\rowcolors{2}{lightgrey}{white}
+\begin{center}
+\captionof{table}{Rumored Apple-Intel Roadmap vs. TSMC Baseline}
+\rowcolors{2}{msgrey}{white}
 \tablefont
 \begin{tabular}{p{0.22\columnwidth}p{0.22\columnwidth}p{0.22\columnwidth}p{0.22\columnwidth}}
 \toprule
@@ -341,15 +364,13 @@ While the strategic rationale is sound, execution risk remains the dominant vari
 \bottomrule
 \end{tabular}
 \par\vspace{0.1cm}
-{\tiny Source: Industry Reports, James Bian Research Estimates}
-\end{table}
+{\tiny Source: Industry Reports, Morgan Stanley Research Estimates}
+\end{center}
 
 \vspace{0.5cm}
 
-\begin{figure}[H]
-\centering
-\caption{Intel Foundry Services: The Path to Break-Even (Operating Loss in \$B)}
-\label{fig:ifs_breakeven}
+\begin{center}
+\captionof{figure}{Intel Foundry Services: The Path to Break-Even (Operating Loss in \$B)}
 \begin{tikzpicture}
 \begin{axis}[
     msstyle,
@@ -368,17 +389,17 @@ While the strategic rationale is sound, execution risk remains the dominant vari
     height=5cm,
     bar width=15pt
 ]
-\addplot[fill=brandblue] coordinates {(2022,-5.2) (2023,-7.0) (2024,-13.2) (2025E,-9.5) (2026E,-4.0) (2027E,0.5)};
+\addplot[fill=msblue] coordinates {(2022,-5.2) (2023,-7.0) (2024,-13.2) (2025E,-9.5) (2026E,-4.0) (2027E,0.5)};
 \end{axis}
 \pgfplotsset{
     after end axis/.append code={
         \node[anchor=north, font=\tiny, text width=10cm, align=center] at (current axis.south) [yshift=-1cm] {
-            Source: Company Data, James Bian Research Estimates (2025-2027E)
+            Source: Company Data, Morgan Stanley Research Estimates (2025-2027E)
         };
     }
 }
 \end{tikzpicture}
-\end{figure}
+\end{center}
 
 \end{multicols}
 
@@ -402,10 +423,8 @@ Reports indicate Apple is eyeing the \textbf{Intel 18A node} specifically for "e
     \item \textbf{Performance Sensitivity:} While the iPhone's thermal envelope is unforgiving, the MacBook Air and iPad Air have slightly more relaxed constraints. This makes them ideal candidates for qualifying a new process node like 18A, which introduces radical new transistor architectures (\textbf{RibbonFET}) that may require multiple iterations to perfect.
 \end{itemize}
 
-\begin{figure}[H]
-\centering
-\caption{Global Advanced Node Manufacturing Capacity Share (2024 vs. 2030E)}
-\label{fig:capacity_share}
+\begin{center}
+\captionof{figure}{Global Advanced Node Manufacturing Capacity Share (2024 vs. 2030E)}
 \begin{tikzpicture}
 \begin{axis}[
     ybar stacked,
@@ -432,8 +451,8 @@ Reports indicate Apple is eyeing the \textbf{Intel 18A node} specifically for "e
     yticklabel style={font=\footnotesize},
     title style={at={(0.5,-0.4)}, anchor=north, font=\tiny, text width=8cm, align=center},
     cycle list={
-        {fill=brandblue, draw=none},
-        {fill=brandaccent, draw=none},
+        {fill=msblue, draw=none},
+        {fill=msbrightblue, draw=none},
         {fill=gray, draw=none},
     }
 ]
@@ -448,12 +467,12 @@ Reports indicate Apple is eyeing the \textbf{Intel 18A node} specifically for "e
     after end axis/.append code={
         \node[anchor=north, font=\tiny, text width=8cm, align=center] at (current axis.south) [yshift=-1.5cm] {
             Note: 2030E assumes successful Intel 18A/14A ramp and Apple adoption.\\
-            Source: James Bian Research Estimates
+            Source: Morgan Stanley Research Estimates
         };
     }
 }
 \end{tikzpicture}
-\end{figure}
+\end{center}
 
 \subsection{The Execution Gap: RibbonFET Reality vs. Yield Aspirations}
 While the strategic logic is sound, the operational reality of Intel Foundry Services (IFS) remains the primary bottleneck. The transition to 18A is not merely a shrink; it involves the simultaneous introduction of two paradigm-shifting technologies: \textbf{RibbonFET} (Gate-All-Around transistors) and \textbf{PowerVia} (Backside Power Delivery).
@@ -471,11 +490,9 @@ Therefore, we view the 2027-2028 timeframe as a "probationary period" where Inte
 
 \vspace{0.5cm}
 
-\begin{table}[H]
-\centering
-\caption{Risk Assessment: Apple Adopting Intel 18A}
-\label{tab:risk_assessment}
-\rowcolors{2}{lightgrey}{white}
+\begin{center}
+\captionof{table}{Risk Assessment: Apple Adopting Intel 18A}
+\rowcolors{2}{msgrey}{white}
 \tablefont
 \begin{tabular}{p{0.15\textwidth}p{0.35\textwidth}p{0.35\textwidth}p{0.12\textwidth}}
 \toprule
@@ -488,13 +505,13 @@ Therefore, we view the 2027-2028 timeframe as a "probationary period" where Inte
 \bottomrule
 \end{tabular}
 \par\vspace{0.1cm}
-{\tiny Source: Industry Data, James Bian Research Analysis}
-\end{table}
+{\tiny Source: Industry Data, Morgan Stanley Research Analysis}
+\end{center}
 
 % --- TABLE OF CONTENTS ---
 \newpage
-\begin{tcolorbox}[colback=lightgrey, colframe=lightgrey, boxrule=0pt, sharp corners, left=10pt, right=10pt, top=10pt, bottom=10pt]
-{\color{brandblue}\Large\bfseries Table of Contents}
+\begin{tcolorbox}[colback=msgrey, colframe=msgrey, boxrule=0pt, sharp corners, left=10pt, right=10pt, top=10pt, bottom=10pt]
+{\color{msblue}\Large\bfseries Table of Contents}
 \end{tcolorbox}
 \vspace{0.3cm}
 
@@ -508,7 +525,7 @@ Therefore, we view the 2027-2028 timeframe as a "probationary period" where Inte
 % --- BEGIN MAIN CONTENT WITH NARROWER TEXT WIDTH ---
 \begin{maincontent}
 
-\section{The Rumor Mill \& Strategic Rationale}
+\mssection{The Rumor Mill \& Strategic Rationale}
 
 The prospect of Apple diverging from its exclusive partnership with TSMC represents the most significant potential disruption to the semiconductor supply chain in a decade. While Apple has historically championed a dual-source strategy (notably splitting the A9 chip between Samsung and TSMC in 2015), the company has spent the last eight years consolidating its advanced logic manufacturing solely with TSMC. The emerging rumors of a pivot to Intel Foundry Services (IFS) suggest a calculated strategic inflection point, driven not by immediate technical superiority, but by a complex matrix of geopolitical risk management, supply chain resilience, and commercial leverage.
 
@@ -522,11 +539,9 @@ Current intelligence indicates a bifurcated adoption strategy that aligns specif
 
 This bifurcation---using a mature-by-then 18A for larger, lower-margin devices and reserving the cutting-edge 14A for high-volume mobile chips---mirrors Apple's previous bifurcation of the A-series chips (using older chips in non-Pro iPhones).
 
-\begin{table}[H]
-\centering
-\caption{Rumor Matrix: Apple's Potential Roadmap with Intel Foundry}
-\label{tab:rumor_matrix}
-\rowcolors{2}{lightgrey}{white}
+\begin{center}
+\captionof{table}{Rumor Matrix: Apple's Potential Roadmap with Intel Foundry}
+\rowcolors{2}{msgrey}{white}
 \tablefont
 \begin{tabular}{p{0.2\linewidth}p{0.15\linewidth}p{0.25\linewidth}p{0.3\linewidth}}
 \toprule
@@ -538,8 +553,8 @@ This bifurcation---using a mature-by-then 18A for larger, lower-margin devices a
 \bottomrule
 \end{tabular}
 \par\vspace{0.1cm}
-{\tiny Source: Analyst Reports (Kuo, Pu, Gurman), James Bian Research Compilation}
-\end{table}
+{\tiny Source: Analyst Reports (Kuo, Pu, Gurman), Morgan Stanley Research Compilation}
+\end{center}
 
 \subsection{The "Low-Risk Test Run": Anatomy of a 15-Million Unit Bet}
 The most credible scenario is the "Low-Risk Test Run" using the M-series. Apple ships approximately \textbf{200--230 million iPhones} annually, compared to roughly \textbf{20--25 million Macs}. Shifting the entire iPhone volume to an unproven foundry would be suicidal. However, shifting the \textbf{MacBook Air} volume (estimated at 15--20 million units) offers a perfect asymmetry of risk and reward:
@@ -550,10 +565,8 @@ The most credible scenario is the "Low-Risk Test Run" using the M-series. Apple 
     \item \textbf{Thermal Latitude:} The MacBook Air chassis, while fanless, has a larger thermal mass than an iPhone. It can tolerate slightly higher power leakage or lower efficiency curves that might occur in the early stages of a new process node (like 18A's PowerVia implementation) better than a battery-constrained smartphone.
 \end{enumerate}
 
-\begin{figure}[H]
-\centering
-\caption{The "Test Run" Scale: Potential Intel Volume vs. Total Apple Demand (2027E)}
-\label{fig:test_run_scale}
+\begin{center}
+\captionof{figure}{The "Test Run" Scale: Potential Intel Volume vs. Total Apple Demand (2027E)}
 \begin{tikzpicture}
 \begin{axis}[
     ybar,
@@ -576,17 +589,17 @@ The most credible scenario is the "Low-Risk Test Run" using the M-series. Apple 
     bar width=30pt,
     enlarge x limits=0.15
 ]
-\addplot[fill=brandblue] coordinates {(Total iPhone Volume, 230) (Total Mac/iPad Volume, 65) (Intel "Pilot" Allocation, 18)};
+\addplot[fill=msblue] coordinates {(Total iPhone Volume, 230) (Total Mac/iPad Volume, 65) (Intel "Pilot" Allocation, 18)};
 \end{axis}
 \pgfplotsset{
     after end axis/.append code={
         \node[anchor=north, font=\tiny, text width=11cm, align=center] at (current axis.south) [yshift=-1.5cm] {
-            Source: James Bian Research Estimates. "Intel Pilot Allocation" assumes entry-level M-series production only.
+            Source: Morgan Stanley Research Estimates. "Intel Pilot Allocation" assumes entry-level M-series production only.
         };
     }
 }
 \end{tikzpicture}
-\end{figure}
+\end{center}
 
 \subsection{Breaking the TSMC Monopoly: Cost \& Geopolitics}
 Apple's interest in Intel is driven by two external forces that have intensified since 2024: the erosion of TSMC's pricing flexibility and the geopolitical imperative of the U.S. CHIPS Act.
@@ -603,7 +616,7 @@ Despite the strategic incentives, significant skepticism remains regarding execu
 \end{itemize}
 \newpage
 
-\section{IFS Assessment: 18A/14A Readiness \& Financial Reality}
+\mssection{IFS Assessment: 18A/14A Readiness \& Financial Reality}
 
 The viability of an Apple-Intel partnership rests not on strategic intent, but on the hard mathematical reality of Intel Foundry Services (IFS). For Apple to migrate even a fraction of its M-series silicon to Intel, IFS must demonstrate that its aggressive "5 Nodes in 4 Years" (5N4Y) roadmap has transitioned from PowerPoint projections to yield-positive silicon. Our quantitative assessment suggests that while the 18A and 14A nodes offer theoretical parity or superiority to TSMC, the financial and operational "valley of death" between current execution and the 2027 break-even target remains the primary risk factor.
 
@@ -622,12 +635,12 @@ However, the "double-jump" of introducing transistor architecture changes (Ribbo
 \centering
 \caption{Comparative Node Specifications: Intel 18A/14A vs. TSMC N2/A16}
 \label{tab:node_comparison}
-\rowcolors{2}{lightgrey}{white}
+\rowcolors{2}{msgrey}{white}
 \renewcommand{\arraystretch}{1.2}
 \tablefont
 \begin{tabular}{p{0.14\linewidth}p{0.19\linewidth}p{0.19\linewidth}p{0.19\linewidth}p{0.19\linewidth}}
 \toprule
-\rowcolor{tableheader}
+\rowcolor{mstableheader}
 \textbf{Metric} & \textbf{Intel 18A} & \textbf{Intel 14A} & \textbf{TSMC N2} & \textbf{TSMC A16} \\
 \midrule
 \textbf{Architecture} & RibbonFET (GAA) & RibbonFET 2 & Nanosheet (GAA) & Nanosheet (GAA) \\
@@ -640,7 +653,7 @@ However, the "double-jump" of introducing transistor architecture changes (Ribbo
 \bottomrule
 \end{tabular}
 \par\vspace{0.1cm}
-{\tiny Source: James Bian Research, Company Data, TechInsights Estimates.}
+{\tiny Source: Morgan Stanley Research, Company Data, TechInsights Estimates.}
 \end{table}
 
 \subsection{The Yield Divergence: Claims vs. Reality}
@@ -663,10 +676,8 @@ Intel Foundry's transition to a separate P\&L structure in 2024 revealed the dep
     \item \textbf{Breakeven Timeline:} Management targets break-even operating margins by \textbf{"roughly 2027."} This timeline perfectly aligns with the rumored Apple entry-level M-series ramp. Effectively, the Apple contract acts as the volume driver required to amortize the massive fixed costs of the Arizona and Ohio fabs. Without Apple (or a customer of similar scale), the 2027 break-even target slides, risking the solvency of the foundry strategy.
 \end{itemize}
 
-\begin{figure}[H]
-\centering
-\caption{Intel Foundry Services (IFS) Operating Loss Trajectory (2023--2027E)}
-\label{fig:ifs_loss_trajectory}
+\begin{center}
+\captionof{figure}{Intel Foundry Services (IFS) Operating Loss Trajectory (2023--2027E)}
 \begin{tikzpicture}
 \begin{axis}[
     ybar,
@@ -687,10 +698,10 @@ Intel Foundry's transition to a separate P\&L structure in 2024 revealed the dep
     ymajorgrids=true,
     grid style={dotted, gray},
     bar width=25pt,
-    fill=brandblue,
+    fill=msblue,
     point meta=y * 1
 ]
-\addplot[fill=brandblue] coordinates {
+\addplot[fill=msblue] coordinates {
     (2023, -7.0)
     (2024, -13.0)
     (2025E, -9.5)
@@ -701,12 +712,12 @@ Intel Foundry's transition to a separate P\&L structure in 2024 revealed the dep
 \pgfplotsset{
     after end axis/.append code={
         \node[anchor=north, font=\tiny, text width=10cm, align=center] at (current axis.south) [yshift=-1.2cm] {
-            Source: Company Filings, James Bian Research Estimates. 2025-2027 figures are projections based on management guidance and yield ramp assumptions.
+            Source: Company Filings, Morgan Stanley Research Estimates. 2025-2027 figures are projections based on management guidance and yield ramp assumptions.
         };
     }
 }
 \end{tikzpicture}
-\end{figure}
+\end{center}
 
 \subsection{CapEx Intensity vs. Utilization Risks}
 
@@ -744,12 +755,12 @@ Our analysis of segment performance indicates that the "peak loss" in 2024 was d
 \centering
 \caption{Intel Foundry Services (IFS) Financial Trajectory \& Projections (2023--2030E)}
 \label{tab:ifs_financials}
-\rowcolors{2}{lightgrey}{white}
+\rowcolors{2}{msgrey}{white}
 \renewcommand{\arraystretch}{1.3}
 \tablefont
 \begin{tabular}{p{0.25\linewidth}ccccc}
 \toprule
-\rowcolor{tableheader}
+\rowcolor{mstableheader}
 \textbf{Metric} & \textbf{2023 (Actual)} & \textbf{2024 (Actual)} & \textbf{2025 (Est.)} & \textbf{2027 (Target)} & \textbf{2030 (Target)} \\
 \midrule
 \textbf{Revenue (\$B)} & \$18.9 & \$17.5 & \$18.0--19.0 & -- & >\$40.0 \\
@@ -760,7 +771,7 @@ Our analysis of segment performance indicates that the "peak loss" in 2024 was d
 \bottomrule
 \end{tabular}
 \par\vspace{0.1cm}
-{\tiny Source: James Bian Research, Intel Company Filings (10-K, Earnings Calls). 2025-2030 figures reflect analyst estimates and management guidance.}
+{\tiny Source: Morgan Stanley Research, Intel Company Filings (10-K, Earnings Calls). 2025-2030 figures reflect analyst estimates and management guidance.}
 \end{table}
 
 The Q1 2025 data, showing margins hovering around \textbf{-50\%} despite a 5\% revenue uptick, confirms that revenue growth alone is insufficient to fix the unit economics. The "painful drag" described by management is structural. For Apple to commit to 18A, they must believe Intel can bridge the gap from a -50\% margin today to 0\% in just eight quarters---a turnaround velocity rarely seen in semiconductor history.
@@ -798,10 +809,8 @@ A core component of the Bull Case is the geopolitical premium. However, the raw 
     \item \textbf{Apple's Willingness to Pay:} The rumored "Apple A22" on Intel 14A implies Apple may be willing to accept a slight margin compression or pay a premium for "Made in USA" supply chain resilience. However, given Apple's notorious supply chain efficiency, any premium paid to Intel will likely be capped, forcing Intel to drive internal efficiencies to protect its own margins.
 \end{itemize}
 
-\begin{figure}[H]
-\centering
-\caption{Intel 18A/14A Profitability Sensitivity: Yield vs. Utilization}
-\label{fig:profitability_sensitivity}
+\begin{center}
+\captionof{figure}{Intel 18A/14A Profitability Sensitivity: Yield vs. Utilization}
 \begin{tikzpicture}
 \begin{axis}[
     width=12cm,
@@ -840,12 +849,12 @@ A core component of the Bull Case is the geopolitical premium. However, the raw 
 \pgfplotsset{
     after end axis/.append code={
         \node[anchor=north, font=\tiny, text width=12cm, align=center] at (current axis.south) [yshift=-1.2cm] {
-            Source: James Bian Research Quantitative Analysis. Note: High yields (90\%) combined with high utilization (90-100\%) are required to reach the 40\% GM target.
+            Source: Morgan Stanley Research Quantitative Analysis. Note: High yields (90\%) combined with high utilization (90-100\%) are required to reach the 40\% GM target.
         };
     }
 }
 \end{tikzpicture}
-\end{figure}
+\end{center}
 
 As Apple evaluates a historic diversification of its silicon supply chain, the competitive dynamics between the incumbent foundry leader (TSMC), the aggressive challenger (Intel), and the struggling alternative (Samsung) form the critical decision matrix. Our analysis suggests that while Intel's aggressive technical roadmap offers a theoretical "second source" opening, TSMC's entrenched position---fortified by yield consistency, packaging leadership, and roadmap predictability---creates a formidable "Pro-Tier Lock" that will likely bifurcate Apple's silicon procurement for the remainder of the decade.
 
@@ -875,7 +884,7 @@ This "Yield Gap" cements the \textbf{Tiered Bifurcation Thesis}: Apple can affor
 \centering
 \caption{Comparative Competitive Roadmap: The Race for 2nm \& Beyond}
 \label{tab:foundry_roadmap}
-\rowcolors{2}{lightgrey}{white}
+\rowcolors{2}{msgrey}{white}
 \tablefont
 \begin{tabular}{p{0.12\linewidth}p{0.1\linewidth}ccp{0.3\linewidth}}
 \toprule
@@ -892,7 +901,7 @@ This "Yield Gap" cements the \textbf{Tiered Bifurcation Thesis}: Apple can affor
 \bottomrule
 \end{tabular}
 \par\vspace{0.1cm}
-{\tiny Source: James Bian Research, TechInsights, Company Filings. Timelines are estimates based on "Risk Production" vs. "HVM" definitions.}
+{\tiny Source: Morgan Stanley Research, TechInsights, Company Filings. Timelines are estimates based on "Risk Production" vs. "HVM" definitions.}
 \end{table}
 
 \subsection{The "Pro-Tier Lock": Why TSMC Retains the Crown Jewels}
@@ -923,10 +932,8 @@ Ironically, TSMC's success is its biggest vulnerability regarding Apple. The exp
     \item \textbf{Operational Hedge:} If TSMC faces a localized disruption (power, water, seismic, or geopolitical), Apple currently has zero fallback for advanced nodes. Qualifying Intel 18A/14A creates a dormant supply line that can be ramped in an emergency---a strategic necessity for a company with Apple's scale.
 \end{itemize}
 
-\begin{figure}[H]
-\centering
-\caption{Projected 2nm-Class Production Capacity Share (2027E)}
-\label{fig:2nm_capacity}
+\begin{center}
+\captionof{figure}{Projected 2nm-Class Production Capacity Share (2027E)}
 \begin{tikzpicture}
 \begin{axis}[
     comparestyle,
@@ -943,23 +950,74 @@ Ironically, TSMC's success is its biggest vulnerability regarding Apple. The exp
     title style={font=\footnotesize}
 ]
 % Color-coded bars: Blue for TSMC (dominant), Orange for Intel (emerging), Gray for Samsung (minor)
-\addplot[fill=brandblue!80] coordinates {(TSMC, 75)};
+\addplot[fill=msblue!80] coordinates {(TSMC, 75)};
 \addplot[fill=orange!70] coordinates {(Intel, 15)};
 \addplot[fill=gray!60] coordinates {(Samsung, 10)};
 \end{axis}
 \pgfplotsset{
     after end axis/.append code={
         \node[anchor=north, font=\tiny, text width=9cm, align=center] at (current axis.south) [yshift=-1.5cm] {
-            Source: James Bian Research Estimates. Intel share assumes successful ramp of Arizona/Ohio fabs and Apple contract win. Samsung share reflects internal consumption and limited external wins.
+            Source: Morgan Stanley Research Estimates. Intel share assumes successful ramp of Arizona/Ohio fabs and Apple contract win. Samsung share reflects internal consumption and limited external wins.
         };
     }
 }
 \end{tikzpicture}
-\end{figure}
+\end{center}
 
+\subsection{The "Yield Gap": Proven HVM vs. Risk Production Claims}
+
+The "Validation" of Intel's foundry business hinges almost entirely on closing the yield gap. Currently, the disparity between TSMC's High-Volume Manufacturing (HVM) capability and Intel's emerging nodes is the single largest barrier to a full Apple transition.
+
+\begin{itemize}
+    \item \textbf{TSMC's 3nm Dominance:} TSMC currently holds $\sim$90\% of the global 3nm market capacity as of 2024. Production lines are running at full utilization, driven by Apple (A17/M4) and increasingly NVIDIA. Yields for the N3E node are reportedly mature, exceeding 70-80\%, which allows for favorable wafer pricing and margin predictability for Apple.
+    \item \textbf{Intel 18A's "Proving Ground":} While Intel claims 18A is manufacturing-ready, yield reports remain mixed. Optimistic internal projections cite yields reaching 60-65\% by launch, but external rumors in late 2024 and mid-2025 suggested yields as low as $\sim$10\% during initial test runs. For Apple, which ships 200 million+ iPhones annually, a 10\% yield is an operational non-starter. Even a 60\% yield would represent a significant gross margin contraction compared to TSMC's mature processes.
+\end{itemize}
+
+This "Yield Gap" cements the \textbf{Tiered Bifurcation Thesis}: Apple can afford to risk lower yields on lower-volume, lower-margin parts (e.g., $\sim$15-20 million MacBook Air chips) to build leverage, but cannot risk the iPhone Pro supply chain on an unproven node.
+
+\subsection{The "Pro-Tier Lock": Advanced Packaging as the New Moat}
+
+Beyond simple transistor performance, TSMC maintains a defensive moat around Apple's high-end silicon through its Advanced Packaging ecosystem. Apple's M-Series "Ultra" chips rely heavily on TSMC's \textbf{InFO (Integrated Fan-Out)} and \textbf{CoWoS (Chip-on-Wafer-on-Substrate)} technologies to stitch together multiple dies with high-bandwidth interconnects.
+
+While Intel offers competitive packaging solutions (EMIB, Foveros), switching packaging flows is not merely a manufacturing change---it requires a fundamental redesign of the chip architecture and the physical layer (PHY).
+
+\begin{itemize}
+    \item \textbf{Ecosystem Inertia:} Apple's design teams have spent a decade co-optimizing their designs with TSMC's PDK (Process Design Kit) and packaging rules. Porting the complex M-Ultra architecture to Intel's Foveros would incur significant Non-Recurring Engineering (NRE) costs and validation time. Apple is reportedly TSMC's largest SoIC (System-on-Integrated-Chip) customer after AMD, utilizing it for future M5 processors (mass production H2 2025).
+    \item \textbf{Technical Comparison:} Intel's Foveros Direct offers a theoretical advantage with sub-5 micron hybrid bonding pitch (vs. TSMC SoIC-X at $\sim$9 microns). However, TSMC's proven track record with CoWoS capacity expansion (targeting full AI demand fulfillment by 2025) provides supply assurance that Intel, with its "early stage" commercial maturity in advanced packaging, cannot yet guarantee.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Advanced Packaging Comparison: The "Moat" vs. The Challenger}
+\label{tab:packaging_comparison}
+\rowcolors{2}{msgrey}{white}
+\tablefont
+\begin{tabular}{p{0.2\linewidth}p{0.35\linewidth}p{0.35\linewidth}}
+\toprule
+\textbf{Feature} & \textbf{TSMC SoIC (3D Stacking)} & \textbf{Intel Foveros Direct (3D)} \\
+\midrule
+\textbf{Bonding Pitch} & $\sim$9 microns (SoIC-X) & Sub-5 microns (18A-PT) \\
+\textbf{Key Customer} & Apple (M5), AMD (MI300) & Internal (Clearwater Forest) \\
+\textbf{Maturity} & Mass Production (Since 2022) & Volume Ramp (H2 2025) \\
+\textbf{Apple Fit} & High: Incumbent for "Ultra" chips & Moderate: Potential for density \\
+\textbf{Risk Factor} & Capacity Bottlenecks (AI Demand) & Execution/Yield Stability \\
+\bottomrule
+\end{tabular}
+\par\vspace{0.1cm}
+{\tiny Source: Morgan Stanley Research, Company Data.}
+\end{table}
+
+\subsection{Samsung Foundry: The Fading Alternative}
+
+In previous cycles (e.g., A9 chip), Samsung served as Apple's secondary source. However, current data suggests Samsung is effectively excluded from the 2nm/1.4nm conversation for Apple.
+\begin{itemize}
+    \item \textbf{Yield Struggles:} Samsung's 3nm (SF3) node utilizing GAA has reportedly suffered from poor yields (estimates ranging from 20-40\%), struggling to secure major external customers beyond its own System LSI division.
+    \item \textbf{Roadmap Uncertainty:} Reports indicate Samsung has delayed its 1.4nm (SF1.4) node from 2027 to 2029 or may scrap it entirely due to lack of customer interest.
+    \item \textbf{The "Two-Horse" Race:} For Apple, the "Second Source" mandate is driven by geopolitical resilience (US vs. Asia). Samsung, largely based in South Korea, does not solve the "Taiwan Strait" risk as effectively as Intel's "Made in USA" proposition, nor does it offer the performance leadership to challenge TSMC.
+\end{itemize}
 \newpage
 
-\section{Technological Deep Dive: Advanced Packaging}
+\mssection{Technological Deep Dive: Advanced Packaging}
 
 As transistor scaling faces diminishing returns, the semiconductor industry has shifted its focus to advanced packaging as the secondary engine of Moore's Law. For Apple, whose M-series "Ultra" chips rely on fusing two Max dies to double performance, packaging is not merely a final assembly step but a core architectural enabler. The strategic pivot to Intel Foundry Services (IFS) places the spotlight on the interoperability---and friction---between TSMC's established \textbf{3DFabric} ecosystem and Intel's challenger suite of \textbf{EMIB} and \textbf{Foveros Direct}.
 
@@ -974,10 +1032,8 @@ The "holy grail" of 3D stacking is hybrid bonding---connecting dies directly via
 
 The density battle is visualized below, highlighting the rapid convergence of bond pitch capabilities between the two foundries.
 
-\begin{figure}[H]
-\centering
-\caption{Hybrid Bonding Roadmap: The Race to Zero (Pitch Scaling)}
-\label{fig:hybrid_bonding}
+\begin{center}
+\captionof{figure}{Hybrid Bonding Roadmap: The Race to Zero (Pitch Scaling)}
 \begin{tikzpicture}
 \begin{axis}[
     ybar,
@@ -1004,8 +1060,8 @@ The density battle is visualized below, highlighting the rapid convergence of bo
     y dir=reverse,
     ymin=0, ymax=12,
     cycle list={
-        {fill=brandblue, draw=none},
-        {fill=brandaccent, draw=none},
+        {fill=msblue, draw=none},
+        {fill=msbrightblue, draw=none},
     }
 ]
     \addplot coordinates {(2022 (Current), 9) (2025 (Next-Gen), 6) (2027 (Future), 3)}; 
@@ -1017,12 +1073,12 @@ The density battle is visualized below, highlighting the rapid convergence of bo
 \pgfplotsset{
     after end axis/.append code={
         \node[anchor=north, font=\tiny, text width=10cm, align=center] at (current axis.south) [yshift=-1.5cm] {
-            Source: James Bian Research, Company Data. Note: 2022 Intel figure represents standard Foveros (microbumps); 2025 represents Foveros Direct introduction.
+            Source: Morgan Stanley Research, Company Data. Note: 2022 Intel figure represents standard Foveros (microbumps); 2025 represents Foveros Direct introduction.
         };
     }
 }
 \end{tikzpicture}
-\end{figure}
+\end{center}
 
 \subsection{The "Technical Lock-In" Risk: Why Apple Can't Just Switch}
 A critical barrier to Apple utilizing Intel for high-end silicon is the deep entanglement of chip architecture with packaging physics. Apple's "UltraFusion" interconnect is not a generic standard; it is highly co-optimized with TSMC's \textbf{InFO-L} (Integrated Fan-Out Local Silicon Interconnect) and \textbf{CoWoS-S} parameters.
@@ -1046,7 +1102,7 @@ The shift to 3D stacking introduces severe thermal management challenges, partic
 \centering
 \caption{Packaging Ecosystem: Intel IFS vs. TSMC}
 \label{tab:packaging_ecosystem}
-\rowcolors{2}{lightgrey}{white}
+\rowcolors{2}{msgrey}{white}
 \tablefont
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{p{3cm} p{5.5cm} p{5.5cm}}
@@ -1061,7 +1117,7 @@ The shift to 3D stacking introduces severe thermal management challenges, partic
 \end{tabular}
 \end{adjustbox}
 \par\vspace{0.1cm}
-{\tiny Source: James Bian Research, TechInsights, Company Filings.}
+{\tiny Source: Morgan Stanley Research, TechInsights, Company Filings.}
 \end{table}While technical validation of the 18A node remains the primary execution hurdle, the strategic impetus for Apple's potential adoption of Intel Foundry is fundamentally geopolitical. The fragility of a supply chain concentrated in the Taiwan Strait has necessitated a "China+1" strategy for assembly, but the upstream concentration of advanced silicon manufacturing remains a single point of failure. This section analyzes the economic viability of a U.S.-centric foundry strategy, quantified against the backdrop of the U.S. CHIPS Act and the structural cost differentials between American and Asian fabrication.
 
 \subsection{The Subsidy Calculus: De-Risking the "Taiwan Discount"}
@@ -1078,10 +1134,7 @@ The U.S. CHIPS and Science Act serves as the bridge. Our analysis of the funding
     \item \textbf{Loan Guarantees:} The provision of up to \textbf{\$11 billion} in low-interest federal loans further reduces Intel's cost of capital. In a high-interest rate environment, this provides Intel a distinct advantage over merchant foundries that must finance expansion through commercial debt markets.
 \end{itemize}
 
-\begin{figure}[H]
-\centering
-\caption{Impact of CHIPS Act on U.S. Wafer Manufacturing Cost Structure}
-\label{fig:chips_act_impact}
+\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
     width=10cm,
@@ -1102,19 +1155,21 @@ The U.S. CHIPS and Science Act serves as the bridge. Our analysis of the funding
     axis y line*=left,
     ymajorgrids=true,
     grid style={dotted, gray},
+    title={Impact of CHIPS Act on U.S. Wafer Manufacturing Cost Structure},
+    title style={font=\footnotesize},
     enlarge x limits=0.2
 ]
-    \addplot[fill=brandblue] coordinates {(Taiwan Cost Base, 100) (US Unsubsidized, 150) (US w/ CHIPS Act, 115)};
+    \addplot[fill=msblue] coordinates {(Taiwan Cost Base, 100) (US Unsubsidized, 150) (US w/ CHIPS Act, 115)};
 \end{axis}
 \pgfplotsset{
     after end axis/.append code={
         \node[anchor=north, font=\tiny, text width=10cm, align=center] at (current axis.south) [yshift=-1.5cm] {
-            Source: James Bian Research Estimates, Industry Data. Note: Index 100 represents baseline manufacturing cost in Taiwan. US Unsubsidized reflects the ~50\% premium cited by industry experts. US w/ CHIPS Act reflects estimated reduction via Direct Grants and 25\% ITC.
+            Source: Morgan Stanley Research Estimates, Industry Data. Note: Index 100 represents baseline manufacturing cost in Taiwan. US Unsubsidized reflects the ~50\% premium cited by industry experts. US w/ CHIPS Act reflects estimated reduction via Direct Grants and 25\% ITC.
         };
     }
 }
 \end{tikzpicture}
-\end{figure}
+\end{center}
 
 \subsection{The "China+1" Manufacturing Map: Closing the Loop}
 
@@ -1150,7 +1205,7 @@ While the strategic rationale is sound, the operational reality introduces a sig
 \centering
 \caption{Strategic Trade-off Matrix: Single Source (TSMC) vs. Dual Source (TSMC + Intel)}
 \label{tab:risk_matrix}
-\rowcolors{2}{lightgrey}{white}
+\rowcolors{2}{msgrey}{white}
 \tablefont
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{p{4cm} p{5cm} p{5cm}}
@@ -1165,7 +1220,7 @@ While the strategic rationale is sound, the operational reality introduces a sig
 \end{tabular}
 \end{adjustbox}
 \par\vspace{0.1cm}
-{\tiny Source: James Bian Research.}
+{\tiny Source: Morgan Stanley Research.}
 \end{table}
 
 \vspace{0.5cm}
@@ -1203,7 +1258,7 @@ Investors should monitor the following specific milestones to gauge the probabil
 \centering
 \caption{Investor Catalyst Calendar: Intel 18A/14A \& Apple}
 \label{tab:catalyst_calendar}
-\rowcolors{2}{lightgrey}{white}
+\rowcolors{2}{msgrey}{white}
 \tablefont
 \begin{adjustbox}{max width=\linewidth}
 \begin{tabular}{l p{3.5cm} p{3.5cm}}
@@ -1224,8 +1279,7 @@ The rumored bifurcation of Apple's supply chain---Intel for the "Base," TSMC for
 
 \vspace{0.5cm}
 
-\begin{figure}[H]
-\centering
+\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
     ybar,
@@ -1251,8 +1305,8 @@ The rumored bifurcation of Apple's supply chain---Intel for the "Base," TSMC for
     x axis line style={draw=gray},
     legend style={at={(0.5,-0.15)}, anchor=north, legend columns=2, font=\footnotesize},
     cycle list={
-        {fill=brandblue, draw=none},
-        {fill=brandaccent, draw=none},
+        {fill=msblue, draw=none},
+        {fill=msbrightblue, draw=none},
     }
 ]
 \addplot coordinates {(2024, -13) (2025, -10) (2026, -6)};
@@ -1261,9 +1315,8 @@ The rumored bifurcation of Apple's supply chain---Intel for the "Base," TSMC for
 \addlegendentry{Proj. Recovery}
 \end{axis}
 \end{tikzpicture}
-\caption{Projected path to break-even for Intel Foundry, contingent on successful 18A ramp and external customer (Apple) volume in 2027/2028.}
-\label{fig:foundry_breakeven_projection}
-\end{figure}
+\captionof{figure}{Projected path to break-even for Intel Foundry, contingent on successful 18A ramp and external customer (Apple) volume in 2027/2028.}
+\end{center}
 
 \end{multicols}
 
@@ -1281,7 +1334,7 @@ The strategic value of this deal for Apple extends beyond supply chain resilienc
 \centering
 \caption{Strategic Trade-off Matrix: TSMC N2 vs. Intel 18A for Apple}
 \label{tab:tradeoff_matrix}
-\rowcolors{2}{lightgrey}{white}
+\rowcolors{2}{msgrey}{white}
 \tablefont
 \begin{adjustbox}{max width=\linewidth}
 \begin{tabular}{l p{4.5cm} p{4.5cm}}
@@ -1310,8 +1363,7 @@ If Intel fails to bridge this chasm by the Q1 2026 PDK release, the Apple deal w
 \subsection{Financial Projections: The Path to Break-Even}
 The financial implications of an Apple partnership are transformative for Intel's Foundry Services (IFS). Our base case assumes that without a major external customer, IFS will struggle to reach break-even operating margins by the target date of 2027.
 
-\begin{figure}[H]
-\centering
+\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
     ybar,
@@ -1332,7 +1384,7 @@ The financial implications of an Apple partnership are transformative for Intel'
     x axis line style={draw=gray},
 ]
 % Bear Case: No Apple
-\addplot[fill=brandblue!40] coordinates {
+\addplot[fill=msblue!40] coordinates {
     (2024, -65) 
     (2025, -50) 
     (2026, -35) 
@@ -1343,7 +1395,7 @@ The financial implications of an Apple partnership are transformative for Intel'
 \addlegendentry{Base Case (Internal Only)}
 
 % Bull Case: With Apple Deal
-\addplot[fill=brandaccent] coordinates {
+\addplot[fill=msbrightblue] coordinates {
     (2024, -65) 
     (2025, -50) 
     (2026, -25) 
@@ -1354,9 +1406,8 @@ The financial implications of an Apple partnership are transformative for Intel'
 \addlegendentry{Bull Case (Apple + AI Partners)}
 \end{axis}
 \end{tikzpicture}
-\caption{The "Apple Effect" on Intel's margin recovery. The influx of high-margin volume in 2027/2028 is the critical variable in achieving the corporate goal of break-even operating margins.}
-\label{fig:apple_effect_margins}
-\end{figure}
+\captionof{figure}{The "Apple Effect" on Intel's margin recovery. The influx of high-margin volume in 2027/2028 is the critical variable in achieving the corporate goal of break-even operating margins.}
+\end{center}
 
 As illustrated above, the addition of Apple (and potentially other fast followers) accelerates the margin recovery by approximately two years. The operational leverage of filling the fabs is immense; semiconductor manufacturing is a high-fixed-cost business where incremental volume drops straight to the bottom line once the break-even utilization threshold is crossed. Conversely, missing the Apple window leaves Intel carrying the depreciation costs of \$100 billion in assets with insufficient revenue to cover them.
 
@@ -1397,8 +1448,8 @@ The foundry model is predicated on utilization. With Intel investing over \$100 
     legend style={at={(0.5,-0.2)}, anchor=north, legend columns=-1},
     title={IFS Revenue vs. Operating Loss Trajectory},
     cycle list={
-        {fill=brandblue, draw=none},
-        {fill=brandaccent, draw=none},
+        {fill=msblue, draw=none},
+        {fill=msbrightblue, draw=none},
     }
 ]
     \addplot coordinates {(2023, 18.9) (2024, 17.5) (2025E, 18.5) (2027E, 25.0)};
@@ -1408,7 +1459,6 @@ The foundry model is predicated on utilization. With Intel investing over \$100 
 \end{axis}
 \end{tikzpicture}
 \caption{The path from peak losses in 2024 to projected break-even in 2027. 2024 losses reflect significant impairment charges. 2027 estimates assume successful 18A ramp and customer onboarding.}
-\label{fig:ifs_revenue_loss}
 \end{figure}
 
 \subsection{Segment Performance \& Capital Allocation}
@@ -1424,7 +1474,7 @@ The table below outlines the historical and projected performance of the foundry
 \centering
 \caption{Intel Foundry Services (IFS) Financial Trajectory}
 \label{tab:ifs_financials_2}
-\rowcolors{2}{lightgrey}{white}
+\rowcolors{2}{msgrey}{white}
 \tablefont
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lcccc}
@@ -1440,7 +1490,7 @@ The table below outlines the historical and projected performance of the foundry
 \end{tabular}
 \end{adjustbox}
 \par\vspace{0.1cm}
-{\footnotesize \textit{Source: James Bian Research, Intel Company Filings. 2024 losses reflect peak investment cycle and impairments.}}
+{\footnotesize \textit{Source: Morgan Stanley Research, Intel Company Filings. 2024 losses reflect peak investment cycle and impairments.}}
 \end{table}
 
 \subsection{Scenario Analysis: Valuing the Apple Option}
@@ -1523,12 +1573,11 @@ The financial viability of 14A depends on Intel's ability to charge a premium fo
     title={IFS Gross Margin Trajectory vs. Long-Term Target},
     ymin=-100, ymax=60,
 ]
-    \addplot[fill=brandblue] coordinates {(2024, -75) (2025E, -45) (2026E, -20) (2027E, 0) (2030E, 40)};
+    \addplot[fill=msblue] coordinates {(2024, -75) (2025E, -45) (2026E, -20) (2027E, 0) (2030E, 40)};
     \legend{Non-GAAP Gross Margin \%}
 \end{axis}
 \end{tikzpicture}
 \caption{The projected recovery of IFS gross margins. The steep ascent from 2025 to 2027 relies heavily on the elimination of start-up costs and yield normalization. The 40\% target for 2030 assumes Intel becomes the \#2 foundry globally.}
-\label{fig:ifs_gross_margin}
 \end{figure}
 
 \subsection{Unit Economics: Valuing the Apple Contract}
@@ -1551,7 +1600,7 @@ While \$750 million represents less than 5\% of IFS's targeted \$25 billion reve
 \centering
 \caption{Sensitivity Analysis: 2027 IFS Operating Profit Impact (\$B)}
 \label{tab:sensitivity}
-\rowcolors{2}{lightgrey}{white}
+\rowcolors{2}{msgrey}{white}
 \tablefont
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lccccc}
@@ -1565,7 +1614,7 @@ While \$750 million represents less than 5\% of IFS's targeted \$25 billion reve
 \end{tabular}
 \end{adjustbox}
 \par\vspace{0.1cm}
-{\footnotesize \textit{Source: James Bian Research Estimates. Table illustrates the interplay between factory utilization (driven by volume) and process yield on operating profit.}}
+{\footnotesize \textit{Source: Morgan Stanley Research Estimates. Table illustrates the interplay between factory utilization (driven by volume) and process yield on operating profit.}}
 \end{table}
 
 \subsection{Long-Term Valuation: The 2030 Target Model}
@@ -1590,7 +1639,7 @@ The Apple partnership, while financially modest in the initial 2027 timeframe (e
 
 \newpage
 
-\section{Valuation Models}
+\mssection{Valuation Models}
 
 To assess the impact of the rumored Apple-Intel partnership on Intel Corporation's intrinsic value, we employ a Sum-of-the-Parts (SOTP) framework combined with a Discounted Cash Flow (DCF) analysis specifically for the Intel Foundry Services (IFS) segment. The market currently prices Intel with a significant conglomerate discount, reflecting the massive operating losses (\$13 billion in FY2024) and execution uncertainty surrounding the 18A node. The potential Apple contract acts as a pivotal "validator event" that fundamentally alters the risk profile and terminal value assumptions of the foundry business.
 
@@ -1608,7 +1657,7 @@ Valuing IFS is complex due to its negative EBITDA and massive capital intensity.
     \centering
     \caption{Sum-of-the-Parts (SOTP) Valuation Scenarios (FY2026 Estimates)}
     \label{tab:sotp}
-    \rowcolors{2}{lightgrey}{white}
+    \rowcolors{2}{msgrey}{white}
     \tablefont
     \begin{adjustbox}{max width=\textwidth}
     \begin{tabular}{lcccccc}
@@ -1630,7 +1679,7 @@ Valuing IFS is complex due to its negative EBITDA and massive capital intensity.
     \end{tabular}
     \end{adjustbox}
     \par\vspace{0.1cm}
-    {\footnotesize \textit{Source: James Bian Research Estimates. Note: Bear case assumes IFS failure and potential restructuring; Bull case assumes successful Apple 18A ramp and GM parity with TSMC.}}
+    {\footnotesize \textit{Source: Morgan Stanley Research Estimates. Note: Bear case assumes IFS failure and potential restructuring; Bull case assumes successful Apple 18A ramp and GM parity with TSMC.}}
     
 \end{table}
 
@@ -1686,11 +1735,10 @@ To sanity-check our DCF outputs, we compare Intel's implied foundry multiples ag
     title={\textbf{IFS Valuation Multiples: The "Apple Re-Rate" Opportunity}},
     x tick label style={rotate=0, anchor=north, font=\footnotesize}
 ]
-\addplot[fill=brandblue] coordinates {(Bear Case (Liquidation), 0.5) (Base Case (Recovery), 2.5) (Bull Case (Competitor), 4.5) (TSMC (Benchmark), 8.5)};
+\addplot[fill=msblue] coordinates {(Bear Case (Liquidation), 0.5) (Base Case (Recovery), 2.5) (Bull Case (Competitor), 4.5) (TSMC (Benchmark), 8.5)};
 \end{axis}
 \end{tikzpicture}
-\caption{Implied Enterprise Value to Sales (EV/Sales) multiples for Intel Foundry Services under different execution scenarios compared to TSMC's current trading multiple. The "Bull Case" assumes successful high-volume manufacturing (HVM) for Apple M-series chips.}
-\label{fig:multiples}
+\captionof{figure}{Implied Enterprise Value to Sales (EV/Sales) multiples for Intel Foundry Services under different execution scenarios compared to TSMC's current trading multiple. The "Bull Case" assumes successful high-volume manufacturing (HVM) for Apple M-series chips.}
 \end{figure}
 
 \subsection{The "Apple Validator" Premium}
@@ -1748,7 +1796,7 @@ Valuing IFS is complex due to its negative EBITDA profile (\$13B operating loss 
 \centering
 \caption{Sum-of-the-Parts (SOTP) Valuation Scenarios (FY2027 Estimates)}
 \label{tab:sotp_2}
-\rowcolors{2}{lightgrey}{white}
+\rowcolors{2}{msgrey}{white}
 \tablefont
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lccccp{5cm}}
@@ -1773,7 +1821,7 @@ Valuing IFS is complex due to its negative EBITDA profile (\$13B operating loss 
 \end{tabular}
 \end{adjustbox}
 \par\vspace{0.1cm}
-{\footnotesize \textit{Source: James Bian Research Estimates. Note: Bear case assumes 18A yield failure ($<40\%$) and Apple abandonment. Bull case assumes $>70\%$ yields and Apple volume ramp for iPhone 14A.}}
+{\footnotesize \textit{Source: Morgan Stanley Research Estimates. Note: Bear case assumes 18A yield failure ($<40\%$) and Apple abandonment. Bull case assumes $>70\%$ yields and Apple volume ramp for iPhone 14A.}}
 \end{table}
 
 \subsection{Foundry DCF: The Cost of Capital \& Yield Curve Dilemma}
@@ -1832,14 +1880,14 @@ To sanity-check our DCF outputs, we compare Intel's implied foundry multiples ag
     bar width=25pt,
     draw=none,
     tick style={draw=none},
-    title={\textbf{IFS Valuation Multiples - The "Apple Re-Rate" Opportunity}},
+    title={\textbf{Figure 1: IFS Valuation Multiples - The "Apple Re-Rate" Opportunity}},
     x tick label style={rotate=0, anchor=north, font=\small},
     axis x line*=bottom,
     axis y line*=left,
     ymajorgrids=true,
     grid style=dashed
 ]
-\addplot[fill=brandblue] coordinates {(Bear Case (Liquidation), 0.5) (Base Case (Recovery), 2.5) (Bull Case (Competitor), 4.5) (TSMC (Benchmark), 8.5)};
+\addplot[fill=msblue] coordinates {(Bear Case (Liquidation), 0.5) (Base Case (Recovery), 2.5) (Bull Case (Competitor), 4.5) (TSMC (Benchmark), 8.5)};
 \end{axis}
 \end{tikzpicture}
 \captionof{figure}{Comparison of implied Enterprise Value to Sales (EV/Sales) multiples for Intel Foundry Services under different execution scenarios versus TSMC's current trading multiple. The "Bull Case" assumes successful high-volume manufacturing (HVM) for Apple M-series chips and margin parity.}
@@ -1861,7 +1909,7 @@ The rumored Apple deal is not merely a revenue line item; it is a binary switch 
 
 \newpage
 
-\section{Investment Risks}
+\mssection{Investment Risks}
 
 \subsection{Bear Case Analysis: Execution, Financial, and Strategic Vulnerabilities}
 
@@ -1898,7 +1946,7 @@ There is a substantial probability (estimated \textbf{40\%}) that Apple's engage
 \centering
 \caption{Risk Matrix: Vulnerabilities to the Apple-Intel Partnership}
 \label{tab:riskmatrix}
-\rowcolors{2}{lightgrey}{white}
+\rowcolors{2}{msgrey}{white}
 \tablefont
 \renewcommand{\arraystretch}{1.3}
 \begin{adjustbox}{max width=0.95\textwidth}
@@ -1915,34 +1963,41 @@ There is a substantial probability (estimated \textbf{40\%}) that Apple's engage
 \end{tabular}
 \end{adjustbox}
 \par\vspace{0.2cm}
-\footnotesize{\textbf{Source:} James Bian Research Estimates, Data derived from Industry Analysis.}
+\footnotesize{\textbf{Source:} Morgan Stanley Research Estimates, Data derived from Industry Analysis.}
 \end{table}
 
 \subsection{Sensitivity Analysis: The Cost of Failure}
 
 The following chart illustrates the sensitivity of Intel Foundry's projected operating margin in 2027 to varying yield rates on the 18A node. The "Break-even" point requires yields consistent with mature foundry processes. A recurrence of the "10\% yield" scenario currently rumored would result in catastrophic margin dilution, potentially forcing a strategic review of the entire foundry division.
 
-\begin{table}[H]
+\begin{figure}[H]
 \centering
-\caption{2027E Operating Margin Sensitivity to 18A Yield Performance}
-\label{tab:risksensitivity}
-\begin{tabular}{>{\raggedright}p{4cm} >{\centering}p{3cm} >{\centering\arraybackslash}p{4cm}}
-\toprule
-\textbf{Yield Scenario} & \textbf{18A Yield Rate} & \textbf{Proj. 2027E Operating Margin} \\
-\midrule
-\cellcolor{red!30}Yield Failure & $<$20\% & \textbf{-50\%} \\
-\rowcolor{orange!30}
-Struggling & 40\% & \textbf{-20\%} \\
-\rowcolor{yellow!30}
-Break-Even & 60\% & \textbf{0\%} \\
-\rowcolor{green!30}
-Target & $>$80\% & \textbf{+20\%} \\
-\bottomrule
-\end{tabular}
-\vspace{0.3cm}
-
-\textit{\small Projected sensitivity of Intel Foundry Services (IFS) Operating Margins in 2027 based on 18A process node yield rates. Current rumors place yields near the "Yield Failure" zone, requiring a massive ramp to achieve the "Target" scenario by 2027.}
-\end{table}
+\begin{tikzpicture}
+\begin{axis}[
+    divergingstyle,
+    symbolic x coords={Yield Failure (<20\%), Struggling (40\%), Break-Even (60\%), Target (>80\%)},
+    xtick=data,
+    ylabel={Proj. 2027 Operating Margin (\%)},
+    ymin=-60, ymax=30,
+    width=0.95\textwidth,
+    height=7cm,
+    title={\textbf{Figure 5: 2027E Operating Margin Sensitivity to 18A Yield Performance}},
+    x tick label style={rotate=0, anchor=north, font=\small, text width=2cm, align=center},
+    every node near coord/.append style={
+        /pgf/number format/fixed,
+        /pgf/number format/precision=0
+    },
+]
+% Color-coded sensitivity bars: Red (failure) -> Orange (struggling) -> Yellow (break-even) -> Green (target)
+\addplot[fill=red!60, draw=none] coordinates {(Yield Failure (<20\%), -50)};
+\addplot[fill=orange!60, draw=none] coordinates {(Struggling (40\%), -20)};
+\addplot[fill=yellow!60, draw=none, forget plot] coordinates {(Break-Even (60\%), 0)};
+\addplot[fill=green!60, draw=none, forget plot] coordinates {(Target (>80\%), 20)};
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Projected sensitivity of Intel Foundry Services (IFS) Operating Margins in 2027 based on 18A process node yield rates. Current rumors place yields near the "Yield Failure" zone, requiring a massive ramp to achieve the "Target" scenario by 2027.}
+\label{fig:risksensitivity}
+\end{figure}
 
 \subsection{Conclusion on Risk}
 

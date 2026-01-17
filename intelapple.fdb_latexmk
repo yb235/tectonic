@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1768625614.68399 "/workspaces/tectonic/intelapple.tex" "intelapple.pdf" "intelapple" 1768625617.40244 0
+["pdflatex"] 1768632038.96065 "/workspaces/tectonic/intelapple.tex" "intelapple.pdf" "intelapple" 1768632042.15067 0
   "/etc/texmf/web2c/texmf.cnf" 1768620989 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvb8c.tfm" 1136768653 1344 2b79eb16daca0e8fd7cff8a5505df513 ""
@@ -143,6 +143,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty" 1579038678 6078 f1cb470c9199e7110a27851508ed7a5c ""
   "/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty" 1696191071 56128 c2ccf1a29d78c33bc553880402e4fb9a ""
   "/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty" 1696191071 72619 ee90b6612147680fd73c3b1406a74245 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/changepage/changepage.sty" 1256071977 4523 a9044e2dc40e764dac60d2acda7ae919 ""
   "/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty" 1666037909 9124 59c3b56f1a073de66e3eea35f9c173c8 ""
   "/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty" 1720383029 12726 67708fc852a887b2ba598148f60c3756 ""
   "/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty" 1738874546 52272 63d293bc0d496619edb57585740861a2 ""
@@ -192,10 +193,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1741904018 41538 c016915c1d51223b6dbbfe27341748a8 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1768620995 5018282 7c1df9fda183c3b21e5402c992006de0 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1768621016 1928192 4bfd71487e268e0d4afa989b6ebb5c87 ""
-  "/workspaces/tectonic/intelapple.tex" 1768625611.60539 148057 089c04bc967ca7c6a7f5ee0ce9b5a286 ""
-  "intelapple.aux" 1768625617.33 19006 3b155db0b9a818dd9211d6b364a94eed "pdflatex"
-  "intelapple.tex" 1768625611.60539 148057 089c04bc967ca7c6a7f5ee0ce9b5a286 ""
-  "intelapple.toc" 1768625617.34042 7840 ce8687a526d429bf2396b4c1907bece0 "pdflatex"
+  "/workspaces/tectonic/intelapple.tex" 1768632038.675 143905 dd18e9e478099b99a709407da58fefaa ""
+  "intelapple.aux" 1768632041.96179 19899 bca3e99efa47edc6520cee1df1f5243a "pdflatex"
+  "intelapple.tex" 1768632038.675 143905 dd18e9e478099b99a709407da58fefaa ""
+  "intelapple.toc" 1768632041.97478 7535 a4f1ff449a2c3fa3de64479390899f35 "pdflatex"
   (generated)
   "intelapple.aux"
   "intelapple.log"
