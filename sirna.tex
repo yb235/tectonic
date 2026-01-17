@@ -448,14 +448,10 @@ We view this sector through two lenses: \textbf{Platform Validation} (Alnylam) a
 ]
 \addplot[fill=msblue] coordinates {(2022,4.2) (2023,6.1) (2024,8.2) (2025E,10.5) (2028E,18.0) (2030E,25.0)};
 \end{axis}
-\pgfplotsset{
-    after end axis/.append code={
-        \node[anchor=north, font=\tiny, text width=10cm, align=center] 
-        at (current axis.south) [yshift=-1.2cm] {
-            Source: Morgan Stanley Research, Industry Reports. CAGR 2024-2030E: 20\%
-        };
-    }
-}
+\node[anchor=north, font=\tiny, text width=10cm, align=center] 
+    at (current axis.south) [yshift=-1.2cm] {
+        Source: Morgan Stanley Research, Industry Reports. CAGR 2024-2030E: 20\%
+    };
 \end{tikzpicture}
 \end{center}
 
@@ -574,14 +570,10 @@ Arrowhead's \textbf{TRiM (Targeted RNAi Molecule)} platform offers potential adv
 \addplot coordinates {(2022,120) (2023,95) (2024,140) (2025E,180) (2026E,350)};
 \addlegendentry{Arrowhead}
 \end{axis}
-\pgfplotsset{
-    after end axis/.append code={
-        \node[anchor=north, font=\tiny, text width=12cm, align=center] 
-        at (current axis.south) [yshift=-1.5cm] {
-            Source: Company Filings, Morgan Stanley Research Estimates. Arrowhead revenue primarily milestone-driven until commercial launches.
-        };
-    }
-}
+\node[anchor=north, font=\tiny, text width=12cm, align=center] 
+    at (current axis.south) [yshift=-1.5cm] {
+        Source: Company Filings, Morgan Stanley Research Estimates. Arrowhead revenue primarily milestone-driven until commercial launches.
+    };
 \end{tikzpicture}
 \end{center}
 
@@ -675,7 +667,7 @@ The global siRNA therapeutics market is experiencing exponential growth, driven 
     axis y line*=left,
     axis x line*=bottom,
     nodes near coords,
-    nodes near coords style={font=\footnotesize, color=white, font=\bfseries},
+    nodes near coords style={font=\footnotesize\bfseries, color=white},
     every node near coord/.append style={anchor=center},
     cycle list={
         {fill=msblue, draw=none},
@@ -693,14 +685,10 @@ The global siRNA therapeutics market is experiencing exponential growth, driven 
 \addplot coordinates {(2024,4.5) (2030E,5.5)};
 \addlegendentry{Other/Emerging}
 \end{axis}
-\pgfplotsset{
-    after end axis/.append code={
-        \node[anchor=north, font=\tiny, text width=8cm, align=center] 
-        at (current axis.south) [yshift=-1.8cm] {
-            Source: Morgan Stanley Research Estimates
-        };
-    }
-}
+\node[anchor=north, font=\tiny, text width=8cm, align=center] 
+    at (current axis.south) [yshift=-1.8cm] {
+        Source: Morgan Stanley Research Estimates
+    };
 \end{tikzpicture}
 \end{center}
 
@@ -773,14 +761,10 @@ siRNA therapeutics have demonstrated higher clinical success rates compared to t
 ]
 \addplot[fill=msblue] coordinates {(Small Molecule,7) (Antibody,12) (siRNA,25) (Gene Therapy,18)};
 \end{axis}
-\pgfplotsset{
-    after end axis/.append code={
-        \node[anchor=north, font=\tiny, text width=10cm, align=center] 
-        at (current axis.south) [yshift=-1.2cm] {
-            Source: BIO Industry Analysis 2024, Morgan Stanley Research
-        };
-    }
-}
+\node[anchor=north, font=\tiny, text width=10cm, align=center] 
+    at (current axis.south) [yshift=-1.2cm] {
+        Source: BIO Industry Analysis 2024, Morgan Stanley Research
+    };
 \end{tikzpicture}
 \end{center}
 
