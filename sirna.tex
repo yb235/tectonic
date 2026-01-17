@@ -265,7 +265,7 @@ The siRNA market is benefiting from three primary catalysts:
 \captionof{figure}{siRNA Therapeutics Global Market Size (2022-2030E)}
 \begin{tikzpicture}
 \begin{axis}[
-    compactchart,
+    msstyle,
     ylabel={Market Size (\$B)},
     symbolic x coords={2022, 2024, 2026E, 2028E, 2030E},
     xtick=data,
@@ -425,23 +425,13 @@ The evolution from naked siRNA (2\% success) to GalNAc conjugates (45\% success)
 \captionof{figure}{siRNA Therapeutics Market Share (2025, \$5.8B Total)}
 \begin{tikzpicture}
 \begin{axis}[
-    ybar,
+    msstyle,
     width=12cm,
-    height=6cm,
     bar width=25pt,
     ylabel={Market Share (\%)},
     symbolic x coords={Alnylam, Novartis, Sanofi, Amgen, Others},
     xtick=data,
-    xticklabel style={font=\footnotesize},
-    yticklabel style={font=\footnotesize},
-    ylabel style={font=\footnotesize},
-    nodes near coords,
-    nodes near coords style={font=\footnotesize\bfseries, color=black},
     ymin=0, ymax=60,
-    ymajorgrids=true,
-    grid style={dotted, gray},
-    axis x line*=bottom,
-    axis y line*=left,
 ]
 \addplot[fill=msblue] coordinates {
     (Alnylam,52) (Novartis,18) (Sanofi,14) (Amgen,8) (Others,8)
@@ -523,23 +513,14 @@ Note: Our revised 2030E forecast of \$24.1B represents significant upside to con
 \captionof{figure}{CAGR by Therapeutic Area (2025-2030E)}
 \begin{tikzpicture}
 \begin{axis}[
-    ybar,
+    msstyle,
     width=12cm,
-    height=6cm,
     bar width=30pt,
     ylabel={CAGR (\%)},
     symbolic x coords={Rare Disease, Cardiovascular, Metabolic, Oncology},
     xtick=data,
     xticklabel style={font=\footnotesize, text width=3cm, align=center},
-    yticklabel style={font=\footnotesize},
-    ylabel style={font=\footnotesize},
-    nodes near coords,
-    nodes near coords style={font=\footnotesize\bfseries, color=black},
     ymin=0, ymax=60,
-    ymajorgrids=true,
-    grid style={dotted, gray},
-    axis x line*=bottom,
-    axis y line*=left,
 ]
 \addplot[fill=msblue] coordinates {
     (Rare Disease,20) (Cardiovascular,40) (Metabolic,40) (Oncology,55)
