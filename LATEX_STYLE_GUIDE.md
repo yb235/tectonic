@@ -197,6 +197,111 @@ This guide defines the global styling rules to ensure visual consistency across 
 
 **If you must change these values, update the legal audit immediately and re-run the compile.**
 
+## 0B. Legal Disclaimers & Liability Protection (CRITICAL – LLMs)
+
+**This section is mandatory for all LLMs generating or editing financial case study documents.**
+
+### Why Legal Disclaimers Are Required
+
+Documents that mimic professional financial research reports face three primary legal risks:
+
+1. **Trademark/Trade Dress Infringement**: If the visual design closely resembles a specific institution's proprietary format, the institution could claim trade dress violation or consumer confusion.
+2. **Financial Regulation Violations**: Documents containing investment ratings, price targets, or financial projections may trigger SEC/FINRA scrutiny if they appear to be actual investment advice from a licensed professional.
+3. **Data Integrity Concerns**: AI-generated financial data (hallucinations) or unverified rumors presented as factual analysis could mislead readers and expose the author to liability.
+
+### Mandatory Disclosure Components
+
+Every document using this template **MUST** include:
+
+#### 1. Front Cover Legal Notice (Required)
+
+Place this disclosure box immediately after the title block, before the executive summary:
+
+```latex
+\begin{tcolorbox}[colback=lightgrey, colframe=lightgrey, boxrule=0pt, sharp corners, left=6pt, right=6pt, top=6pt, bottom=6pt]
+\textbf{EDUCATIONAL CASE STUDY -- NOT FOR INVESTMENT PURPOSES}\\
+\textbf{NOTICE:} This document is a fictional research report created solely for educational and graphic design portfolio purposes.
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{NOT FINANCIAL ADVICE:} The ratings (e.g., "OVERWEIGHT"), price targets, and investment conclusions contained herein are hypothetical. This is not a recommendation to buy or sell any security.
+    \item \textbf{FICTIONAL DATA:} All "Research Estimates," yield percentages, and financial tables are simulated or based on unverified public rumors. They do not represent factual corporate performance or professional financial modeling.
+    \item \textbf{ATTRIBUTION \& DESIGN:} The visual layout and structure of this report are inspired by industry-standard equity research formats for the purpose of demonstrating document design proficiency. This document is not affiliated with, sponsored by, or endorsed by any financial institution.
+    \item \textbf{NO LIABILITY:} The author (James Bian) shall not be held liable for any financial losses or decisions made based on the fictional content of this sample project.
+\end{enumerate}
+\end{tcolorbox}
+```
+
+#### 2. Diagonal Watermark on Every Page (Required)
+
+In the preamble, after loading the `eso-pic` package:
+
+```latex
+\usepackage{eso-pic}
+
+% --- DIAGONAL WATERMARK ---
+\newcommand{\watermarktext}{SAMPLE: FICTIONAL DATA / DESIGN CASE STUDY}
+\AddToShipoutPictureBG{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[opacity=0.12, rotate=35, scale=3, text=gray] at (current page.center) {\bfseries \watermarktext};
+    \end{tikzpicture}%
+}
+```
+
+**Purpose**: Prevents screenshots of individual pages from being shared without context. The watermark makes it immediately clear that this is sample work, not a genuine research report.
+
+#### 3. Footer Disclaimer on Every Page (Required)
+
+Update the footer in the preamble:
+
+```latex
+\lfoot{\color{textgrey}\fontsize{9}{9}\selectfont James Bian Research}
+\cfoot{\color{textgrey}\fontsize{7}{7}\selectfont EDUCATIONAL CASE STUDY -- NOT FOR INVESTMENT PURPOSES}
+\rfoot{\bfseries\thepage}
+```
+
+#### 4. Header Branding Clarification (Required)
+
+Update the left header to clarify portfolio intent:
+
+```latex
+\lhead{
+    \raisebox{-5pt}[0pt][0pt]{% 
+        {\fontsize{14}{14}\selectfont\bfseries James Bian}%
+        \hspace{0.2cm}\textcolor{black}{|}\hspace{0.2cm}%
+        {\fontsize{9}{9}\selectfont\bfseries Design Portfolio: Financial Case Study}%
+    }\\[0.1cm]
+    {\color{textgrey}\fontsize{9}{9}\selectfont \today}
+}
+```
+
+**Change**: Original said "Thought Leadership"; now says "Design Portfolio: Financial Case Study" to clarify the document's purpose.
+
+### Legal Defense Strategy
+
+This multi-layered approach creates defensible documentation:
+
+| Risk Factor | Defense Mechanism | Implementation |
+|:---|:---|:---|
+| **Trade Dress** | Explicit disaffiliation statement | Front cover disclaimer #3 |
+| **SEC/FINRA** | "Not financial advice" + "Fictional data" | Front cover disclaimer #1 + #2, footer |
+| **Consumer Confusion** | Diagonal watermark on every page | `eso-pic` watermark |
+| **Misrepresentation** | No liability clause | Front cover disclaimer #4 |
+| **Social Media Misuse** | Watermark prevents decontextualized screenshots | Diagonal watermark |
+
+### Validation Checklist
+
+Before distributing any document:
+
+- [ ] Front cover disclosure box is present and unmodified
+- [ ] Diagonal watermark appears on all pages at ~12% opacity
+- [ ] Footer disclaimer is visible on all pages
+- [ ] Header says "Design Portfolio: Financial Case Study" (not "Thought Leadership")
+- [ ] No text in the document claims affiliation with any real financial institution
+- [ ] Document clearly states data is fictional/hypothetical
+
+### Cross-Reference
+
+See `COPYRIGHT_AND_LICENSE_AUDIT.md` Section 7 for detailed legal analysis and case law references.
+
 ## 0. Table and Figure Numbering (CRITICAL – Multi-Agent Prevention)
 
 ### 0.0 The Global Numbering System

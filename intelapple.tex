@@ -26,6 +26,7 @@
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{changepage}
+\usepackage{eso-pic}
 % \usepackage{hyperref} % Disabled to avoid missing letltxmacro dependency
 
 % Hyperref setup removed because hyperref is disabled
@@ -52,7 +53,7 @@
     \raisebox{-5pt}[0pt][0pt]{% Lower James Bian to align top with ASIA PACIFIC
         {\fontsize{14}{14}\selectfont\bfseries James Bian}%
         \hspace{0.2cm}\textcolor{black}{|}\hspace{0.2cm}%
-        {\fontsize{9}{9}\selectfont\bfseries Thought Leadership}%
+        {\fontsize{9}{9}\selectfont\bfseries Design Portfolio: Financial Case Study}%
     }\\[0.1cm]
     {\color{textgrey}\fontsize{9}{9}\selectfont \today}
 }
@@ -64,7 +65,16 @@
 
 % Footer
 \lfoot{\color{textgrey}\fontsize{9}{9}\selectfont James Bian Research}
+\cfoot{\color{textgrey}\fontsize{7}{7}\selectfont EDUCATIONAL CASE STUDY -- NOT FOR INVESTMENT PURPOSES}
 \rfoot{\bfseries\thepage}
+
+% --- DIAGONAL WATERMARK ---
+\newcommand{\watermarktext}{SAMPLE: FICTIONAL DATA / DESIGN CASE STUDY}
+\AddToShipoutPictureBG{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[opacity=0.12, rotate=35, scale=3, text=gray] at (current page.center) {\bfseries \watermarktext};
+    \end{tikzpicture}%
+}
 
 % --- TYPOGRAPHY & SECTIONS ---
 \titleformat{\section}
@@ -269,6 +279,18 @@
 \reporttitle{Apple Inc. (AAPL) \& Intel Corp. (INTC)}{Apple \& Intel Foundry: The Strategic Pivot -- Analyzing the 14A/18A Bifurcation Rumors}{}
 
 \vspace{0.5cm}
+
+% --- FRONT COVER DISCLOSURE ---
+\begin{tcolorbox}[colback=lightgrey, colframe=lightgrey, boxrule=0pt, sharp corners, left=6pt, right=6pt, top=6pt, bottom=6pt]
+\textbf{EDUCATIONAL CASE STUDY -- NOT FOR INVESTMENT PURPOSES}\\
+\textbf{NOTICE:} This document is a fictional research report created solely for educational and graphic design portfolio purposes.
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{NOT FINANCIAL ADVICE:} The ratings (e.g., "OVERWEIGHT"), price targets, and investment conclusions contained herein are hypothetical. This is not a recommendation to buy or sell any security.
+    \item \textbf{FICTIONAL DATA:} All "Research Estimates," yield percentages (e.g., 18A projections), and financial tables are simulated or based on unverified public rumors. They do not represent factual corporate performance or professional financial modeling.
+    \item \textbf{ATTRIBUTION \& DESIGN:} The visual layout and structure of this report are inspired by industry-standard equity research formats (including Morgan Stanley Research) for the purpose of demonstrating document design proficiency. This document is not affiliated with, sponsored by, or endorsed by Morgan Stanley or any other financial institution.
+    \item \textbf{NO LIABILITY:} The author (James Bian) shall not be held liable for any financial losses or decisions made based on the fictional content of this sample project.
+\end{enumerate}
+\end{tcolorbox}
 
 % --- EXECUTIVE SUMMARY ---
 

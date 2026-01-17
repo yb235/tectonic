@@ -1,0 +1,383 @@
+
+% JAMES BIAN FINANCIAL CASE STUDY TEMPLATE - LATEX STYLE GUIDE
+% REFINED FOR VISUAL ACCURACY AND LEGAL COMPLIANCE
+
+\documentclass[10pt, a4paper]{article}
+\usepackage[a4paper, top=2.2cm, bottom=2.5cm, left=1.4cm, right=1.4cm, headheight=1.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+% \usepackage{colortbl} % Removed to prevent conflict
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{float}
+\usepackage{caption}
+\captionsetup{justification=centering, font=normalsize, labelfont=bf}
+\usepackage{multicol}
+\usepackage{adjustbox}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{eso-pic}
+% \usepackage{hyperref} % Disabled to avoid missing letltxmacro dependency
+
+% Hyperref setup removed because hyperref is disabled
+
+% Fix for array/colortbl compatibility issue with p columns
+\makeatletter
+\let\insert@pcolumn\insert@column
+\makeatother
+
+% --- BRAND COLORS ---
+\definecolor{brandblue}{HTML}{003366}       % Primary dark blue
+\definecolor{brandaccent}{HTML}{008EC7}    % Accent blue for highlights
+\definecolor{lightgrey}{HTML}{F3F3F3}      % Light grey for backgrounds
+\definecolor{textgrey}{HTML}{6A6A6A}       % Grey text for analysts
+\definecolor{tableheader}{HTML}{E6E6E6}    % Grey for table headers
+
+% --- PAGE HEADER/FOOTER ---
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+% Left Header: Logo and date - adjusted to align tops
+\lhead{
+    \raisebox{-5pt}[0pt][0pt]{% Lower James Bian to align top with ASIA PACIFIC
+        {\fontsize{14}{14}\selectfont\bfseries James Bian}%
+        \hspace{0.2cm}\textcolor{black}{|}\hspace{0.2cm}%
+        {\fontsize{9}{9}\selectfont\bfseries Design Portfolio: Financial Case Study}%
+    }\\[0.1cm]
+    {\color{textgrey}\fontsize{9}{9}\selectfont \today}
+}
+
+% Right Header: Region/Type - top aligned
+\rhead{
+    {\color{brandaccent}\bfseries\fontsize{11}{11}\selectfont TECH VISION}%
+}
+
+% Footer
+\lfoot{\color{textgrey}\fontsize{9}{9}\selectfont James Bian Research}
+\cfoot{\color{textgrey}\fontsize{7}{7}\selectfont EDUCATIONAL CASE STUDY -- NOT FOR INVESTMENT PURPOSES}
+\rfoot{\bfseries\thepage}
+
+% --- DIAGONAL WATERMARK ---
+\newcommand{\watermarktext}{SAMPLE: FICTIONAL DATA / DESIGN CASE STUDY}
+\AddToShipoutPictureBG{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[opacity=0.12, rotate=35, scale=3, text=gray] at (current page.center) {\bfseries \watermarktext};
+    \end{tikzpicture}%
+}
+
+% --- TYPOGRAPHY & SECTIONS ---
+\titleformat{\section}
+    {\color{brandblue}\normalfont\Large\bfseries}{}{0em}{}
+  
+\titleformat{\subsection}
+  {\color{black}\normalfont\large\bfseries}{}{0em}{}
+
+% --- NARROWER TEXT WIDTH FOR MAIN CONTENT ---
+% James Bian style: main content text is narrower than executive summary
+\newenvironment{maincontent}{%
+  \begin{adjustwidth}{3cm}{3cm}% Narrower margins for body text
+}{%
+  \end{adjustwidth}%
+}
+
+% --- CUSTOM COMMANDS ---
+
+% 1. Report Title Block
+\newcommand{\reporttitle}[3]{%
+    \vspace{0.5cm}
+    {\fontsize{14}{16}\selectfont\color{brandaccent}\bfseries #1 \par} % Ticker/Company
+    \vspace{0.1cm}
+    {\fontsize{28}{32}\selectfont\color{black}\fontseries{l}\selectfont #2 \par} % Main Title
+    \vspace{0.5cm}
+}
+
+% 2. "What's Changed" / Estimates Table
+\newcommand{\estimatesbox}[1]{%
+    \begin{tcolorbox}[colback=lightgrey, colframe=white, boxrule=0pt, sharp corners, left=2pt, right=2pt, top=2pt, bottom=2pt]
+    \textbf{\footnotesize WHAT'S CHANGED}
+    \end{tcolorbox}
+    \vspace{-0.3cm}
+    #1
+    \vspace{0.5cm}
+}
+
+% 3. Sidebar Analyst Info
+\newcommand{\analystinfo}[3]{%
+    {\bfseries\small #1} \\
+    {\color{textgrey}\tiny #2} \\
+    {\color{textgrey}\tiny #3} \\
+    \vspace{0.2cm}
+}
+
+% 4. Stock Rating Box (single)
+\newcommand{\ratingbox}[3]{%
+    \begin{tcolorbox}[colback=lightgrey, colframe=lightgrey, sharp corners, boxrule=0pt]
+    \textbf{\small #1} \\ % Company Name
+    \scriptsize #2 \\      % Industry
+    \vspace{0.1cm}
+    \textbf{\large #3}      % Rating (Overweight)
+    \end{tcolorbox}
+}
+
+% 4a. Dual Stock Rating Box (side-by-side, James Bian style)
+\newcommand{\dualratingbox}[6]{%
+    \begin{tcolorbox}[colback=lightgrey, colframe=lightgrey, sharp corners, boxrule=0pt]
+        \begin{minipage}[t]{0.48\columnwidth}
+            \textbf{\small #1} \\ % Left Company Name
+            \scriptsize #2 \\      % Left Industry
+            \vspace{0.1cm}
+            \textbf{\large #3}      % Left Rating
+        \end{minipage}\hfill
+        \begin{minipage}[t]{0.48\columnwidth}
+            \textbf{\small #4} \\ % Right Company Name
+            \scriptsize #5 \\      % Right Industry
+            \vspace{0.1cm}
+            \textbf{\large #6}      % Right Rating
+        \end{minipage}
+    \end{tcolorbox}
+}
+
+% 5. Blue Section Header (The "James Bian" Section Divider)
+\newcommand{\blueheader}[1]{%
+    \vspace{0.5cm}
+    {\color{brandblue}\bfseries\large #1}
+    \par\vspace{0.1cm}
+}
+
+% --- GLOBAL TABLE RULE ---
+\newcommand{\tablefont}{\footnotesize} % Global font size for tables
+
+% --- CONSISTENT TABLE FORMATTING ---
+% Use this environment for all tables to ensure consistent font sizes
+% even when using adjustbox for width control
+\newenvironment{mstable}[1][\textwidth]{%
+    \tablefont%
+    \renewcommand{\arraystretch}{1.2}%
+    \rowcolors{2}{lightgrey}{white}%
+    \begin{adjustbox}{max width=#1, center}%
+}{%
+    \end{adjustbox}%
+}
+
+% Alternative: For tables that MUST fit but should not shrink font below \scriptsize
+\newenvironment{mstablescaled}[1][\textwidth]{%
+    \scriptsize% Minimum readable font size
+    \renewcommand{\arraystretch}{1.3}%
+    \rowcolors{2}{lightgrey}{white}%
+    \begin{adjustbox}{max width=#1, center}%
+}{%
+    \end{adjustbox}%
+}
+
+% --- CHART STYLES ---
+\pgfplotsset{
+    compat=1.18,
+    width=\linewidth, % Responsive width
+    height=6cm,
+    % Define RdYlGn colormap (Red-Yellow-Green)
+    colormap={RdYlGn}{rgb255(0cm)=(215,48,39); rgb255(0.25cm)=(253,174,97); rgb255(0.5cm)=(255,255,191); rgb255(0.75cm)=(166,217,106); rgb255(1cm)=(26,152,80)},
+    % Custom cycle list for multi-series bar charts
+    cycle list={
+        {fill=brandblue},
+        {fill=brandaccent},
+        {fill=gray},
+        {fill=brandblue!40},
+    },
+    % GLOBAL FIX: Use pgfplots' built-in area legend style for all ybar charts
+    % This ensures proper vertical alignment with text using font-relative units
+    /pgfplots/ybar legend/.style={
+        area legend,
+    },
+    % STANDARD LEGEND POSITIONING: Below chart, centered, horizontal layout
+    mslegend/.style={
+        legend style={at={(0.5,-0.15)}, anchor=north, legend columns=-1, draw=none, font=\footnotesize}
+    },
+    % Default legend style for all charts (can be overridden per chart)
+    every axis/.append style={
+        legend style={at={(0.5,-0.15)}, anchor=north, legend columns=-1, draw=none, font=\footnotesize}
+    },
+    msstyle/.style={
+        ybar,
+        fill=brandblue,
+        bar width=15pt,
+        draw=none,
+        axis line style={draw=none},
+        tick style={draw=none},
+        ymajorgrids=true,
+        grid style={dotted, gray},
+        nodes near coords,
+        nodes near coords style={font=\tiny, color=black},
+        axis x line*=bottom,
+        x axis line style={draw=gray},
+    },
+    % Specific style for small-data charts to prevent wide bars
+    compactchart/.style={
+        msstyle,
+        width=0.5\textwidth,
+        enlarge x limits=0.5,
+    },
+    % Color-coded bar chart style
+    colorbar/.style={
+        ybar,
+        bar width=30pt,
+        draw=none,
+        axis line style={draw=gray},
+        tick style={draw=none},
+        ymajorgrids=true,
+        grid style={dotted, gray},
+        nodes near coords,
+        nodes near coords align={vertical},
+        nodes near coords style={font=\bfseries\footnotesize, color=black},
+        axis x line*=bottom,
+        axis y line*=left,
+    },
+    % SEMANTIC CHART STYLES - Use these for consistent coloring
+    % For diverging data (bad to good: red-yellow-green)
+    divergingstyle/.style={
+        ybar,
+        bar width=30pt,
+        draw=none,
+        axis line style={draw=gray},
+        tick style={draw=none},
+        ymajorgrids=true,
+        grid style={dashed, gray},
+        nodes near coords,
+        nodes near coords align={vertical},
+        nodes near coords style={font=\bfseries\footnotesize, color=black},
+        axis x line*=bottom,
+        axis y line*=left,
+    },
+    % For company comparisons (TSMC/Intel/Samsung) with visual distinction
+    comparestyle/.style={
+        ybar,
+        bar width=30pt,
+        draw=none,
+        axis line style={draw=none},
+        tick style={draw=none},
+        ymajorgrids=true,
+        grid style={dotted, gray},
+        nodes near coords,
+        nodes near coords align={vertical},
+        nodes near coords style={font=\footnotesize},
+        axis x line*=bottom,
+        enlarge x limits=0.3,
+    }
+}
+
+\begin{document}
+\reporttitle{Company Name (TICKER)}{Document Title Here}{}
+
+\vspace{0.5cm}
+
+% --- MANDATORY FRONT COVER LEGAL DISCLAIMER ---
+% CRITICAL: This disclosure protects against trademark/trade dress claims,
+% financial regulation violations, and data integrity concerns.
+% DO NOT REMOVE OR MODIFY without legal review.
+\begin{tcolorbox}[colback=lightgrey, colframe=lightgrey, boxrule=0pt, sharp corners, left=6pt, right=6pt, top=6pt, bottom=6pt]
+\textbf{EDUCATIONAL CASE STUDY -- NOT FOR INVESTMENT PURPOSES}\\
+\textbf{NOTICE:} This document is a fictional research report created solely for educational and graphic design portfolio purposes.
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{NOT FINANCIAL ADVICE:} The ratings (e.g., "OVERWEIGHT"), price targets, and investment conclusions contained herein are hypothetical. This is not a recommendation to buy or sell any security.
+    \item \textbf{FICTIONAL DATA:} All "Research Estimates," yield percentages, and financial tables are simulated or based on unverified public rumors. They do not represent factual corporate performance or professional financial modeling.
+    \item \textbf{ATTRIBUTION \& DESIGN:} The visual layout and structure of this report are inspired by industry-standard equity research formats for the purpose of demonstrating document design proficiency. This document is not affiliated with, sponsored by, or endorsed by any financial institution.
+    \item \textbf{NO LIABILITY:} The author (James Bian) shall not be held liable for any financial losses or decisions made based on the fictional content of this sample project.
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+% --- EXECUTIVE SUMMARY ---
+
+\begin{multicols}{2}
+
+\ratingbox{Company Name (TICKER)}{Industry}{RATING}
+\vspace{0.4cm}
+
+\estimatesbox{
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Key Point 1:} Description here.
+    \item \textbf{Key Point 2:} Description here.
+    \item \textbf{Key Point 3:} Description here.
+\end{itemize}
+}
+
+\subsection{Executive Summary Section}
+
+Your executive summary content here.
+
+\end{multicols}
+
+\clearpage
+
+% --- TABLE OF CONTENTS ---
+\tableofcontents
+
+\clearpage
+
+% --- MAIN CONTENT ---
+
+\begin{maincontent}
+
+\section{Main Section Title}
+
+Your content here.
+
+\subsection{Subsection Title}
+
+More content here.
+
+% Example Table
+\begin{table}[H]
+\centering
+\caption{Example Table Title}
+\label{tab:example}
+\rowcolors{2}{lightgrey}{white}
+\tablefont
+\begin{tabular}{lcc}
+\toprule
+\textbf{Item} & \textbf{Value 1} & \textbf{Value 2} \\
+\midrule
+Row 1 & 100 & 200 \\
+Row 2 & 150 & 250 \\
+Row 3 & 200 & 300 \\
+\bottomrule
+\end{tabular}
+\par\vspace{0.1cm}
+{\tiny Source: Your Source Here}
+\end{table}
+
+% Example Figure
+\begin{figure}[H]
+\centering
+\caption{Example Chart Title}
+\label{fig:example}
+\begin{tikzpicture}
+\begin{axis}[
+    msstyle,
+    width=10cm,
+    symbolic x coords={2023, 2024, 2025E},
+    xtick=data,
+    ylabel={Metric Name},
+    height=5cm,
+]
+\addplot[fill=brandblue] coordinates {(2023,100) (2024,150) (2025E,200)};
+\end{axis}
+\end{tikzpicture}
+\par\vspace{0.1cm}
+{\tiny Source: Your Source Here}
+\end{figure}
+
+\end{maincontent}
+
+\end{document}
