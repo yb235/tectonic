@@ -924,18 +924,6 @@ Ironically, TSMC's success is its biggest vulnerability regarding Apple. The exp
 \end{tikzpicture}
 \end{center}
 
-\subsection{TSMC's Roadmap: Conservative Innovation vs. Intel's "5N4Y" Sprint}
-
-The primary strategic divergence between the foundries lies in risk management and the timing of technological convergence. While Intel is attempting to compress "Five Nodes in Four Years" (5N4Y) by introducing two radical process changes---RibbonFET (Gate-All-Around) and PowerVia (Backside Power Delivery)---simultaneously in the 18A node, TSMC has adopted a decoupled, phased approach to de-risk mass production for its flagship client.
-
-\begin{itemize}
-    \item \textbf{N2 (2nm) - The Reliability Play (H2 2025):} TSMC's N2 node serves as its entry into Gate-All-Around (GAA) nanosheet transistors. Crucially, TSMC elected \textit{not} to include Backside Power Delivery Network (BSPDN) in the initial N2 iteration. This decision reduces process complexity, allowing TSMC to stabilize GAA yields before introducing backside power. Mass production is slated for the second half of 2025, aligning perfectly with the iPhone 18 Pro cycle (A20 chip) in 2026.
-    \item \textbf{N2P \& A16 - The Performance Kickers (2026/2027):} TSMC will introduce its version of backside power, dubbed \textbf{Super Power Rail (SPR)}, in the A16 (1.6nm) node starting late 2026. This places TSMC approximately 12--18 months behind Intel's PowerVia deployment timeline. However, the A16 node avoids the immediate need for High-NA EUV lithography, relying instead on mature multi-patterning EUV techniques to control costs---a sharp contrast to Intel's reliance on High-NA for its 14A node.
-    \item \textbf{A14 (1.4nm) - The High-NA Shift (2028):} TSMC is projected to transition to High-NA EUV lithography with its A14 node, targeting production in 2028. This aligns with Intel's 14A timeline, suggesting that any "lead" Intel gains with High-NA in 2027 is likely to be short-lived and technically contested.
-\end{itemize}
-
-\textbf{Strategic Implication for Apple:} TSMC's roadmap aligns with Apple's "Tick-Tock" philosophy of predictable reliability for flagship devices. By separating the introduction of GAA (N2) and Backside Power (A16), TSMC offers Apple a lower-risk migration path for high-volume, high-margin chips (A-Series Pro, M-Series Max/Ultra).
-
 \subsection{The "Yield Gap": Proven HVM vs. Risk Production Claims}
 
 The "Validation" of Intel's foundry business hinges almost entirely on closing the yield gap. Currently, the disparity between TSMC's High-Volume Manufacturing (HVM) capability and Intel's emerging nodes is the single largest barrier to a full Apple transition.
@@ -946,38 +934,6 @@ The "Validation" of Intel's foundry business hinges almost entirely on closing t
 \end{itemize}
 
 This "Yield Gap" cements the \textbf{Tiered Bifurcation Thesis}: Apple can afford to risk lower yields on lower-volume, lower-margin parts (e.g., $\sim$15-20 million MacBook Air chips) to build leverage, but cannot risk the iPhone Pro supply chain on an unproven node.
-
-\begin{center}
-\captionof{figure}{Global Advanced Node (3nm) Market Share Estimates (2024)}
-\begin{tikzpicture}
-\begin{axis}[
-    comparestyle,
-    symbolic x coords={TSMC, Samsung, Intel},
-    xtick=data,
-    xticklabel style={font=\footnotesize},
-    ymin=0, ymax=100,
-    ylabel={Market Share (\%)},
-    ylabel style={font=\footnotesize},
-    yticklabel style={font=\footnotesize},
-    width=9cm,
-    height=6cm,
-    title={TSMC Dominates the 3nm Landscape (The "Incumbent" Advantage)},
-    title style={font=\footnotesize}
-]
-% Color-coded bars: Blue for TSMC (dominant), Gray for Samsung (minor), Light gray for Intel (negligible)
-\addplot[fill=msblue!80] coordinates {(TSMC, 90)};
-\addplot[fill=gray!60] coordinates {(Samsung, 10)};
-\addplot[fill=gray!30] coordinates {(Intel, 0)};
-\end{axis}
-\pgfplotsset{
-    after end axis/.append code={
-        \node[anchor=north, font=\tiny, text width=9cm, align=center] at (current axis.south) [yshift=-1.5cm] {
-            Source: Morgan Stanley Research, TechInsights. Note: Intel's share is negligible in 3nm as it transitions from Intel 3 to 18A.
-        };
-    }
-}
-\end{tikzpicture}
-\end{center}
 
 \subsection{The "Pro-Tier Lock": Advanced Packaging as the New Moat}
 
@@ -1207,113 +1163,6 @@ While the strategic rationale is sound, the operational reality introduces a sig
 \centering
 \caption{Strategic Trade-off Matrix: Single Source (TSMC) vs. Dual Source (TSMC + Intel)}
 \label{tab:risk_matrix}
-\rowcolors{2}{msgrey}{white}
-\tablefont
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{p{4cm} p{5cm} p{5cm}}
-\toprule
-\textbf{Risk Category} & \textbf{Status Quo (TSMC Only)} & \textbf{Dual Source (TSMC + Intel)} \\
-\midrule
-\textbf{Geopolitical Risk} & \textbf{High}. 100\% dependency on Taiwan production. Vulnerable to blockade/disruption. & \textbf{Moderate}. U.S. production provides a "lifeboat" for critical entry-level SKUs, though Pro volume remains exposed. \\
-\textbf{Supply Chain Cost} & \textbf{Optimized}. High volume discounts, single PDK maintenance, established packaging flow. & \textbf{Inefficient}. Duplicated R\&D overhead, split volumes reduce pricing leverage, potential "learning curve" yield losses. \\
-\textbf{Political/Regulatory} & \textbf{Vulnerable}. Exposed to tariffs and "offshoring" criticism. & \textbf{Shielded}. Aligns with US industrial policy; creates leverage against potential regulations. \\
-\textbf{Technical Execution} & \textbf{Low Risk}. Proven track record of N-node execution (N3B, N3E). & \textbf{High Risk}. Intel 18A is unproven at high volume. Unfamiliarity with PowerVia thermal behavior in consumer devices. \\
-\bottomrule
-\end{tabular}
-\end{adjustbox}
-\par\vspace{0.1cm}
-{\tiny Source: Morgan Stanley Research.}
-\end{table}
-
-\vspace{0.5cm}
-\textbf{Risk Officer Verdict:} The macroeconomic logic for an Apple-Intel partnership is robust, driven by the unique convergence of massive government subsidies and escalating geopolitical risk. However, the \textit{operational} implementation creates a "Double Overlap" inefficiency that Apple would typically avoid. The decision to proceed suggests that Apple views the geopolitical insurance premium---paid in the form of R\&D duplication and potentially lower initial yields---as a necessary cost of doing business in a fragmented global economy.
-
-\subsection{The Subsidy Calculus: De-Risking the "Taiwan Discount"}
-
-The core economic argument against U.S. manufacturing has historically been cost. TSMC founder Morris Chang has famously estimated that manufacturing chips in the U.S. is approximately \textbf{50\% more expensive} than in Taiwan, driven by higher labor costs, regulatory overhead, and a less integrated supply chain ecosystem. For Apple, a company relentless about gross margin preservation, shifting volume to Intel requires bridging this cost gap.
-
-The U.S. CHIPS and Science Act serves as the bridge. Our analysis of the funding structure suggests that government incentives are effectively subsidizing the "resilience premium" that Apple would otherwise have to pay.
-
-\begin{itemize}
-    \item \textbf{Direct Funding Impact:} Intel has finalized an agreement for up to \textbf{\$7.86 billion} in direct funding. While this capital flows to Intel, it indirectly benefits potential customers like Apple by allowing Intel to price its wafers competitively despite higher U.S. operating costs. Without this subsidy, Intel would need to pass the full burden of its U.S. cost structure (including the \$100 billion build-out across Arizona, Ohio, New Mexico, and Oregon) onto clients to stem its \$13 billion annual foundry operating losses.
-    
-    \item \textbf{The Tax Credit Multiplier:} Perhaps more significant than the direct grants is the \textbf{25\% Investment Tax Credit (ITC)} on qualified capital expenditures. With Intel planning over \$100 billion in U.S. investments over the next five years, this equates to a potential \textbf{\$25 billion} balance sheet offset. This mechanism lowers the effective depreciation expense of U.S. fabs, theoretically allowing Intel to offer wafer pricing for 18A/14A that approaches parity with TSMC's Taiwan-based N2 nodes, provided yields are comparable.
-    
-    \item \textbf{Loan Guarantees:} The provision of up to \textbf{\$11 billion} in low-interest federal loans further reduces Intel's cost of capital. In a high-interest rate environment, this provides Intel a distinct advantage over merchant foundries that must finance expansion through commercial debt markets.
-\end{itemize}
-
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-    width=10cm,
-    height=6cm,
-    ybar,
-    bar width=30pt,
-    symbolic x coords={Taiwan Base Cost, US Unsubsidized, US w/ CHIPS Act},
-    xtick=data,
-    xticklabel style={font=\footnotesize, text width=2.5cm, align=center},
-    nodes near coords,
-    nodes near coords align={vertical},
-    nodes near coords style={font=\footnotesize},
-    ymin=0, ymax=170,
-    ylabel={Relative Cost Index (Taiwan = 100)},
-    ylabel style={font=\footnotesize},
-    yticklabel style={font=\footnotesize},
-    axis x line*=bottom,
-    axis y line*=left,
-    ymajorgrids=true,
-    grid style={dotted, gray},
-    title={Impact of CHIPS Act on U.S. Wafer Manufacturing Cost Structure},
-    title style={font=\footnotesize},
-    point meta=rawy,
-    enlarge x limits=0.2
-]
-    \addplot[fill=msblue] coordinates {(Taiwan Base Cost, 100) (US Unsubsidized, 150) (US w/ CHIPS Act, 115)};
-\end{axis}
-\pgfplotsset{
-    after end axis/.append code={
-        \node[anchor=north, font=\tiny, text width=10cm, align=center] at (current axis.south) [yshift=-1.5cm] {
-            Source: Morgan Stanley Research Estimates, Industry Data. Note: Index 100 represents baseline manufacturing cost in Taiwan. US Unsubsidized reflects the ~50\% premium cited by industry experts. US w/ CHIPS Act reflects estimated reduction via Direct Grants and 25\% ITC.
-        };
-    }
-}
-\end{tikzpicture}
-\end{center}
-
-\subsection{The "China+1" Manufacturing Map: Closing the Loop}
-
-Apple's diversification strategy has two distinct prongs: assembly and fabrication. Until now, these efforts have been disjointed. Apple has aggressively moved final assembly of iPhones to India (targeting 25\% of production by 2025) and iPads/Macs to Vietnam. However, the \textit{brains} of these devices---the A-series and M-series chips---are still fabricated almost exclusively in Taiwan and then shipped to these assembly hubs.
-
-A partnership with Intel closes this geopolitical loop. By utilizing Intel's "Silicon Heartland" fabs in Ohio and expanded capacity in Arizona, Apple creates a supply chain vector that bypasses the South China Sea entirely for the most critical components.
-
-\begin{itemize}
-    \item \textbf{The Western Hemisphere Vector:} A MacBook Air aimed at the North American market could theoretically be silicon-fabricated in Ohio (Intel), assembled in Vietnam (or potentially Mexico, given recent ODM moves), and sold in the U.S., significantly reducing exposure to Taiwan Strait shipping lanes compared to the current Taiwan-to-China assembly route.
-    \item \textbf{Resilience vs. Efficiency:} This "China+1" silicon strategy is inherently less efficient than the Taiwan cluster model. However, for a company with Apple's scale, the cost of efficiency is outweighed by the risk of total supply cessation. The Intel partnership acts as an insurance policy: even if Intel produces only 15--20 million units (entry-level M-series) annually, it establishes the logistical and technical piping necessary to ramp up domestic volume in a crisis.
-\end{itemize}
-
-\subsection{Political Optics: The "Made in USA" Shield}
-
-Beyond hard economics, the political utility of an Apple-Intel deal cannot be overstated. With the U.S. government heavily invested in Intel's success via the CHIPS Act, Intel's failure to secure a "hero customer" would be a political embarrassment. Conversely, Apple faces bipartisan pressure to domesticate its supply chain.
-
-\begin{itemize}
-    \item \textbf{Regulatory Goodwill:} By committing to manufacture chips in the U.S., Apple purchases political capital. This is crucial as the company faces antitrust scrutiny and potential tariff threats. A high-profile "Made in USA" silicon initiative provides a powerful narrative to counter criticisms of Apple's reliance on foreign labor and manufacturing.
-    \item \textbf{Tariff Hedging:} With proposals for universal baseline tariffs or specific levies on Chinese-imported goods gaining traction in political discourse, a domestic source for the most expensive component in the BOM (the SoC) serves as a hedge. While wafer fabrication is only one step, domesticating it reduces the "value-add" attributed to foreign jurisdictions, potentially mitigating tariff impacts based on country-of-origin rules.
-\end{itemize}
-
-\subsection{The "Double Overlap" Risk: The Cost of Redundancy}
-
-While the strategic rationale is sound, the operational reality introduces a significant inefficiency we term the "Double Overlap." Running two distinct supply chains for leading-edge logic---one at TSMC (Taiwan/Arizona) and one at Intel (Ohio/Arizona)---imposes structural costs that will weigh on Apple's R\&D efficiency.
-
-\begin{enumerate}
-    \item \textbf{PDK Bifurcation:} Apple's silicon design teams have spent over a decade optimizing their RTL-to-GDSII flow for TSMC's libraries. Maintaining a parallel flow for Intel's 18A/14A PDK requires duplicated effort in physical verification, timing closure, and yield analysis. This splits engineering resources, potentially slowing down the innovation cycle for the primary roadmap.
-    \item \textbf{Capacity Utilization Penalties:} To keep Intel as a viable second source, Apple must guarantee a minimum volume. If end-market demand for MacBooks softens, Apple may be forced to load Intel's fabs to meet contractual minimums while under-utilizing its pre-booked capacity at TSMC, thereby incurring penalties or "take-or-pay" costs on both sides.
-    \item \textbf{Yield Learning Curves:} TSMC's yield ramp is predictable. Intel's 18A is a "clean slate" node with RibbonFET and PowerVia. Apple risks absorbing the cost of Intel's yield learning curve. If yields stall at 60\% while TSMC achieves 80\%+, the effective cost per die at Intel skyrockets, negating the subsidies and creating a gross margin drag on the specific product lines (e.g., MacBook Air) allocated to Intel.
-\end{enumerate}
-
-\begin{table}[H]
-\centering
-\caption{Strategic Trade-off Matrix: Single Source (TSMC) vs. Dual Source (TSMC + Intel)}
-\label{tab:risk_matrix_2}
 \rowcolors{2}{msgrey}{white}
 \tablefont
 \begin{adjustbox}{max width=\textwidth}

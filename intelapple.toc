@@ -28,57 +28,52 @@
 \contentsline {subsection}{\numberline {2.13}The "Pro-Tier Lock": Why TSMC Retains the Crown Jewels}{12}{}%
 \contentsline {subsection}{\numberline {2.14}Samsung Foundry: The Fading Alternative}{12}{}%
 \contentsline {subsection}{\numberline {2.15}Capacity Constraints: The Hidden Catalyst for the Intel Pivot}{12}{}%
-\contentsline {subsection}{\numberline {2.16}TSMC's Roadmap: Conservative Innovation vs. Intel's "5N4Y" Sprint}{13}{}%
-\contentsline {subsection}{\numberline {2.17}The "Yield Gap": Proven HVM vs. Risk Production Claims}{13}{}%
-\contentsline {subsection}{\numberline {2.18}The "Pro-Tier Lock": Advanced Packaging as the New Moat}{14}{}%
-\contentsline {subsection}{\numberline {2.19}Samsung Foundry: The Fading Alternative}{14}{}%
-\contentsline {section}{\numberline {3}Technological Deep Dive: Advanced Packaging}{15}{}%
-\contentsline {subsection}{\numberline {3.1}The Hybrid Bonding War: Foveros Direct vs. TSMC SoIC}{15}{}%
+\contentsline {subsection}{\numberline {2.16}The "Yield Gap": Proven HVM vs. Risk Production Claims}{13}{}%
+\contentsline {subsection}{\numberline {2.17}The "Pro-Tier Lock": Advanced Packaging as the New Moat}{13}{}%
+\contentsline {subsection}{\numberline {2.18}Samsung Foundry: The Fading Alternative}{14}{}%
+\contentsline {section}{\numberline {3}Technological Deep Dive: Advanced Packaging}{14}{}%
+\contentsline {subsection}{\numberline {3.1}The Hybrid Bonding War: Foveros Direct vs. TSMC SoIC}{14}{}%
 \contentsline {subsection}{\numberline {3.2}The "Technical Lock-In" Risk: Why Apple Can't Just Switch}{15}{}%
-\contentsline {subsection}{\numberline {3.3}Thermal and Power Implications: MacBooks vs. AI Accelerators}{16}{}%
+\contentsline {subsection}{\numberline {3.3}Thermal and Power Implications: MacBooks vs. AI Accelerators}{15}{}%
 \contentsline {subsection}{\numberline {3.4}The Subsidy Calculus: De-Risking the "Taiwan Discount"}{16}{}%
-\contentsline {subsection}{\numberline {3.5}The "China+1" Manufacturing Map: Closing the Loop}{17}{}%
+\contentsline {subsection}{\numberline {3.5}The "China+1" Manufacturing Map: Closing the Loop}{16}{}%
 \contentsline {subsection}{\numberline {3.6}Political Optics: The "Made in USA" Shield}{17}{}%
 \contentsline {subsection}{\numberline {3.7}The "Double Overlap" Risk: The Cost of Redundancy}{17}{}%
-\contentsline {subsection}{\numberline {3.8}The Subsidy Calculus: De-Risking the "Taiwan Discount"}{18}{}%
-\contentsline {subsection}{\numberline {3.9}The "China+1" Manufacturing Map: Closing the Loop}{19}{}%
-\contentsline {subsection}{\numberline {3.10}Political Optics: The "Made in USA" Shield}{19}{}%
-\contentsline {subsection}{\numberline {3.11}The "Double Overlap" Risk: The Cost of Redundancy}{19}{}%
-\contentsline {subsection}{\numberline {3.12}The Bull Case: Validation \& Volume}{20}{}%
-\contentsline {subsection}{\numberline {3.13}The Bear Case: The Yield Trap}{20}{}%
-\contentsline {subsection}{\numberline {3.14}Impact on TSMC: A Check on Power}{21}{}%
-\contentsline {subsection}{\numberline {3.15}Catalyst Timeline: The Road to 2028}{21}{}%
-\contentsline {subsection}{\numberline {3.16}Final Verdict: High Execution Risk}{21}{}%
-\contentsline {subsection}{\numberline {3.17}Strategic Asymmetry: The "Must-Win" Dynamic}{21}{}%
-\contentsline {subsection}{\numberline {3.18}The "Second Source" Arbitrage: Squeezing the Monopoly}{22}{}%
-\contentsline {subsection}{\numberline {3.19}The Yield Chasm: A Binary Outcome}{22}{}%
-\contentsline {subsection}{\numberline {3.20}Financial Projections: The Path to Break-Even}{22}{}%
-\contentsline {subsection}{\numberline {3.21}Valuation Implications \& Final Verdict}{23}{}%
-\contentsline {subsection}{\numberline {3.22}Foundry Economics: Navigating the ``Valley of Death'' (2024--2026)}{23}{}%
-\contentsline {subsection}{\numberline {3.23}Segment Performance \& Capital Allocation}{24}{}%
-\contentsline {subsection}{\numberline {3.24}Scenario Analysis: Valuing the Apple Option}{24}{}%
-\contentsline {subsection}{\numberline {3.25}Return on Invested Capital (ROIC) vs. Cost of Capital}{25}{}%
-\contentsline {subsection}{\numberline {3.26}Deconstructing the Path to Break-Even: The Yield-Volume Lever}{25}{}%
-\contentsline {subsection}{\numberline {3.27}Capital Intensity \& The High-NA EUV Gamble}{25}{}%
-\contentsline {subsection}{\numberline {3.28}Unit Economics: Valuing the Apple Contract}{26}{}%
-\contentsline {subsection}{\numberline {3.29}Long-Term Valuation: The 2030 Target Model}{26}{}%
-\contentsline {subsection}{\numberline {3.30}Summary of Financial Estimates}{27}{}%
-\contentsline {section}{\numberline {4}Valuation Models}{27}{}%
-\contentsline {subsection}{\numberline {4.1}Sum-of-the-Parts (SOTP) Framework}{27}{}%
-\contentsline {subsection}{\numberline {4.2}Foundry DCF: The Cost of Capital Dilemma}{27}{}%
-\contentsline {subsection}{\numberline {4.3}Relative Valuation: Benchmarking Against the TSMC Standard}{28}{}%
-\contentsline {subsection}{\numberline {4.4}The "Apple Validator" Premium}{28}{}%
-\contentsline {subsection}{\numberline {4.5}Sensitivity \& Scenario Analysis}{29}{}%
-\contentsline {subsection}{\numberline {4.6}Sum-of-the-Parts (SOTP) Framework: Unlocking the Conglomerate Discount}{29}{}%
-\contentsline {subsection}{\numberline {4.7}Foundry DCF: The Cost of Capital \& Yield Curve Dilemma}{30}{}%
-\contentsline {subsection}{\numberline {4.8}Government Incentives: The \$100 Billion CapEx Shield}{30}{}%
-\contentsline {subsection}{\numberline {4.9}Relative Valuation: Benchmarking Against the TSMC Standard}{31}{}%
-\contentsline {subsection}{\numberline {4.10}The "Apple Validator" Premium: Pricing the Option}{31}{}%
-\contentsline {subsection}{\numberline {4.11}Conclusion on Valuation}{31}{}%
-\contentsline {section}{\numberline {5}Investment Risks}{32}{}%
-\contentsline {subsection}{\numberline {5.1}Bear Case Analysis: Execution, Financial, and Strategic Vulnerabilities}{32}{}%
-\contentsline {subsection}{\numberline {5.2}Execution Risk: The Yield Chasm and PDK Deadlines}{32}{}%
-\contentsline {subsection}{\numberline {5.3}Financial Risk: The "Death Spiral" of Fixed Costs}{32}{}%
-\contentsline {subsection}{\numberline {5.4}Strategic Risk: The "stalking Horse" Scenario}{32}{}%
-\contentsline {subsection}{\numberline {5.5}Sensitivity Analysis: The Cost of Failure}{33}{}%
-\contentsline {subsection}{\numberline {5.6}Conclusion on Risk}{33}{}%
+\contentsline {subsection}{\numberline {3.8}The Bull Case: Validation \& Volume}{18}{}%
+\contentsline {subsection}{\numberline {3.9}The Bear Case: The Yield Trap}{18}{}%
+\contentsline {subsection}{\numberline {3.10}Impact on TSMC: A Check on Power}{18}{}%
+\contentsline {subsection}{\numberline {3.11}Catalyst Timeline: The Road to 2028}{18}{}%
+\contentsline {subsection}{\numberline {3.12}Final Verdict: High Execution Risk}{18}{}%
+\contentsline {subsection}{\numberline {3.13}Strategic Asymmetry: The "Must-Win" Dynamic}{19}{}%
+\contentsline {subsection}{\numberline {3.14}The "Second Source" Arbitrage: Squeezing the Monopoly}{19}{}%
+\contentsline {subsection}{\numberline {3.15}The Yield Chasm: A Binary Outcome}{19}{}%
+\contentsline {subsection}{\numberline {3.16}Financial Projections: The Path to Break-Even}{19}{}%
+\contentsline {subsection}{\numberline {3.17}Valuation Implications \& Final Verdict}{20}{}%
+\contentsline {subsection}{\numberline {3.18}Foundry Economics: Navigating the ``Valley of Death'' (2024--2026)}{20}{}%
+\contentsline {subsection}{\numberline {3.19}Segment Performance \& Capital Allocation}{21}{}%
+\contentsline {subsection}{\numberline {3.20}Scenario Analysis: Valuing the Apple Option}{21}{}%
+\contentsline {subsection}{\numberline {3.21}Return on Invested Capital (ROIC) vs. Cost of Capital}{22}{}%
+\contentsline {subsection}{\numberline {3.22}Deconstructing the Path to Break-Even: The Yield-Volume Lever}{22}{}%
+\contentsline {subsection}{\numberline {3.23}Capital Intensity \& The High-NA EUV Gamble}{22}{}%
+\contentsline {subsection}{\numberline {3.24}Unit Economics: Valuing the Apple Contract}{23}{}%
+\contentsline {subsection}{\numberline {3.25}Long-Term Valuation: The 2030 Target Model}{23}{}%
+\contentsline {subsection}{\numberline {3.26}Summary of Financial Estimates}{24}{}%
+\contentsline {section}{\numberline {4}Valuation Models}{24}{}%
+\contentsline {subsection}{\numberline {4.1}Sum-of-the-Parts (SOTP) Framework}{24}{}%
+\contentsline {subsection}{\numberline {4.2}Foundry DCF: The Cost of Capital Dilemma}{24}{}%
+\contentsline {subsection}{\numberline {4.3}Relative Valuation: Benchmarking Against the TSMC Standard}{25}{}%
+\contentsline {subsection}{\numberline {4.4}The "Apple Validator" Premium}{25}{}%
+\contentsline {subsection}{\numberline {4.5}Sensitivity \& Scenario Analysis}{26}{}%
+\contentsline {subsection}{\numberline {4.6}Sum-of-the-Parts (SOTP) Framework: Unlocking the Conglomerate Discount}{26}{}%
+\contentsline {subsection}{\numberline {4.7}Foundry DCF: The Cost of Capital \& Yield Curve Dilemma}{27}{}%
+\contentsline {subsection}{\numberline {4.8}Government Incentives: The \$100 Billion CapEx Shield}{27}{}%
+\contentsline {subsection}{\numberline {4.9}Relative Valuation: Benchmarking Against the TSMC Standard}{28}{}%
+\contentsline {subsection}{\numberline {4.10}The "Apple Validator" Premium: Pricing the Option}{28}{}%
+\contentsline {subsection}{\numberline {4.11}Conclusion on Valuation}{28}{}%
+\contentsline {section}{\numberline {5}Investment Risks}{29}{}%
+\contentsline {subsection}{\numberline {5.1}Bear Case Analysis: Execution, Financial, and Strategic Vulnerabilities}{29}{}%
+\contentsline {subsection}{\numberline {5.2}Execution Risk: The Yield Chasm and PDK Deadlines}{29}{}%
+\contentsline {subsection}{\numberline {5.3}Financial Risk: The "Death Spiral" of Fixed Costs}{29}{}%
+\contentsline {subsection}{\numberline {5.4}Strategic Risk: The "stalking Horse" Scenario}{29}{}%
+\contentsline {subsection}{\numberline {5.5}Sensitivity Analysis: The Cost of Failure}{30}{}%
+\contentsline {subsection}{\numberline {5.6}Conclusion on Risk}{30}{}%

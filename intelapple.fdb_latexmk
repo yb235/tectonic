@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1768624856.30526 "/workspaces/tectonic/intelapple.tex" "intelapple.pdf" "intelapple" 1768624859.03579 0
+["pdflatex"] 1768625614.68399 "/workspaces/tectonic/intelapple.tex" "intelapple.pdf" "intelapple" 1768625617.40244 0
   "/etc/texmf/web2c/texmf.cnf" 1768620989 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvb8c.tfm" 1136768653 1344 2b79eb16daca0e8fd7cff8a5505df513 ""
@@ -192,10 +192,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1741904018 41538 c016915c1d51223b6dbbfe27341748a8 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1768620995 5018282 7c1df9fda183c3b21e5402c992006de0 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1768621016 1928192 4bfd71487e268e0d4afa989b6ebb5c87 ""
-  "/workspaces/tectonic/intelapple.tex" 1768624852.33581 161708 c3daf44e34b8f3ea5a6708b892b3d87d ""
-  "intelapple.aux" 1768624858.90665 20186 2e038d141e5414418b3277a888fb408e "pdflatex"
-  "intelapple.tex" 1768624852.33581 161708 c3daf44e34b8f3ea5a6708b892b3d87d ""
-  "intelapple.toc" 1768624858.91707 8369 21d536162116bc852d99441187fb0b49 "pdflatex"
+  "/workspaces/tectonic/intelapple.tex" 1768625611.60539 148057 089c04bc967ca7c6a7f5ee0ce9b5a286 ""
+  "intelapple.aux" 1768625617.33 19006 3b155db0b9a818dd9211d6b364a94eed "pdflatex"
+  "intelapple.tex" 1768625611.60539 148057 089c04bc967ca7c6a7f5ee0ce9b5a286 ""
+  "intelapple.toc" 1768625617.34042 7840 ce8687a526d429bf2396b4c1907bece0 "pdflatex"
   (generated)
   "intelapple.aux"
   "intelapple.log"

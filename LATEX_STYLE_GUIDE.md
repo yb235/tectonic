@@ -6,6 +6,25 @@ This guide defines the global styling rules to ensure visual consistency across 
 
 ## 📋 Change Log
 
+### 2026-01-17: Document Hierarchy & Paragraph Styling Standards (CRITICAL)
+**Issue:** Inconsistent heading hierarchy and paragraph spacing throughout document caused by unclear global rules. Documents mixed `\textbf{Title}` with `\subsection{Title}` creating visual inconsistency, TOC chaos, and broken numbering. Multiple sections were duplicated due to copy-paste during reorganization. Paragraph spacing was inconsistent with random `\vspace{}` commands scattered throughout.
+**Impact:** Unprofessional appearance, confusing document structure, inflated page count (+3-5 pages from duplicates), inconsistent visual rhythm.
+**Root Cause:** No established global rules for:
+- When to use `\section{}` vs `\subsection{}` vs `\textbf{}`
+- Paragraph spacing conventions
+- How to prevent duplicate content during reorganization
+**Fix Applied:** 
+1. Created comprehensive Section 0 in style guide covering hierarchy decision tree, paragraph spacing rules, maximum depth standards, and duplicate prevention strategies
+2. Fixed `intelapple.tex`: Converted 5 `\textbf{}` pseudo-headings to `\subsection{}`; removed ~200 lines of duplicate content (4 subsection blocks); standardized spacing
+3. Created `LATEX_CHECKLIST.md` for pre-compilation validation
+**Files Updated:** `LATEX_STYLE_GUIDE.md` (new Section 0), `intelapple.tex` (hierarchy fixes + duplicate removal), new file `LATEX_CHECKLIST.md`
+**Global Rules Established:**
+- **NEVER** use `\textbf{Title}` as standalone heading (use `\subsection{}`)
+- **NEVER** number headings manually like "1. Topic" (use auto-numbering)
+- ONE blank line between paragraphs, NO manual `\vspace{}` between regular paragraphs
+- Maximum depth: `\subsection{}` (no `\subsubsection{}`)
+- Use grep commands to find duplicates before finalizing: `grep "\\subsection{" file.tex | sort | uniq -d`
+
 ### 2026-01-17: Document Structure – Executive Summary & TOC (LLM-Specific)
 **Issue:** The executive summary and table of contents (TOC) were laid out inconsistently. The TOC appeared before the executive summary, was boxed inside a `tcolorbox` that could not break across pages, and one risk table inside a two-column section overflowed into page margins.
 **Fix Applied:** Re-ordered the document so that the full executive summary appears immediately after the title page, followed by a dedicated TOC page. Removed the `tcolorbox` wrapper from around `\tableofcontents`, keeping only a styled header box, and moved wide summary tables out of `multicols` with column widths expressed in fractions of `\textwidth` rather than `\linewidth`.
