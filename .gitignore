@@ -14,3 +14,9 @@
 
 # Misc
 *.ignore
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.toc
+*.out
