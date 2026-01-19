@@ -72,7 +72,7 @@ CHECKS=$((CHECKS+1))
 # Check for pseudo-headings
 PSEUDO_HEADINGS=$(grep -c "^\\\\textbf{.*}$" "$FILE" 2>/dev/null || echo "0")
 PSEUDO_HEADINGS=$(echo "$PSEUDO_HEADINGS" | tr -d '\n' | tr -d ' ')
-if [ "$PSEUDO_HEADINGS" -gt 0 ] 2>/dev/null; then
+if [ "$PSEUDO_HEADINGS" -gt 0 ]; then
     echo -e "${YELLOW}⚠️  WARNING: $PSEUDO_HEADINGS pseudo-headings found (should use \\subsection)${NC}"
     WARNINGS=$((WARNINGS+1))
 else
@@ -96,7 +96,7 @@ CHECKS=$((CHECKS+1))
 # Check for illegal table captions
 ILLEGAL_TABLE_CAPTIONS=$(grep -c "\\captionof{table}" "$FILE" 2>/dev/null || echo "0")
 ILLEGAL_TABLE_CAPTIONS=$(echo "$ILLEGAL_TABLE_CAPTIONS" | tr -d '\n' | tr -d ' ')
-if [ "$ILLEGAL_TABLE_CAPTIONS" -gt 0 ] 2>/dev/null; then
+if [ "$ILLEGAL_TABLE_CAPTIONS" -gt 0 ]; then
     echo -e "${RED}❌ CRITICAL: $ILLEGAL_TABLE_CAPTIONS illegal \\captionof{table} found${NC}"
     grep -n "\\captionof{table}" "$FILE"
     ERRORS=$((ERRORS+1))
@@ -107,7 +107,7 @@ fi
 # Check for incorrect width usage
 BAD_WIDTH=$(grep -c "adjustbox}{width=" "$FILE" 2>/dev/null || echo "0")
 BAD_WIDTH=$(echo "$BAD_WIDTH" | tr -d '\n' | tr -d ' ')
-if [ "$BAD_WIDTH" -gt 0 ] 2>/dev/null; then
+if [ "$BAD_WIDTH" -gt 0 ]; then
     echo -e "${RED}❌ CRITICAL: $BAD_WIDTH tables using 'width=' instead of 'max width='${NC}"
     grep -n "adjustbox}{width=" "$FILE"
     ERRORS=$((ERRORS+1))
@@ -132,7 +132,7 @@ CHECKS=$((CHECKS+1))
 # Check for illegal figure captions
 ILLEGAL_FIG_CAPTIONS=$(grep -c "\\captionof{figure}" "$FILE" 2>/dev/null || echo "0")
 ILLEGAL_FIG_CAPTIONS=$(echo "$ILLEGAL_FIG_CAPTIONS" | tr -d '\n' | tr -d ' ')
-if [ "$ILLEGAL_FIG_CAPTIONS" -gt 0 ] 2>/dev/null; then
+if [ "$ILLEGAL_FIG_CAPTIONS" -gt 0 ]; then
     echo -e "${RED}❌ CRITICAL: $ILLEGAL_FIG_CAPTIONS illegal \\captionof{figure} found${NC}"
     grep -n "\\captionof{figure}" "$FILE"
     ERRORS=$((ERRORS+1))
@@ -143,7 +143,7 @@ fi
 # Check for hardcoded colors in charts
 HARDCODED_COLORS=$(grep -c "fill=.*!" "$FILE" 2>/dev/null || echo "0")
 HARDCODED_COLORS=$(echo "$HARDCODED_COLORS" | tr -d '\n' | tr -d ' ')
-if [ "$HARDCODED_COLORS" -gt 0 ] 2>/dev/null; then
+if [ "$HARDCODED_COLORS" -gt 0 ]; then
     echo -e "${YELLOW}⚠️  WARNING: $HARDCODED_COLORS hardcoded colors found (prefer semantic styles)${NC}"
     WARNINGS=$((WARNINGS+1))
 else
@@ -194,14 +194,18 @@ fi
 echo -e "\n${YELLOW}[Phase 6] Additional Validation${NC}"
 CHECKS=$((CHECKS+1))
 
-# Check for unescaped special characters (simplified check)
-UNESCAPED_AMP=$(grep -c "[^\\]&" "$FILE" 2>/dev/null || echo 0)
-if [ "$UNESCAPED_AMP" -gt 5 ]; then  # Allow some in tables
-    echo -e "${YELLOW}⚠️  WARNING: Potentially unescaped & characters detected${NC}"
-    echo -e "${YELLOW}    Verify all & outside tables are escaped as \\&${NC}"
+# Check for unescaped special characters
+# This is a simplified check - may have false positives in complex scenarios
+# Using a more conservative count that allows for table usage
+UNESCAPED_AMP=$(grep -c '[^\\]&[^&]' "$FILE" 2>/dev/null || echo "0")
+UNESCAPED_AMP=$(echo "$UNESCAPED_AMP" | tr -d '\n' | tr -d ' ')
+# High threshold to avoid false positives from tables (which legitimately use &)
+if [ "$UNESCAPED_AMP" -gt 50 ]; then
+    echo -e "${YELLOW}⚠️  WARNING: Many potential unescaped & characters detected${NC}"
+    echo -e "${YELLOW}    Manually verify all & outside tables are escaped as \\&${NC}"
     WARNINGS=$((WARNINGS+1))
 else
-    echo -e "${GREEN}✅ Special character escaping looks good${NC}"
+    echo -e "${GREEN}✅ Special character escaping looks reasonable${NC}"
 fi
 
 # Document Statistics
