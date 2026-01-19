@@ -3,7 +3,29 @@
 **Project Name:** Tectonic  
 **Project Type:** LaTeX Document Generation & Compilation  
 **Primary Purpose:** Professional financial case study document creation with strict compliance requirements  
-**Last Updated:** 2026-01-18
+**Last Updated:** 2026-01-19
+
+---
+
+## 🚀 NEW: MODULAR AGENT SKILLS AVAILABLE
+
+**For structured, executable workflows, see the new Agent Skills system:**
+
+📦 **[Agent Skills Directory](../docs/agent-skills/README.md)** - Modular, composable workflow bundles
+
+**Available Skills:**
+- 🔨 [latex-compilation](../docs/agent-skills/latex-compilation/SKILL.md) - Compile LaTeX in containers
+- 📝 [latex-document-creation](../docs/agent-skills/latex-document-creation/SKILL.md) - Create new compliant documents  
+- 🔄 [latex-conversion](../docs/agent-skills/latex-conversion/SKILL.md) - Fix non-compliant LaTeX
+- ✅ [latex-validation](../docs/agent-skills/latex-validation/SKILL.md) - Validate compliance & quality
+
+**Benefits:**
+- ✅ Progressive loading (save context tokens)
+- ✅ Step-by-step executable instructions
+- ✅ Validation gates at each phase
+- ✅ Composable for complex workflows
+
+**Quick Start:** Read [SKILL_INDEX.md](../docs/agent-skills/SKILL_INDEX.md) for overview, then load the skill you need.
 
 ---
 
@@ -15,6 +37,7 @@ This repository is dedicated to creating high-quality, professionally formatted 
 2. **Visual Consistency**: Strict adherence to brand colors, typography, and formatting standards
 3. **Technical Excellence**: Automated validation, compilation, and quality assurance
 4. **Containerized Development**: All LaTeX work should be performed in the dev container environment
+5. **Modular Workflows**: Agent skills package complex processes into reusable components
 
 ---
 
@@ -215,6 +238,14 @@ tectonic/
 │   ├── Dockerfile              # Container image definition
 │   └── devcontainer.json       # VS Code dev container config
 ├── docs/                        # Documentation
+│   ├── agent-skills/           # 🆕 Modular agent workflow skills
+│   │   ├── SKILL_INDEX.md              # Master index of all skills
+│   │   ├── IMPLEMENTATION_GUIDE.md     # Integration guide for AI systems
+│   │   ├── README.md                   # Quick start and overview
+│   │   ├── latex-compilation/          # Compilation skill
+│   │   ├── latex-document-creation/    # Document creation skill
+│   │   ├── latex-conversion/           # Conversion skill
+│   │   └── latex-validation/           # Validation skill
 │   ├── latex/                  # LaTeX-specific guides
 │   │   ├── LATEX_STYLE_GUIDE.md           # Comprehensive style reference
 │   │   ├── LATEX_CHECKLIST.md             # Pre-compilation checklist

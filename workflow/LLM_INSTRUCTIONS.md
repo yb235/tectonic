@@ -6,6 +6,26 @@
 
 ---
 
+## 🆕 MODULAR AGENT SKILLS NOW AVAILABLE
+
+**For executable, step-by-step workflows, use the new Agent Skills:**
+
+📦 **Location:** `docs/agent-skills/`
+
+**Available Skills:**
+- 🔨 **latex-compilation** - Compile LaTeX in containers (container check → compile → verify)
+- 📝 **latex-document-creation** - Create new compliant documents (template → customize → compile)
+- 🔄 **latex-conversion** - Fix non-compliant LaTeX (7-phase systematic conversion)
+- ✅ **latex-validation** - Pre-compilation checks (compliance → quality → best practices)
+
+**When to use skills vs. this document:**
+- **Use Skills:** When you need structured, executable workflows with validation gates
+- **Use This Document:** For quick reference, pattern lookup, or understanding rules
+
+**Quick Start:** Read `docs/agent-skills/SKILL_INDEX.md` for complete skill overview.
+
+---
+
 ## 🚨 PRIORITY 0: CRITICAL RULES (NEVER VIOLATE)
 
 These rules are **non-negotiable** and will cause compilation failure or legal issues if violated:
