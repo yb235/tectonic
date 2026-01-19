@@ -1,0 +1,71 @@
+\contentsline {section}{\numberline {1}Executive Summary}{1}{}%
+\contentsline {subsection}{\numberline {1.1}The "Chemical Surgery" Thesis}{1}{}%
+\contentsline {subsection}{\numberline {1.2}The East Asian Strategic Imperative}{1}{}%
+\contentsline {subsection}{\numberline {1.3}The "Blue Ocean" Landscape}{2}{}%
+\contentsline {subsection}{\numberline {1.4}The Technical Moat: Delivery}{2}{}%
+\contentsline {subsection}{\numberline {1.5}Investment Catalyst}{2}{}%
+\contentsline {section}{\numberline {2}Market Opportunity \& Revenue Framework}{5}{}%
+\contentsline {subsection}{\numberline {2.1}Valuation Scenarios \& The "Surgical Alternative" Arbitrage}{5}{}%
+\contentsline {subsection}{\numberline {2.2}The China Patient Funnel: Deriving the Serviceable Obtainable Market (SOM)}{6}{}%
+\contentsline {subsection}{\numberline {2.3}Funnel Assumptions \& Filters}{6}{}%
+\contentsline {subsection}{\numberline {2.4}The "Catch-Up" Moat: Why Vaccines Don't Kill the Market}{6}{}%
+\contentsline {subsection}{\numberline {2.5}Prophylactic vs. Therapeutic Gap}{7}{}%
+\contentsline {subsection}{\numberline {2.6}The "Tail" Demographics}{7}{}%
+\contentsline {subsection}{\numberline {2.7}Geographic Segmentation \& Sensitivity Analysis}{7}{}%
+\contentsline {subsection}{\numberline {2.8}East Asia: The Volume Play}{7}{}%
+\contentsline {subsection}{\numberline {2.9}North America / EU: The "Cocktail" Requirement}{7}{}%
+\contentsline {subsection}{\numberline {2.10}The Diagnostic Catalyst: No Test, No Treatment}{7}{}%
+\contentsline {section}{\numberline {3}Scientific Rationale: Mechanism, Targets, \& Delivery}{9}{}%
+\contentsline {subsection}{\numberline {3.1}Dual-Targeting Mechanism of Action (MoA)}{9}{}%
+\contentsline {subsection}{\numberline {3.2}The Specificity Trap: Why HPV-16 Data Does Not Apply}{9}{}%
+\contentsline {subsection}{\numberline {3.3}The Homology Gap}{9}{}%
+\contentsline {subsection}{\numberline {3.4}The "Asian Paradox" of Viral Escape Variants}{9}{}%
+\contentsline {subsection}{\numberline {3.5}The Delivery Challenge: Crossing the Mucosal Barrier}{10}{}%
+\contentsline {subsection}{\numberline {3.6}Barriers to Entry}{10}{}%
+\contentsline {subsection}{\numberline {3.7}Emerging Solutions \& Delivery Vehicles}{10}{}%
+\contentsline {subsection}{\numberline {3.8}Differentiation vs. Gene Editing (CRISPR)}{11}{}%
+\contentsline {subsection}{\numberline {3.9}Summary of Preclinical Requirements}{11}{}%
+\contentsline {section}{\numberline {4}Competitive Landscape: Vaccines, Surgery, \& Emerging Tech}{12}{}%
+\contentsline {subsection}{\numberline {4.1}The "Open" Field: Absence of Direct siRNA Rivals}{12}{}%
+\contentsline {subsection}{\numberline {4.2}The Primary Threat: Multivalent Therapeutic Vaccines}{12}{}%
+\contentsline {subsection}{\numberline {4.3}Competitor Profile: 5GHPV3}{12}{}%
+\contentsline {subsection}{\numberline {4.4}Standard of Care (SOC): The Case Against the Knife}{12}{}%
+\contentsline {subsection}{\numberline {4.5}The "Western Bias" in Indirect Competitors}{13}{}%
+\contentsline {subsection}{\numberline {4.6}Market Cannibalization: The Prophylactic Ceiling}{13}{}%
+\contentsline {subsection}{\numberline {4.7}Emerging Modalities: Why CRISPR is Not Ready}{14}{}%
+\contentsline {subsection}{\numberline {4.8}Conclusion: The Strategic Moat}{14}{}%
+\contentsline {section}{\numberline {5}Target Product Profile (TPP): The "Chemical Surgery" Paradigm}{15}{}%
+\contentsline {subsection}{\numberline {5.1}Clinical Development Plan: Pivoting to Asia}{15}{}%
+\contentsline {subsection}{\numberline {5.2}Regulatory Navigation: A Tale of Two Agencies}{16}{}%
+\contentsline {subsection}{\numberline {5.3}Commercial Partnership \& Execution}{16}{}%
+\contentsline {subsection}{\numberline {5.4}Addressing the "Watchful Waiting" Barrier}{16}{}%
+\contentsline {subsection}{\numberline {5.5}Projected Timeline to Market}{16}{}%
+\contentsline {subsection}{\numberline {5.6}From Solid-Phase to Microfluidics: The Scalability Pivot}{17}{}%
+\contentsline {subsection}{\numberline {5.7}The COGS Dilemma: Competing with the \$1,500 Surgical Baseline}{18}{}%
+\contentsline {subsection}{\numberline {5.8}Raw Material Constraints \& Supply Chain Fragility}{18}{}%
+\contentsline {subsection}{\numberline {5.9}The Cold Chain Challenge: Formulation for Lower-Tier Cities}{18}{}%
+\contentsline {subsection}{\numberline {5.10}Regulatory GMP \& Facility Requirements}{19}{}%
+\contentsline {subsection}{\numberline {5.11}Conclusion: The Manufacturing Imperative}{19}{}%
+\contentsline {subsection}{\numberline {5.12}Primary Technical Risk: The Mucosal Delivery Barrier}{19}{}%
+\contentsline {subsection}{\numberline {5.13}Commercial Risk: The "Watchful Waiting" \& Reimbursement Trap}{20}{}%
+\contentsline {subsection}{\numberline {5.14}Biological Risk: Viral Escape in the "Asian Paradox"}{20}{}%
+\contentsline {subsection}{\numberline {5.15}Market Risk: The Diagnostic Gap}{21}{}%
+\contentsline {subsection}{\numberline {5.16}Investment Verdict: Overweight Strategy with Binary Risk}{21}{}%
+\contentsline {subsection}{\numberline {5.17}Final Catalyst Watch}{21}{}%
+\contentsline {section}{\numberline {6}Unit Economics \& Gross Margin Analysis}{23}{}%
+\contentsline {subsection}{\numberline {6.1}Manufacturing Scalability vs. Cost}{23}{}%
+\contentsline {section}{\numberline {7}Valuation Scenarios \& Sensitivity Analysis}{24}{}%
+\contentsline {subsection}{\numberline {7.1}Base Case: The "Regional Specialist" (\$28/share implied)}{24}{}%
+\contentsline {subsection}{\numberline {7.2}Bull Case: The "Standard of Care" (\$65/share implied)}{24}{}%
+\contentsline {subsection}{\numberline {7.3}Bear Case: The "Delivery Failure" (\$4/share implied)}{24}{}%
+\contentsline {section}{\numberline {8}Revenue Trajectory \& Market Sizing}{25}{}%
+\contentsline {subsection}{\numberline {8.1}Regional Revenue Composition \& The "Asian Inversion"}{25}{}%
+\contentsline {subsection}{\numberline {8.2}Operating Expense (OpEx) Structure \& R\&D Burn}{25}{}%
+\contentsline {subsection}{\numberline {8.3}Capital Intensity \& Free Cash Flow (FCF) Dynamics}{26}{}%
+\contentsline {subsection}{\numberline {8.4}Terminal Value Considerations: The "Melting Ice Cube" Risk}{26}{}%
+\contentsline {subsection}{\numberline {8.5}The RNAi Renaissance: Secular Growth Meets Structural Constraints}{27}{}%
+\contentsline {subsection}{\numberline {8.6}Supply Chain Dynamics: The "Capacity Crunch" in Oligonucleotides}{27}{}%
+\contentsline {subsection}{\numberline {8.7}Geographic Macro Drivers: The "Asian Pivot"}{28}{}%
+\contentsline {subsection}{\numberline {8.8}Pricing Power \& Economic Viability}{28}{}%
+\contentsline {subsection}{\numberline {8.9}Conclusion on Macro Backdrop}{29}{}%
+\contentsline {subsection}{\numberline {8.10}The Prophylactic "Lag": A 20-Year Commercial Window}{29}{}%

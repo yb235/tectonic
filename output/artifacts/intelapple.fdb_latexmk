@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1768720355.77088 "/workspaces/tectonic/intelapple.tex" "intelapple.pdf" "intelapple" 1768720359.11981 0
+["pdflatex"] 1768632038.96065 "/workspaces/tectonic/intelapple.tex" "intelapple.pdf" "intelapple" 1768632042.15067 0
   "/etc/texmf/web2c/texmf.cnf" 1768620989 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvb8c.tfm" 1136768653 1344 2b79eb16daca0e8fd7cff8a5505df513 ""
@@ -18,11 +18,9 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
-  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb" 1248133631 37912 77d683123f92148345f3fc36a38d9ab1 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1248133631 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1248133631 31809 8670ca339bf94e56da1fc21c80635e2a ""
-  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1248133631 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -151,7 +149,6 @@
   "/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty" 1738874546 52272 63d293bc0d496619edb57585740861a2 ""
   "/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty" 1399239813 4378 f429f0da968c278653359293040a8f52 ""
   "/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
-  "/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty" 1683144721 11876 6ef493863ae0d7a984706973240c2237 ""
   "/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty" 1739306980 46850 d87daedc2abdc653769a6f1067849fe0 ""
   "/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty" 1739048179 31715 19e60610b63819fe670dfa1cd84a4e94 ""
   "/usr/share/texlive/texmf-dist/tex/latex/float/float.sty" 1137110151 6749 16d2656a1984957e674b149555f1ea1d ""
@@ -196,10 +193,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1741904018 41538 c016915c1d51223b6dbbfe27341748a8 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1768620995 5018282 7c1df9fda183c3b21e5402c992006de0 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1768621016 1928192 4bfd71487e268e0d4afa989b6ebb5c87 ""
-  "/workspaces/tectonic/intelapple.tex" 1768720351.16972 163718 a5bb2c22b02b07778a22fda6d9b7df92 ""
-  "intelapple.aux" 1768720358.63635 23633 0677fe66a4b8db74b1a3d20cc2899129 "pdflatex"
-  "intelapple.tex" 1768720351.16972 163718 a5bb2c22b02b07778a22fda6d9b7df92 ""
-  "intelapple.toc" 1768720358.65097 8481 43993fcd2619641e52f44d8277723284 "pdflatex"
+  "/workspaces/tectonic/intelapple.tex" 1768632038.675 143905 dd18e9e478099b99a709407da58fefaa ""
+  "intelapple.aux" 1768632041.96179 19899 bca3e99efa47edc6520cee1df1f5243a "pdflatex"
+  "intelapple.tex" 1768632038.675 143905 dd18e9e478099b99a709407da58fefaa ""
+  "intelapple.toc" 1768632041.97478 7535 a4f1ff449a2c3fa3de64479390899f35 "pdflatex"
   (generated)
   "intelapple.aux"
   "intelapple.log"

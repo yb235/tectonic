@@ -76,20 +76,23 @@
 \titleformat{\subsection}
   {\color{black}\normalfont\large\bfseries}{}{0em}{}
 
+% --- NARROWER TEXT WIDTH FOR MAIN CONTENT ---
+% Main content text is narrower than executive summary
+\newenvironment{maincontent}{%
+    \begin{adjustwidth}{3cm}{3cm}% Narrower margins for body text
+    \let\oldsection\section%
+    \renewcommand{\section}{\clearpage\oldsection}% Start each major section on a new page
+}{%
+    \let\section\oldsection%
+    \end{adjustwidth}%
+}
+
 % --- DIAGONAL WATERMARK ---
 \newcommand{\watermarktext}{SAMPLE: FICTIONAL DATA / DESIGN CASE STUDY}
 \AddToShipoutPictureBG{%
     \begin{tikzpicture}[remember picture,overlay]
         \node[opacity=0.12, rotate=35, scale=3, text=gray] at (current page.center) {\bfseries \watermarktext};
     \end{tikzpicture}%
-}
-
-% --- NARROWER TEXT WIDTH FOR MAIN CONTENT ---
-% James Bian style: main content text is narrower than executive summary
-\newenvironment{maincontent}{%
-  \begin{adjustwidth}{3cm}{3cm}% Narrower margins for body text
-}{%
-  \end{adjustwidth}%
 }
 
 % --- CUSTOM COMMANDS ---
@@ -281,6 +284,7 @@
 \vspace{0.5cm}
 
 \begin{minipage}[t]{0.3\textwidth}
+    \vspace{0pt}
     \ratingbox{SiRNA Therapeutics}{Biotech / Pharma}{OVERWEIGHT}
     \vspace{0.2cm}
     \textbf{Risk:} HIGH \\
@@ -288,8 +292,9 @@
 \end{minipage}%
 \hfill
 \begin{minipage}[t]{0.65\textwidth}
+    \vspace{0pt}
     \estimatesbox{
-        \begin{adjustbox}{max width=\textwidth}
+        \begin{adjustbox}{max width=\linewidth}
         \begin{tabular}{lr}
             \textbf{Metric} & \textbf{Projection} \\
             \midrule
@@ -332,8 +337,8 @@ A "one-size-fits-all" global strategy fails for HPV-58. The virus exhibits a uni
 \label{tab:epidemiology}
 \tablefont
 \rowcolors{2}{lightgrey}{white}
-\begin{adjustbox}{max width=\textwidth, center}
-\begin{tabular}{p{2.5cm} p{2cm} p{2.5cm}}
+\begin{adjustbox}{max width=\columnwidth, center}
+\begin{tabular}{p{0.35\columnwidth} p{0.25\columnwidth} p{0.35\columnwidth}}
 \toprule
 \rowcolor{tableheader}
 \textbf{Region} & \textbf{HPV-58 Rank} & \textbf{Strategic Status} \\
@@ -398,11 +403,24 @@ We view the "Catch-Up" population---millions of unvaccinated women over 30 with 
 
 \vspace{0.5cm}
 
-%--- MAIN BODY CONTENT (TWO-COLUMN LAYOUT) ---
+% --- TABLE OF CONTENTS ---
+\newpage
+\begin{tcolorbox}[colback=lightgrey, colframe=lightgrey, boxrule=0pt, sharp corners, left=10pt, right=10pt, top=10pt, bottom=10pt]
+{\color{brandblue}\Large\bfseries Table of Contents}
+\end{tcolorbox}
+\vspace{0.3cm}
 
-\begin{multicols}{2}
+\renewcommand{\contentsname}{}
+\setcounter{tocdepth}{2}
+\tableofcontents
+\vspace{0.5cm}
 
-\section{Total Addressable Market (TAM) \& Revenue Potential}
+\newpage
+
+%--- MAIN BODY CONTENT (ONE-COLUMN LAYOUT) ---
+\begin{maincontent}
+
+\section{Market Opportunity \& Revenue Framework}
 
 Our quantitative analysis estimates the Total Addressable Market (TAM) for an HPV-58 specific siRNA therapeutic to range between \textbf{\$500 million and \$4 billion annually}, heavily weighted toward the East Asian theatre. This wide variance is a function of the chosen commercial model---specifically, whether the therapy is positioned as a niche "Orphan-like" drug for rare complications or a mass-market "Surgical Alternative" for cervical intraepithelial neoplasia (CIN).
 
@@ -417,7 +435,7 @@ We modeled three distinct revenue scenarios to determine the optimal pricing str
     
     \item \textbf{The "Chronic Maintenance" Model (Price: \$3k--\$6k/year):} Similar to \textit{Inclisiran} for hypercholesterolemia. This model assumes viral suppression rather than clearance. While it could theoretically yield a \textbf{\$5B--\$10B} TAM, it is clinically inferior. Patients desire a "cure," and regulatory bodies (NMPA/FDA) are unlikely to approve indefinite maintenance therapy for a localized viral infection when curative surgery exists.
     
-    \item \textbf{The "Surgical Alternative" Model (Price: \$2,000--\$5,000/course):} This is the "sweet spot." The cost of LEEP/Conization ranges from \textbf{\$1,500 to \$3,000} in direct procedural costs, but the \textit{total cost of care} rises significantly when factoring in complications.
+    \item \textbf{The "Surgical Alternative" Model:} Price point of \$2,000--\$5,000 per course. This is the "sweet spot." The cost of LEEP/Conization ranges from \textbf{\$1,500 to \$3,000} in direct procedural costs, but the \textit{total cost of care} rises significantly when factoring in complications.
 \end{enumerate}
 
 \textbf{The Fertility Premium:} The economic argument for the \$2,000--\$5,000 price point relies on the "Fertility Factor." Surgical excision increases the risk of preterm birth in future pregnancies. Managing a preterm infant in the NICU can cost insurers \textbf{\$50,000 to \$150,000}. Therefore, a non-invasive siRNA therapy that preserves cervical integrity justifies a premium over the base surgical cost by acting as an insurance policy against high-cost obstetrics complications.
@@ -442,7 +460,7 @@ We modeled three distinct revenue scenarios to determine the optimal pricing str
 {\tiny Source: James Bian Research}
 \end{table}
 
-\section{The China Patient Funnel: Deriving the Serviceable Obtainable Market (SOM)}
+\subsection{The China Patient Funnel: Deriving the Serviceable Obtainable Market (SOM)}
 
 The strategic cornerstone of the HPV-58 thesis is the "Asian Paradox"---the disproportionately high prevalence of this specific genotype in East Asia. We constructed a bottom-up patient funnel for the Chinese market to quantify the Serviceable Obtainable Market (SOM).
 
@@ -463,12 +481,13 @@ The strategic cornerstone of the HPV-58 thesis is the "Asian Paradox"---the disp
 \begin{axis}[
     msstyle,
     xbar, 
-    width=0.9\textwidth, 
+    width=0.75\textwidth, 
     height=7cm, 
-    symbolic y coords={Treated Patients (SOM), Diagnosed Persistent (SAM), Persistent Infection Pool, Total HPV-58 Infections, Total Female Pop (15-65)},
+    symbolic y coords={{Treated Patients (SOM)}, {Diagnosed Persistent (SAM)}, {Persistent Infection Pool}, {Total HPV-58 Infections}, {Total Female Pop (15-65)}},
     ytick=data,
+    yticklabel style={font=\footnotesize, text width=3.2cm, align=right},
     nodes near coords, 
-    nodes near coords style={font=\footnotesize, color=black, xshift=15pt}, 
+    nodes near coords style={font=\footnotesize, color=black, xshift=8pt}, 
     xmin=0, xmax=550,
     xlabel={Population (Millions)},
     axis x line*=bottom,
@@ -478,11 +497,11 @@ The strategic cornerstone of the HPV-58 thesis is the "Asian Paradox"---the disp
     enlarge y limits=0.2
 ]
     \addplot coordinates {
-        (0.6,Treated Patients (SOM)) 
-        (4.0,Diagnosed Persistent (SAM)) 
-        (12.5,Persistent Infection Pool) 
-        (45.0,Total HPV-58 Infections) 
-        (500.0,Total Female Pop (15-65))
+        (0.6,{Treated Patients (SOM)}) 
+        (4.0,{Diagnosed Persistent (SAM)}) 
+        (12.5,{Persistent Infection Pool}) 
+        (45.0,{Total HPV-58 Infections}) 
+        (500.0,{Total Female Pop (15-65)})
     };
 \end{axis}
 \end{tikzpicture}
@@ -490,9 +509,9 @@ The strategic cornerstone of the HPV-58 thesis is the "Asian Paradox"---the disp
 {\tiny Source: James Bian Research}
 \end{figure}
 
-\textbf{Funnel Implication:} Even with conservative filtering for diagnostic gaps and treatment penetration, the SOM in China alone represents \textbf{~600,000 to 1.5 million courses annually}. At a \$3,000 price point, this supports a China-only revenue baseline of \textbf{\$1.8 billion to \$4.5 billion}, validating the "East Asia First" strategy.
+\textbf{Funnel Implication:} Even with conservative filtering for diagnostic gaps and treatment penetration, the SOM in China alone is \textbf{approximately 600,000 to 1.5 million courses annually}. At a \$3,000 price point, this supports a China-only revenue baseline of \textbf{\$1.8 billion to \$4.5 billion}, validating the "East Asia First" strategy.
 
-\section{The "Catch-Up" Moat: Why Vaccines Don't Kill the Market}
+\subsection{The "Catch-Up" Moat: Why Vaccines Don't Kill the Market}
 
 A primary bear case for HPV therapeutics is the success of prophylactic vaccines (e.g., \textit{Gardasil 9}, \textit{Cecolin 9}). Our analysis suggests this fear is misplaced for the medium term (20--30 years).
 
@@ -507,7 +526,7 @@ The addressable market is defined by the "Catch-Up" population:
     \item \textbf{Terminal Value Preservation:} While the \textit{incidence} of new HPV-58 infections will decline as vaccination rates hit WHO targets (90\%), the \textit{prevalence} of persistent infection in the adult population serves as a stable therapeutic reservoir through at least \textbf{2045}.
 \end{itemize}
 
-\section{Geographic Segmentation \& Sensitivity Analysis}
+\subsection{Geographic Segmentation \& Sensitivity Analysis}
 
 The economic viability of an HPV-58 siRNA product is fundamentally split by geography. A global "one-size-fits-all" strategy is destined to fail due to the epidemiological divergence.
 
@@ -537,7 +556,7 @@ In China and Korea, the high prevalence (10--28\% of cancer cases) allows for a 
 \subsection{North America / EU: The "Cocktail" Requirement}
 In the West, HPV-58 is a niche genotype ($<$2\% prevalence). A standalone HPV-58 siRNA would likely fail to recoup regulatory costs. Here, the commercial viability depends on incorporating the HPV-58 sequence into a \textbf{"Broad Spectrum Cocktail"} (targeting 16/18/31/45/58). This changes the CMC (Chemistry, Manufacturing, and Controls) economics, increasing Cost of Goods Sold (COGS) but allowing for a higher "Premium" price point (\$5,000+) positioned strictly as a fertility-sparing orphan-like intervention.
 
-\section{The Diagnostic Catalyst: No Test, No Treatment}
+\subsection{The Diagnostic Catalyst: No Test, No Treatment}
 
 A critical, often overlooked constraint on the TAM is the diagnostic landscape.
 \begin{itemize}
@@ -549,11 +568,8 @@ A critical, often overlooked constraint on the TAM is the diagnostic landscape.
 \textbf{Financial Implication:} We discount our base case revenue projections by a "Diagnostic Friction Coefficient" of 0.6x in the early launch years (2028-2030), gradually removing this discount as genotyping becomes standard practice in tertiary Asian hospitals.
 
 %EXPANDED_SECTION:market opportunity: epidemiology & valuation models
-\section{Total Addressable Market (TAM) \& Revenue Potential}
 %EXPANDED_SECTION:scientific rationale: mechanism, targets, & delivery
-\blueheader{Scientific Rationale: Mechanism, Targets, & Delivery}
-
-\section{The Biological Imperative: Silencing the "Viral Factory"}
+\section{Scientific Rationale: Mechanism, Targets, \& Delivery}
 
 The development of siRNA therapeutics for HPV-58 is predicated on a distinct biological mechanism: the targeted "genetic shutdown" of the viral oncogenes E6 and E7. Unlike traditional small molecule drugs that inhibit protein function downstream, siRNA therapeutics utilize the RNA interference (RNAi) pathway to degrade the messenger RNA (mRNA) encoding these proteins before they can be translated. This acts as an upstream intervention, effectively turning off the "viral factory" responsible for cellular immortalization and malignant transformation.
 
@@ -567,7 +583,7 @@ Current research indicates that a monotherapy targeting either E6 or E7 alone ma
 
 Preclinical validation in comparable high-risk HPV models (e.g., HeLa/SiHa cells) demonstrates that this dual-knockdown strategy can reduce viral mRNA levels by $>80\%$, leading to significant tumor growth inhibition. However, translating this efficacy to HPV-58 requires addressing a critical genomic divergence.
 
-\section{The Specificity Trap: Why HPV-16 Data Does Not Apply}
+\subsection{The Specificity Trap: Why HPV-16 Data Does Not Apply}
 
 A major pitfall in the current landscape is the assumption that siRNA sequences validated for HPV-16---the primary focus of Western research---will be efficacious against HPV-58. This is scientifically flawed due to the strict sequence specificity required by the RNA-induced silencing complex (RISC).
 
@@ -613,7 +629,7 @@ Further complicating the target selection is the high mutation rate of HPV-58, p
 
 \textbf{Strategic Response -- The "Cocktail" Necessity:} To mitigate the risk of viral escape, a viable HPV-58 therapeutic cannot rely on a single siRNA sequence. We advocate for a \textbf{"Cocktail" approach}, pooling 2--3 distinct siRNA sequences targeting highly conserved regions of the HPV-58 E6/E7 genome. This redundancy ensures that if a patient carries a variant resistant to one sequence, the others maintain therapeutic pressure.
 
-\section{The Delivery Challenge: Crossing the Mucosal Barrier}
+\subsection{The Delivery Challenge: Crossing the Mucosal Barrier}
 
 The "Achilles' heel" of non-liver siRNA therapeutics remains delivery. While the liver naturally absorbs systemic LNPs via ApoE binding, the cervical environment presents a unique set of hostile barriers. This physiological mismatch explains why off-the-shelf platforms like GalNAc (used in \textit{Inclisiran}) are non-starters for this indication.
 
@@ -647,7 +663,7 @@ To overcome these barriers, next-generation delivery vehicles are shifting from 
 {\tiny Source: James Bian Research}
 \end{table}
 
-\section{Differentiation vs. Gene Editing (CRISPR)}
+\subsection{Differentiation vs. Gene Editing (CRISPR)}
 
 While CRISPR/Cas9 offers a theoretical permanent cure by excising viral DNA, siRNA presents a superior risk/benefit profile for the current regulatory and clinical landscape of cervical dysplasia.
 
@@ -656,21 +672,21 @@ While CRISPR/Cas9 offers a theoretical permanent cure by excising viral DNA, siR
     \item \textbf{Delivery Payload:} CRISPR systems require the delivery of large Cas9 proteins or plasmids, which are significantly harder to transport across the mucosal barrier than small siRNA duplexes (approx. 13 kDa).
 \end{itemize}
 
-\section{Summary of Preclinical Requirements}
+\subsection{Summary of Preclinical Requirements}
 
-To unlock the $500M+ opportunity, development programs must move beyond standard subcutaneous xenograft models. The critical path to Investigational New Drug (IND) approval requires **orthotopic mouse models** (direct cervical injection/application) to prove that the selected delivery vehicle can physically traverse the mucus barrier and silence genes in the basal layer \textit{in vivo}. Programs relying solely on \textit{in vitro} data or flank tumors are likely to fail in Phase I due to the specific challenges of the cervicovaginal microenvironment.
+To unlock the \$500M+ opportunity, development programs must move beyond standard subcutaneous xenograft models. The critical path to Investigational New Drug (IND) approval requires \textbf{orthotopic mouse models} (direct cervical injection/application) to prove that the selected delivery vehicle can physically traverse the mucus barrier and silence genes in the basal layer \textit{in vivo}. Programs relying solely on \textit{in vitro} data or flank tumors are likely to fail in Phase I due to the specific challenges of the cervicovaginal microenvironment.
 
-\section{The Biological Imperative: Silencing the "Viral Factory"}
+\section{Competitive Landscape: Vaccines, Surgery, \& Emerging Tech}
 The competitive landscape for HPV-58-specific therapeutics represents a rare "blue ocean" within the crowded oncology and infectious disease market. While the broader HPV space is saturated with prophylactic vaccines (Merck's \textit{Gardasil 9}) and therapeutic candidates targeting the Western-dominant HPV-16/18 genotypes (e.g., Inovio's \textit{VGX-3100}), the specific niche for HPV-58---the second most prevalent high-risk type in East Asia---remains virtually uncontested by approved pharmaceuticals.
 
-\section{The "Open" Field: Absence of Direct siRNA Rivals}
+\subsection{The "Open" Field: Absence of Direct siRNA Rivals}
 Our analysis confirms that the landscape for siRNA-based HPV-58 treatments is currently \textbf{open}. As of late 2024, no active clinical trials specifically targeting HPV-58 E6/E7 siRNA therapeutics have been identified in major global registries.
 \begin{itemize}
     \item \textbf{Sirnaomics (STP909/STP705):} While this clinical-stage RNAi company has explored HPV, its primary focus has pivoted to non-viral targets (TGF-$\beta$1/COX-2) for skin cancer and fibrosis. Early preclinical data indicated efficacy against "different HPV strains," but the lack of a dedicated HPV-58 program leaves this specific therapeutic window unaddressed.
     \item \textbf{Western Pipelines:} Major RNAi players like Alnylam and Arrowhead utilize GalNAc platforms restricted to liver targets (e.g., Hepatitis B), rendering them technologically unsuited for cervical mucosal applications without significant delivery platform overhaul.
 \end{itemize}
 
-\section{The Primary Threat: Multivalent Therapeutic Vaccines}
+\subsection{The Primary Threat: Multivalent Therapeutic Vaccines}
 The most significant near-term competitive threat does not come from another RNAi developer, but from the therapeutic vaccine sector within China itself. The \textbf{Chinese Academy of Medical Sciences} has advanced a candidate that directly challenges the "Asian Paradox" gap.
 
 \subsection{Competitor Profile: 5GHPV3}
@@ -683,7 +699,7 @@ The most significant near-term competitive threat does not come from another RNA
     \item \textbf{Weakness:} Therapeutic vaccines rely on the host immune system, which is often "tolerant" to chronic HPV infections. Historical efficacy for similar vaccines (e.g., VGX-3100) has been mixed, with regression rates around 40\%, leaving a majority of patients requiring further intervention.
 \end{itemize}
 
-\section{Standard of Care (SOC): The Case Against the Knife}
+\subsection{Standard of Care (SOC): The Case Against the Knife}
 The incumbent competitor is not a drug, but a procedure: \textbf{Loop Electrosurgical Excision Procedure (LEEP)} or Cold Knife Conization. To succeed, an siRNA therapeutic must position itself as "Chemical Surgery"---matching the efficacy of physical excision while eliminating the associated morbidity.
 
 \begin{table}[H]
@@ -709,7 +725,7 @@ The incumbent competitor is not a drug, but a procedure: \textbf{Loop Electrosur
 
 \textbf{Strategic Implication:} The high recurrence rate of LEEP derives from its inability to treat the field of infection surrounding the visible lesion. siRNA offers a distinct value proposition: \textbf{Fertility Preservation}. For the millions of women of childbearing age in China/Korea, the risk of preterm birth associated with LEEP is a powerful deterrent, justifying a premium price for a non-invasive pharmaceutical alternative.
 
-\section{The "Western Bias" in Indirect Competitors}
+\subsection{The "Western Bias" in Indirect Competitors}
 The global pipeline for HPV therapeutics highlights a critical market inefficiency we term the "Asian Paradox." Western biotech firms have heavily invested in vaccines targeting HPV-16 and HPV-18, driven by US/EU epidemiology where these types cause $\sim$70\% of cancers.
 
 \begin{itemize}
@@ -719,7 +735,7 @@ The global pipeline for HPV therapeutics highlights a critical market inefficien
 
 This creates a strategic "white space" in East Asia. HPV-58 is the \#1 or \#2 cause of persistent infection in regions like Shanghai and Seoul, yet it remains untouched by these advanced Western therapies. An HPV-58 specific siRNA would effectively hold a monopoly in this genetically distinct sub-market.
 
-\section{Market Cannibalization: The Prophylactic Ceiling}
+\subsection{Market Cannibalization: The Prophylactic Ceiling}
 Investors often question the longevity of an HPV therapeutic market given the efficacy of prophylactic vaccines like \textit{Gardasil 9} and the lower-cost Chinese alternative \textit{Cecolin 9}.
 
 \begin{itemize}
@@ -755,50 +771,6 @@ Investors often question the longevity of an HPV therapeutic market given the ef
 {\tiny Source: James Bian Research}
 \end{figure}
 
-\section{Emerging Modalities: Why CRISPR is Not Ready}
-Gene editing technologies (CRISPR/TALEN) represent a theoretical "cure" by permanently excising viral DNA. However, compared to siRNA, they face substantial hurdles that delay their commercial viability:
-\begin{enumerate}
-    \item \textbf{Regulatory Risk:} CRISPR induces permanent genomic alterations. The risk of off-target cuts leading to oncogenesis is a massive regulatory barrier for a non-lethal condition like CIN2/3. siRNA is transient and reversible, offering a significantly faster regulatory path (estimated 5-7 years vs. 10+ for in vivo CRISPR).
-    \item \textbf{Delivery Payload:} CRISPR systems require delivering large Cas9 proteins or plasmids. If delivering small siRNA (~13 kDa) through the mucus barrier is difficult, delivering large gene-editing complexes is exponentially harder.
-\end{enumerate}
-
-\section{Conclusion: The Strategic Moat}
-The competitive landscape grants a unique advantage to a developer focusing on HPV-58 siRNA. The major Western pharmaceutical companies have largely ignored this genotype, focusing their massive R\&D budgets on HPV-16/18 solutions that do not address the primary disease burden in East Asia. Simultaneously, the only direct competitor (5GHPV3) is a vaccine with inherent immunological limitations.
-
-By solving the mucosal delivery challenge, a specialized biotech can exploit this **"Asian Paradox"**---leveraging Western RNAi technology to solve an Eastern epidemiological crisis---securing a natural monopoly in a market of millions of women who are currently managing their infection with "watchful waiting" or invasive surgery.
-
-%EXPANDED_SECTION:competitive landscape: vaccines, surgery, & emerging tech
-The competitive landscape for HPV-58-specific therapeutics represents a rare "blue ocean" within the crowded oncology and infectious disease market. While the broader HPV space is saturated with prophylactic vaccines (Merck's \textit{Gardasil 9}) and therapeutic candidates targeting the Western-dominant HPV-16/18 genotypes (e.g., Inovio's \textit{VGX-3100}), the specific niche for HPV-58---the second most prevalent high-risk type in East Asia---remains virtually uncontested by approved pharmaceuticals.
-
-\subsection{The "Open" Field: Absence of Direct siRNA Rivals}
-Our analysis confirms that the landscape for siRNA-based HPV-58 treatments is currently \textbf{open}. As of late 2024, no active clinical trials specifically targeting HPV-58 E6/E7 siRNA therapeutics have been identified in major global registries.
-\begin{itemize}
-    \item \textbf{Sirnaomics (STP909/STP705):} While this clinical-stage RNAi company has explored HPV, its primary focus has pivoted to non-viral targets (TGF-$\beta$1/COX-2) for skin cancer and fibrosis. Early preclinical data indicated efficacy against "different HPV strains," but the lack of a dedicated HPV-58 program leaves this specific therapeutic window unaddressed.
-    \item \textbf{Western Pipelines:} Major RNAi players like Alnylam and Arrowhead utilize GalNAc platforms restricted to liver targets (e.g., Hepatitis B), rendering them technologically unsuited for cervical mucosal applications without significant delivery platform overhaul.
-\end{itemize}
-
-\subsection{The Primary Threat: Multivalent Therapeutic Vaccines}
-The most significant near-term competitive threat does not come from another RNAi developer, but from the therapeutic vaccine sector within China itself. The \textbf{Chinese Academy of Medical Sciences} has advanced a candidate that directly challenges the "Asian Paradox" gap.
-
-\textbf{Competitor Profile: 5GHPV3}
-\begin{itemize}
-    \item \textbf{Modality:} Multivalent Therapeutic Vaccine.
-    \item \textbf{Targets:} Explicitly targets HPV 16, 18, 31, 52, and \textbf{58}.
-    \item \textbf{Status:} Phase I/II completed (Follow-up Jan 2024).
-    \item \textbf{Mechanism:} Uses conserved early protein sequences to induce systemic T-cell immunity against the virus.
-    \item \textbf{Threat Level:} \textbf{High}. Unlike Western candidates, 5GHPV3 addresses the specific epidemiology of the region. If successful, it offers a systemic "search-and-destroy" mechanism for metastatic or multifocal lesions, which localized siRNA cannot match.
-    \item \textbf{Weakness:} Therapeutic vaccines rely on the host immune system, which is often "tolerant" to chronic HPV infections. Historical efficacy for similar vaccines (e.g., VGX-3100) has been mixed, with regression rates around 40\%, leaving a majority of patients requiring further intervention.
-\end{itemize}
-
-\subsection{Standard of Care (SOC): The Case Against the Knife}
-The incumbent competitor is not a drug, but a procedure: \textbf{Loop Electrosurgical Excision Procedure (LEEP)} or Cold Knife Conization. To succeed, an siRNA therapeutic must position itself as "Chemical Surgery"---matching the efficacy of physical excision while eliminating the associated morbidity.
-
-\subsection{The "Western Bias" in Indirect Competitors}
-The global pipeline for HPV therapeutics highlights a critical market inefficiency we term the "Asian Paradox." Western biotech firms have heavily invested in vaccines targeting HPV-16 and HPV-18, driven by US/EU epidemiology where these types cause $\sim$70\% of cancers.
-
-\subsection{Market Cannibalization: The Prophylactic Ceiling}
-Investors often question the longevity of an HPV therapeutic market given the efficacy of prophylactic vaccines like \textit{Gardasil 9} and the lower-cost Chinese alternative \textit{Cecolin 9}.
-
 \subsection{Emerging Modalities: Why CRISPR is Not Ready}
 Gene editing technologies (CRISPR/TALEN) represent a theoretical "cure" by permanently excising viral DNA. However, compared to siRNA, they face substantial hurdles that delay their commercial viability:
 \begin{enumerate}
@@ -808,6 +780,9 @@ Gene editing technologies (CRISPR/TALEN) represent a theoretical "cure" by perma
 
 \subsection{Conclusion: The Strategic Moat}
 The competitive landscape grants a unique advantage to a developer focusing on HPV-58 siRNA. The major Western pharmaceutical companies have largely ignored this genotype, focusing their massive R\&D budgets on HPV-16/18 solutions that do not address the primary disease burden in East Asia. Simultaneously, the only direct competitor (5GHPV3) is a vaccine with inherent immunological limitations.
+
+By solving the mucosal delivery challenge, a specialized biotech can exploit this \textbf{"Asian Paradox"}---leveraging Western RNAi technology to solve an Eastern epidemiological crisis---securing a natural monopoly in a market of millions of women who are currently managing their infection with "watchful waiting" or invasive surgery.
+
 \section{Target Product Profile (TPP): The "Chemical Surgery" Paradigm}
 
 To capitalize on the "Asian Paradox" and address the unmet need in persistent HPV-58 infection, the strategic development path must prioritize a Target Product Profile (TPP) that offers a tangible clinical advantage over the current Standard of Care (SOC)---specifically, the invasiveness of LEEP. The optimal candidate is not merely an antiviral, but a "Chemical Surgery" agent: a non-invasive, fertility-sparing intervention that eradicates the viral reservoir in the basal mucosal layer without physical excision.
@@ -905,9 +880,9 @@ We estimate a 6--8 year timeline from preclinical optimization to market entry, 
 \begin{axis}[
     xbar,
     xmin=0, xmax=9,
-    width=0.95\textwidth,
+    width=0.9\textwidth,
     height=6cm,
-    symbolic y coords={Market Entry, Regulatory Approval, Phase III (Pivotal), Phase II (Dose/Efficacy), Phase I (Safety), Preclinical (GLP)},
+    symbolic y coords={{Market Entry}, {Regulatory Approval}, {Phase III (Pivotal)}, {Phase II (Dose/Efficacy)}, {Phase I (Safety)}, {Preclinical (GLP)}},
     ytick=data,
     yticklabel style={font=\footnotesize},
     nodes near coords,
@@ -919,7 +894,7 @@ We estimate a 6--8 year timeline from preclinical optimization to market entry, 
     msstyle,
     bar width=12pt,
 ]
-\addplot coordinates {(2,Preclinical (GLP)) (3,Phase I (Safety)) (5,Phase II (Dose/Efficacy)) (7,Phase III (Pivotal)) (8,Regulatory Approval) (8.5,Market Entry)};
+\addplot coordinates {(2,{Preclinical (GLP)}) (3,{Phase I (Safety)}) (5,{Phase II (Dose/Efficacy)}) (7,{Phase III (Pivotal)}) (8,{Regulatory Approval}) (8.5,{Market Entry})};
 \end{axis}
 \end{tikzpicture}
 \par\vspace{0.1cm}
@@ -931,7 +906,9 @@ We estimate a 6--8 year timeline from preclinical optimization to market entry, 
 \begin{enumerate}
     \item \textbf{Delivery Formulation (Years 1-2):} Achieving extensive mucosal penetration to the basal layer remains the highest technical hurdle. Failure here stops the program.
     \item \textbf{Durability Data (Years 6-8):} Proving that viral clearance is sustained and lesions do not recur requires lengthy follow-up, extending the Phase III timeline.
-\end{enumerate}The commercial viability of an HPV-58 siRNA therapeutic hinges not merely on biological efficacy but on the ability to manufacture complex biologicals at a cost structure competitive with simple surgical interventions. Unlike rare disease therapeutics (e.g., \textit{Patisiran} or \textit{Givosiran}) where six-figure price tags cushion high manufacturing costs, an HPV-58 product targets a mass market in Asia where it must compete with the "Gold Standard" of LEEP and Cryotherapy---procedures costing between \$1,500 and \$3,000. Achieving a target price point of \$2,000--\$5,000 per course while maintaining healthy margins requires a paradigm shift in oligonucleotide manufacturing and formulation.
+\end{enumerate}
+
+The commercial viability of an HPV-58 siRNA therapeutic hinges not merely on biological efficacy but on the ability to manufacture complex biologicals at a cost structure competitive with simple surgical interventions. Unlike rare disease therapeutics (e.g., \textit{Patisiran} or \textit{Givosiran}) where six-figure price tags cushion high manufacturing costs, an HPV-58 product targets a mass market in Asia where it must compete with the "Gold Standard" of LEEP and Cryotherapy---procedures costing between \$1,500 and \$3,000. Achieving a target price point of \$2,000--\$5,000 per course while maintaining healthy margins requires a paradigm shift in oligonucleotide manufacturing and formulation.
 
 \subsection{From Solid-Phase to Microfluidics: The Scalability Pivot}
 Traditional solid-phase oligonucleotide synthesis (Phosphoramidite Approach or PAC) faces significant headwinds when scaling for a patient population numbering in the millions (e.g., the 10--15 million women in China with persistent HPV-58). The process involves high solvent consumption, substantial hazardous waste generation, and diminishing yields with increased sequence length and complexity.
@@ -1021,7 +998,9 @@ Transitioning from preclinical success to clinical production requires strict ad
 \end{itemize}
 
 \subsection{Conclusion: The Manufacturing Imperative}
-The economic viability of an HPV-58 siRNA product is binary. If production costs force a price point above \$5,000, the product effectively prices itself out of the "Surgical Alternative" market and into a "Niche/Orphan" category where the patient volume cannot support the R\&D investment. Conversely, mastering microfluidic scalability and shelf-stable formulation to achieve a price point near \$2,000 would unlock a multi-billion dollar opportunity in East Asia, positioning the therapy as a viable, non-invasive standard of care.\subsection{Primary Technical Risk: The Mucosal Delivery Barrier}
+The economic viability of an HPV-58 siRNA product is binary. If production costs force a price point above \$5,000, the product effectively prices itself out of the "Surgical Alternative" market and into a "Niche/Orphan" category where the patient volume cannot support the R\&D investment. Conversely, mastering microfluidic scalability and shelf-stable formulation to achieve a price point near \$2,000 would unlock a multi-billion dollar opportunity in East Asia, positioning the therapy as a viable, non-invasive standard of care.
+
+\subsection{Primary Technical Risk: The Mucosal Delivery Barrier}
 The single greatest impediment to the commercial viability of an HPV-58 specific siRNA therapeutic is the \textbf{Extrahepatic Delivery Challenge}. While the biological rationale for silencing E6/E7 oncogenes is robust, the physical delivery of large, negatively charged siRNA molecules (~13 kDa) to the basal layer of the cervical epithelium remains the "Achilles' heel" of the investment thesis.
 
 \textbf{The Mucus Barrier vs. Cellular Uptake:}
@@ -1130,60 +1109,7 @@ Investors should monitor the following upcoming milestones to validate the thesi
     \item \textbf{Competitor Data Readout (Jan 2025+):} Long-term follow-up data from the Chinese Academy of Medical Sciences' \textbf{5GHPV3} therapeutic vaccine. Strong efficacy here would validate the target but threaten the siRNA modality's market share.
     \item \textbf{Delivery Proof-of-Concept:} Publication of \textit{in vivo} orthotopic mouse model data demonstrating basal layer transfection using peptide-conjugated LNPs. This is the de-risking event required for entry into Phase I.
     \item \textbf{Regulatory Guidance Updates:} Any movement from the CDE/NMPA in China regarding specific guidelines for "Nucleic Acid Drugs" in infectious disease, which would clarify the approval pathway.
-\end{enumerate}\section{Revenue Trajectory \& Market Sizing}
-
-Our financial model for HPV-58 specific siRNA therapeutics is predicated on a distinct "volume-driven" strategy within the East Asian market, contrasting sharply with the "price-driven" orphan drug models typical of Western RNAi therapeutics (e.g., Alnylam's porphyria franchise). The economic viability of this program hinges on unlocking the "Catch-Up" demographic---approximately \textbf{10--15 million women in China alone} who currently harbor persistent HPV-58 infections and are ineligible for prophylactic vaccination benefits.
-
-\subsection{Total Addressable Market (TAM) \& Segmentation}
-We estimate the global Total Addressable Market (TAM) for HPV-58 siRNA therapeutics to range between \textbf{\$500 million and \$4 billion annually}, heavily skewed toward the "Surgical Alternative" revenue model.
-
-\begin{itemize}
-    \item \textbf{Primary Market Driver (East Asia):} The strategic volume driver is the high prevalence of HPV-58 in China and South Korea, where it accounts for \textbf{10--28\% of cervical cancer cases}. With an estimated 12.5 million women (midpoint of 10--15 million range) in China carrying persistent HPV-58, this region represents $>85\%$ of the effective commercial opportunity.
-    \item \textbf{Secondary Market (Latin America):} While Latin America exhibits moderate prevalence ($\sim12\%$ in cervical cancers), lower purchasing power and reliance on public tender offers (government procurement) necessitate a volume-based discount strategy, reducing the weighted revenue contribution.
-    \item \textbf{Niche Markets (US/EU):} We assign negligible value to North American and European markets in our Base Case. With HPV-58 prevalence at $<2\%$ and high vaccine coverage (Gardasil 9), a standalone HPV-58 therapy is commercially irrational here. Market entry would require a "Cocktail" formulation (targeting 16/18/58), significantly increasing regulatory COGS.
-\end{itemize}
-
-\subsection{Revenue Model: The "Chemical Surgery" Paradigm}
-We model revenue based on a curative, non-recurring treatment course, positioned as a functional replacement for Loop Electrosurgical Excision Procedure (LEEP).
-
-\begin{itemize}
-    \item \textbf{Pricing Architecture:} We assume a launch price of \textbf{\$2,500 per course} in our Base Case. This pricing aligns with the upper bound of surgical costs in developed Asian markets (LEEP/Conization range: \$2,000--\$5,000) and includes a premium for "Fertility Preservation"---avoiding the cervical stenosis and preterm birth risks associated with physical surgery.
-    \item \textbf{Penetration Rate:} We project a peak penetration rate of \textbf{15\%} of the diagnosed persistent infection pool. This conservative estimate accounts for the "Watchful Waiting" standard of care for low-grade lesions (CIN1) and the diagnostic gap where clinics fail to specifically genotype for HPV-58.
-\end{itemize}
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}
-\begin{axis}[
-    ybar,
-    title={Projected Revenue Scenarios (2028-2032E)},
-    title style={font=\footnotesize},
-    symbolic x coords={2028, 2029, 2030, 2031, 2032},
-    x tick label style={rotate=0, anchor=north, font=\footnotesize},
-    ylabel={Revenue (\$ Millions)},
-    ylabel style={font=\footnotesize},
-    yticklabel style={font=\footnotesize},
-    ymin=0, ymax=3500,
-    bar width=15pt,
-    ymajorgrids=true,
-    grid style={dotted, gray},
-    legend style={at={(0.5,-0.15)}, anchor=north, legend columns=-1, font=\footnotesize},
-    nodes near coords,
-    nodes near coords style={font=\footnotesize, color=black},
-    width=0.9\textwidth,
-    height=7cm
-]
-\addplot[fill=brandblue] coordinates {(2028, 50) (2029, 250) (2030, 800) (2031, 1500) (2032, 2400)};
-\addlegendentry{Base Case}
-\addplot[fill=brandaccent] coordinates {(2028, 100) (2029, 450) (2030, 1200) (2031, 2200) (2032, 3800)};
-\addlegendentry{Bull Case}
-\addplot[fill=textgrey] coordinates {(2028, 20) (2029, 80) (2030, 200) (2031, 400) (2032, 650)};
-\addlegendentry{Bear Case}
-\end{axis}
-\end{tikzpicture}
-\par\vspace{0.1cm}
-{\tiny Source: James Bian Research}
-\end{figure}
+\end{enumerate}
 
 \section{Unit Economics \& Gross Margin Analysis}
 
@@ -1502,6 +1428,6 @@ A common bear case for HPV therapeutics is the success of prophylactic vaccines 
 
 \textbf{The Residual Pool:} Vaccines are preventative, not therapeutic. They do not clear existing infections. Consequently, the cohort of women currently aged 25--50 who have already acquired persistent HPV-58 infection represents a "trapped" patient pool. Given that the progression from persistent infection to invasive cancer can span 10--20 years, this demographic provides a stable addressable market through at least \textbf{2040-2050}, insulating the siRNA therapeutic market from immediate vaccine cannibalization.
 
-\end{multicols}
+\end{maincontent}
 
 \end{document}

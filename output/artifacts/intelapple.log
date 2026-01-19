@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.1.17)  18 JAN 2026 08:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.1.17)  18 JAN 2026 06:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -775,7 +775,11 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count331
 \l__pdf_internal_box=\box127
 )
-(./intelapple.aux)
+(./intelapple.aux
+
+LaTeX Warning: Label `fig:multiples' multiply defined.
+
+)
 \openout1 = `intelapple.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 278.
@@ -878,531 +882,484 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 11.39996pt on input line 300.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 7.59998pt on input line 312.
+(Font)              scaled to size 7.59998pt on input line 311.
 LaTeX Font Info:    Trying to load font information for TS1+phv on input line 3
-12.
+11.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 312.
+(Font)              scaled to size 9.49997pt on input line 311.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 312.
+(Font)              <7> on input line 311.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 312.
+(Font)              <5> on input line 311.
+
+Underfull \hbox (badness 8113) in paragraph at lines 311--311
+[]\T1/phv/b/n/10 Yield Con-sid-er-a-tions: \T1/phv/m/n/10 In-tel re-ports D0 $\
+OML/cmm/m/it/10 <$ \T1/phv/m/n/10 0.40
+ []
+
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 11.39996pt on input line 314.
+(Font)              scaled to size 11.39996pt on input line 313.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.54997pt on input line 326.
+(Font)              scaled to size 8.54997pt on input line 332.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.44997pt on input line 326.
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf
--dist/fonts/enc/dvips/base/8r.enc}
+(Font)              scaled to size 10.44997pt on input line 332.
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/base/8r.enc}
 
 ]
-Underfull \hbox (badness 5711) in paragraph at lines 334--335
+Underfull \hbox (badness 5711) in paragraph at lines 333--334
 []\T1/phv/b/n/10 Technological Con-ver-gence: \T1/phv/m/n/10 In-tel's ag-gres-s
 ive
  []
 
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.59998pt on input line 354.
+(Font)              scaled to size 7.59998pt on input line 353.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 355.
+(Font)              <8> on input line 354.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 355.
+(Font)              <6> on input line 354.
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--357
+Underfull \hbox (badness 10000) in paragraph at lines 356--356
 []|\T1/phv/b/n/8 TSMC N2
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
 []|\T1/phv/b/n/8 Intel 14A
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
 []|\T1/phv/m/n/8 iPhone (Non-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--360
+Underfull \hbox (badness 10000) in paragraph at lines 359--359
 []|\T1/phv/b/n/8 Production
  []
 
 
-Underfull \hbox (badness 5460) in paragraph at lines 360--360
+Underfull \hbox (badness 5460) in paragraph at lines 359--359
 []|\T1/phv/m/n/8 Nov 26, 2025
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 361--361
+Underfull \hbox (badness 10000) in paragraph at lines 360--360
 []|\T1/phv/m/n/8 Mid-2027 (Ru-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 361--361
+Underfull \hbox (badness 10000) in paragraph at lines 360--360
 []|\T1/phv/m/n/8 Sep 2026
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 362--362
+Underfull \hbox (badness 10000) in paragraph at lines 361--361
 []|\T1/phv/m/n/8 RibbonFET +
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 363--363
+Underfull \hbox (badness 10000) in paragraph at lines 362--362
 []|\T1/phv/m/n/8 HVM started;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--364
+Underfull \hbox (badness 10000) in paragraph at lines 363--363
 []|\T1/phv/m/n/8 Supply Chain
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--364
+Underfull \hbox (badness 10000) in paragraph at lines 363--363
 []|\T1/phv/m/n/8 Performance
  []
 
 
-Overfull \hbox (17.53079pt too wide) in paragraph at lines 355--367
+Overfull \hbox (17.53079pt too wide) in paragraph at lines 354--366
  [][] 
  []
 
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 4.74998pt on input line 368.
-Package pgfplots info on input line 394: Using 'lua backend=false' for axis: x 
+(Font)              scaled to size 4.74998pt on input line 367.
+Package pgfplots info on input line 393: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 
-Overfull \hbox (21.56905pt too wide) in paragraph at lines 404--405
+Overfull \hbox (21.56905pt too wide) in paragraph at lines 403--404
  [][] 
  []
 
-[2]
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 419.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 418.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 9.49997pt on input line 419.
-Package pgfplots info on input line 463: Using 'lua backend=false' for axis: st
+(Font)              scaled to size 9.49997pt on input line 418.
+[2]
+Package pgfplots info on input line 462: Using 'lua backend=false' for axis: st
 acked plots unsupported (yet).
-Package pgfplots info on input line 463: Using 'lua backend=false' for axis: x 
+Package pgfplots info on input line 462: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 
-Overfull \hbox (32.46538pt too wide) in paragraph at lines 504--514
+Overfull \hbox (32.46538pt too wide) in paragraph at lines 503--513
  [][] 
  []
 
 
 
 [3]
-
-[4]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 13.67995pt on input line 521.
+(Font)              scaled to size 13.67995pt on input line 520.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 13.67995pt on input line 521.
+(Font)              scaled to size 13.67995pt on input line 520.
  (./intelapple.toc
 
-[5])
+[4])
 \tf@toc=\write4
 \openout4 = `intelapple.toc'.
 
 
 
-[6]
-Underfull \hbox (badness 1688) in paragraph at lines 559--559
+[5]
+Underfull \hbox (badness 1688) in paragraph at lines 558--558
 []|\T1/phv/b/n/8 MacBook Air / iPad \T1/phv/m/n/8 (Low-end M-
  []
 
 
-Overfull \hbox (2.03186pt too wide) in paragraph at lines 573--574
+Overfull \hbox (2.03186pt too wide) in paragraph at lines 571--572
 []\T1/phv/b/n/10 Containment of Fail-ure: \T1/phv/m/n/10 If In-tel 18A yields r
 e-main be-low Ap-ple's \T1/phv/b/n/10 70%+ \T1/phv/m/n/10 thresh-
  []
 
 
 
-[7]
-Package pgfplots info on input line 603: Using 'lua backend=false' for axis: x 
+[6]
+Package pgfplots info on input line 601: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 
 
+[7]
+
 [8]
-Overfull \hbox (1.13934pt too wide) in paragraph at lines 640--641
-\T1/phv/m/n/10 sors ex-pand-ing through 2026. Re-port-edly con-sid-er-ing dual-
-sourcing with Sam-
+Overfull \hbox (17.13588pt too wide) in paragraph at lines 638--639
+[]\T1/phv/b/n/10 18A Node (Rib-bon-FET + Pow-erVia): \T1/phv/m/n/10 In-tel clai
+ms 18A of-fers a \T1/phv/b/n/10 10% performance-
  []
 
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 662.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 7.59998pt on input line 662.
 
-Overfull \hbox (18.56386pt too wide) in paragraph at lines 658--671
+Overfull \hbox (8.22067pt too wide) in paragraph at lines 651--665
  [][] 
  []
 
 
 
 [9]
-
-[10]
-Overfull \hbox (17.13588pt too wide) in paragraph at lines 688--689
-[]\T1/phv/b/n/10 18A Node (Rib-bon-FET + Pow-erVia): \T1/phv/m/n/10 In-tel clai
-ms 18A of-fers a \T1/phv/b/n/10 10% performance-
- []
-
-
-Overfull \hbox (8.22067pt too wide) in paragraph at lines 701--716
- [][] 
- []
-
-
-
-[11]
-Package pgfplots info on input line 766: Using 'lua backend=false' for axis: x 
+Package pgfplots info on input line 715: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 
-Overfull \hbox (3.8925pt too wide) in paragraph at lines 790--791
+Overfull \hbox (3.8925pt too wide) in paragraph at lines 739--740
 []\T1/phv/b/n/10 High-NA EUV Cost Bur-den: \T1/phv/m/n/10 The 14A node re-quire
 s High-NA scan-ners. These
  []
 
 
 
+[10]
+
+[11]
+
 [12]
-
-[13]
-
-[14]
-
-[15]
-Overfull \hbox (0.90395pt too wide) in paragraph at lines 933--934
-\T1/phv/m/n/10 menced vol-ume pro-duc-tion in Q4 2025, ef-fec-tively ty-ing in 
-man-u-fac-tur-ing readi-
- []
-
-LaTeX Font Info:    Font shape `TS1/phv/b/n' will be
-(Font)              scaled to size 7.59998pt on input line 950.
-
-Underfull \hbox (badness 5741) in paragraph at lines 954--955
-[]|\T1/phv/m/n/8 Hypothetical ex-ter-nal foundry cus-
- []
-
-LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 4.74998pt on input line 958.
-
-Overfull \hbox (6.57178pt too wide) in paragraph at lines 978--990
- [][] 
- []
-
-
-
-[16]
-Overfull \hbox (5.42438pt too wide) in paragraph at lines 998--999
-[]\T1/phv/b/n/10 The Ex-pi-ra-tion Date: \T1/phv/m/n/10 This ad-van-tage win-do
-w closes in late 2026 when TSMC's
- []
-
-
-Overfull \hbox (7.87503pt too wide) in paragraph at lines 1017--1018
-[]\T1/phv/b/n/10 Facilities: \T1/phv/m/n/10 Vol-ume pro-duc-tion com-menced Nov
-em-ber 2025 at Fab 20 (Baoshan)
- []
-
-
-
-[17]
-
-[18]
-Overfull \hbox (6.99681pt too wide) in paragraph at lines 1071--1072
+Overfull \hbox (6.99681pt too wide) in paragraph at lines 884--885
 \T1/phv/m/n/10 mi-gra-tion path for high-volume, high-margin chips (A-Series Pr
 o, M-Series Max/Ultra). 
  []
 
 
 
-[19]
-Overfull \hbox (4.25002pt too wide) in paragraph at lines 1120--1122
+[13]
+Overfull \hbox (4.25002pt too wide) in paragraph at lines 933--935
 \T1/phv/m/n/10 How-ever, cur-rent data sug-gests Sam-sung is ef-fec-tively ex-c
 luded from the 2nm/1.4nm
  []
 
 
 
-[20]
-Package pgfplots info on input line 1174: Using 'lua backend=false' for axis: x
- coord trafo unsupported.
+[14]
+Package pgfplots info on input line 967: Using 'lua backend=false' for axis: x 
+coord trafo unsupported.
 
 
-[21]
-Overfull \hbox (3.7345pt too wide) in paragraph at lines 1197--1198
+[15]
+Overfull \hbox (3.7345pt too wide) in paragraph at lines 990--991
 \T1/phv/m/n/10 The "holy grail" of 3D stack-ing is hy-brid bonding---connecting
  dies di-rectly via copper-
  []
 
 LaTeX Font Info:    Font shape `TS1/phv/b/n' will be
-(Font)              scaled to size 9.49997pt on input line 1200.
-Package pgfplots info on input line 1240: Using 'lua backend=false' for axis: x
+(Font)              scaled to size 9.49997pt on input line 993.
+Package pgfplots info on input line 1033: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 
 
-[22]
-Underfull \hbox (badness 1824) in paragraph at lines 1286--1286
+[16]
+Underfull \hbox (badness 1824) in paragraph at lines 1079--1079
 []|\T1/phv/b/n/8 EMIB \T1/phv/m/n/8 (Em-bed-ded Bridge). Cost-effective,
  []
 
 
-Underfull \hbox (badness 1466) in paragraph at lines 1286--1287
+Underfull \hbox (badness 1466) in paragraph at lines 1079--1080
 []|\T1/phv/b/n/8 CoWoS \T1/phv/m/n/8 (Sil-i-con In-ter-poser). Higher cost,
  []
 
 
-Underfull \hbox (badness 1242) in paragraph at lines 1287--1287
+Underfull \hbox (badness 1242) in paragraph at lines 1080--1080
 \T1/phv/m/n/8 pitch tar-get. Key to 18A-PT per-for-mance
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1289--1290
+Underfull \hbox (badness 10000) in paragraph at lines 1082--1083
 []|\T1/phv/b/n/8 Embedded\T1/phv/m/n/8 . Ul-tra-Fu-sion re-lies on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1289--1290
+Underfull \hbox (badness 10000) in paragraph at lines 1082--1083
 \T1/phv/m/n/8 InFO/CoWoS. High bar-rier to exit for
  []
 
 
 
-[23]
-Package pgfplots info on input line 1336: Using 'lua backend=false' for axis: x
+[17]
+Package pgfplots info on input line 1129: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 
 
-[24]
-Overfull \hbox (4.44661pt too wide) in paragraph at lines 1371--1372
+[18]
+Overfull \hbox (4.44661pt too wide) in paragraph at lines 1164--1165
 \T1/phv/m/n/10 leading-edge logic---one at TSMC (Tai-wan/Arizona) and one at In
 -tel (Ohio/Arizona)---
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 1390--1391
+Underfull \hbox (badness 3746) in paragraph at lines 1183--1184
 []|\T1/phv/b/n/8 Moderate\T1/phv/m/n/8 . U.S. pro-duc-tion pro-vides
  []
 
 
 
-[25]
-Underfull \hbox (badness 10000) in paragraph at lines 1411--1412
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 1204--1205
 \T1/phv/m/n/10 unit's op-er-at-ing losses, which
  []
 
-[26]
-Underfull \hbox (badness 10000) in paragraph at lines 1445--1446
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 1238--1239
 \T1/phv/m/n/8 entry-level M-series (Mac-
  []
 
-Package pgfplots info on input line 1487: Using 'lua backend=false' for axis: x
+Package pgfplots info on input line 1280: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 
-Overfull \hbox (49.92813pt too wide) in paragraph at lines 1493--1494
+Overfull \hbox (49.92813pt too wide) in paragraph at lines 1286--1287
  [][] 
  []
 
 
 
-[27]
-Underfull \hbox (badness 1515) in paragraph at lines 1521--1521
+[21]
+Underfull \hbox (badness 1515) in paragraph at lines 1314--1314
 []|\T1/phv/m/n/8 Proven ex-e-cu-tion; Nanosheet GAA
  []
 
 
-Underfull \hbox (badness 1199) in paragraph at lines 1521--1522
+Underfull \hbox (badness 1199) in paragraph at lines 1314--1315
 []|\T1/phv/m/n/8 aggressive roadmap; First to com-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1525--1526
+Underfull \hbox (badness 10000) in paragraph at lines 1318--1319
 []|\T1/phv/m/n/8 Second Source (Entry-
  []
 
 
-Overfull \hbox (9.8425pt too wide) in paragraph at lines 1534--1535
+Overfull \hbox (9.8425pt too wide) in paragraph at lines 1327--1328
 \T1/phv/m/n/10 The cen-tral risk to this the-sis is the "Yield Chasm." In-tel r
 e-ports D0 $\OML/cmm/m/it/10 <$ \T1/phv/m/n/10 0.40 defects/cm$[]$,
  []
 
 
-Overfull \hbox (10.05199pt too wide) in paragraph at lines 1541--1542
+Overfull \hbox (10.05199pt too wide) in paragraph at lines 1334--1335
 \T1/phv/m/n/10 The fi-nan-cial im-pli-ca-tions of an Ap-ple part-ner-ship are t
 rans-for-ma-tive for In-tel's Foundry
  []
 
 
 
-[28]
-Package pgfplots info on input line 1563: Using 'lua backend=false' for axis: x
+[22]
+Package pgfplots info on input line 1356: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 
 
-[29]
-Package pgfplots info on input line 1633: Using 'lua backend=false' for axis: x
+[23]
+Package pgfplots info on input line 1426: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 
-Overfull \hbox (20.8535pt too wide) in paragraph at lines 1646--1647
+Overfull \hbox (20.8535pt too wide) in paragraph at lines 1439--1440
 \T1/phv/m/n/10 Intel's path to sol-vency re-lies on a dual strat-egy: ag-gres-s
 ive cost con-trol and government-
  []
 
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 1466.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 7.59998pt on input line 1466.
 
 
-[30]
-Overfull \hbox (3.6295pt too wide) in paragraph at lines 1710--1711
+[24]
+Overfull \hbox (3.6295pt too wide) in paragraph at lines 1503--1504
 \T1/phv/b/n/10 EUV \T1/phv/m/n/10 scan-ners for the 14A node---costing up-wards
  of $380 mil-lion each---significantly
  []
 
 
 
-[31]
-Package pgfplots info on input line 1755: Using 'lua backend=false' for axis: x
+[25]
+Package pgfplots info on input line 1548: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 
 
-[32]
-Overfull \hbox (14.4014pt too wide) in paragraph at lines 1771--1772
+[26]
+Overfull \hbox (14.4014pt too wide) in paragraph at lines 1564--1565
 []\T1/phv/b/n/10 Wafer Pric-ing (18A): \T1/phv/m/n/10 $20,000 per wafer (es-ti-
 mated pre-mium vs. cur-rent 5nm/3nm
  []
 
 
-Overfull \hbox (3.27104pt too wide) in paragraph at lines 1775--1777
+Overfull \hbox (3.27104pt too wide) in paragraph at lines 1568--1570
 []\T1/phv/b/n/10 Revenue Im-pact: \T1/phv/m/n/10 Un-der these as-sump-tions, an
  or-der of 15 mil-lion chips equates
  []
 
 
 
-[33]
+[27]
 
-[34]
+[28]
 
-[35]
-Overfull \hbox (6.70581pt too wide) in paragraph at lines 1883--1884
+[29]
+Overfull \hbox (6.70581pt too wide) in paragraph at lines 1676--1677
 \T1/phv/m/n/10 18A node trans-lates to ap-prox-i-mately \T1/phv/b/n/10 $2 bil-l
 ion in in-cre-men-tal an-nual EBITDA
  []
 
 
-Overfull \hbox (1.22783pt too wide) in paragraph at lines 1892--1894
+Overfull \hbox (1.22783pt too wide) in paragraph at lines 1685--1687
 []\T1/phv/b/n/10 The "In-tel Dis-count": \T1/phv/m/n/10 His-tor-i-cally, second
 -tier foundries trade at \T1/phv/b/n/10 2-4x EV/Sales\T1/phv/m/n/10 . 
  []
 
-Package pgfplots info on input line 1918: Using 'lua backend=false' for axis: x
+Package pgfplots info on input line 1711: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 
-Overfull \hbox (9.54863pt too wide) in paragraph at lines 1931--1932
+Overfull \hbox (9.54863pt too wide) in paragraph at lines 1724--1725
 []\T1/phv/b/n/10 Strategic Beta (The Halo Ef-fect): \T1/phv/m/n/10 Win-ning Ap-
 ple sig-nals to Qual-comm, NVIDIA,
  []
 
 
 
-[36]
+[30]
 
-[37]
-Overfull \hbox (1.2478pt too wide) in paragraph at lines 2020--2023
+[31]
+Overfull \hbox (1.2478pt too wide) in paragraph at lines 1813--1816
 \T1/phv/m/n/10 tech-nolo-gies promise a 10-15% performance-per-watt gain, they 
 dras-ti-cally in-crease
  []
 
 
 
-[38]
-Overfull \hbox (3.37195pt too wide) in paragraph at lines 2025--2026
+[32]
+Overfull \hbox (3.37195pt too wide) in paragraph at lines 1818--1819
 []\T1/phv/b/n/10 Valuation Sen-si-tiv-ity: \T1/phv/m/n/10 Our anal-y-sis sug-ge
 sts that ev-ery \T1/phv/b/n/10 10 per-cent-age points
  []
 
 
-Overfull \hbox (1.22783pt too wide) in paragraph at lines 2042--2044
+Overfull \hbox (1.22783pt too wide) in paragraph at lines 1835--1837
 []\T1/phv/b/n/10 The "In-tel Dis-count": \T1/phv/m/n/10 His-tor-i-cally, second
 -tier foundries trade at \T1/phv/b/n/10 2-4x EV/Sales\T1/phv/m/n/10 . 
  []
 
 
-Overfull \hbox (8.13252pt too wide) in paragraph at lines 2044--2045
+Overfull \hbox (8.13252pt too wide) in paragraph at lines 1837--1838
 []\T1/phv/b/n/10 Current Dis-tress: \T1/phv/m/n/10 In-tel's foundry busi-ness, 
 gen-er-at-ing $13B in op-er-at-ing losses,
  []
 
-Package pgfplots info on input line 2071: Using 'lua backend=false' for axis: x
+Package pgfplots info on input line 1864: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 
 
-[39]
+[33]
 
-[40]
-Overfull \hbox (13.11963pt too wide) in paragraph at lines 2098--2099
+[34]
+Overfull \hbox (13.11963pt too wide) in paragraph at lines 1891--1892
 \T1/phv/m/n/10 While the po-ten-tial adop-tion of In-tel's 18A node by Ap-ple o
 f-fers a com-pelling turnaround
  []
 
 
-Overfull \hbox (2.81155pt too wide) in paragraph at lines 2106--2107
+Overfull \hbox (2.81155pt too wide) in paragraph at lines 1899--1900
 \T1/phv/m/n/10 cess changes---\T1/phv/b/n/10 RibbonFET \T1/phv/m/n/10 (Gate-All
 -Around) and \T1/phv/b/n/10 Pow-erVia \T1/phv/m/n/10 (Back-side Power
  []
 
 
 
-[41]
+[35]
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 2174.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 1967.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 8.54997pt on input line 2174.
+(Font)              scaled to size 8.54997pt on input line 1967.
 
-Overfull \hbox (21.02602pt too wide) in paragraph at lines 2179--2180
+Overfull \hbox (21.02602pt too wide) in paragraph at lines 1972--1973
 \T1/phv/m/n/10 While the "Ap-ple Val-ida-tor" nar-ra-tive is a po-tent cat-a-ly
 st for In-tel's stock, the \T1/phv/b/n/10 Risk/Reward
  []
 
 
 
-[42] (./intelapple.aux)
+[36] (./intelapple.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 30077 strings out of 475178
- 751938 string characters out of 5766539
- 1253819 words of memory out of 5000000
- 52617 multiletter control sequences out of 15000+600000
- 615012 words of font info for 83 fonts, out of 8000000 for 9000
+ 30057 strings out of 475178
+ 751529 string characters out of 5766539
+ 1251335 words of memory out of 5000000
+ 52597 multiletter control sequences out of 15000+600000
+ 614387 words of font info for 81 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 98i,19n,101p,793b,2811s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,19n,101p,793b,2765s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on intelapple.pdf (42 pages, 310270 bytes).
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on intelapple.pdf (36 pages, 273654 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 141 compressed objects within 2 object streams
+ 184 PDF objects out of 1000 (max. 8388607)
+ 120 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
